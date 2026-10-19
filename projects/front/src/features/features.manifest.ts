@@ -14,6 +14,7 @@ export const menu: readonly MenuLink[] = [
   { path: "/", label: "Home", access: "everyone" },
   { path: "/about", label: "About", access: "everyone" },
   { path: "/health", label: "Health", access: "everyone" },
+  { path: "/rockets", label: "Rockets", access: "session" },
   { path: "/login", label: "Login", access: "anonymous" },
   { path: "/register", label: "Register", access: "anonymous" },
 ];
@@ -21,6 +22,12 @@ export function registerPages(homeCards: readonly CardRegistration[]): readonly 
   return [
     { path: "/about", access: "everyone", load: () => import("./about/about.page.ts") },
     { path: "/users/:id", access: "session", load: () => import("./users/users.page.ts") },
+    { path: "/rockets", access: "session", load: () => import("./rockets/rockets.page.ts") },
+    {
+      path: "/rockets/:id",
+      access: "session",
+      load: () => import("./rockets/rockets.detail.page.ts"),
+    },
     { path: "/login", access: "anonymous", load: () => import("./auth/auth.login.page.ts") },
     { path: "/register", access: "anonymous", load: () => import("./auth/auth.register.page.ts") },
     { path: "/health", access: "everyone", load: () => import("./health/health.page.ts") },

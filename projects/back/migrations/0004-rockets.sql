@@ -1,0 +1,7 @@
+CREATE TABLE rockets (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE,
+  capacity INTEGER NOT NULL,
+  range TEXT NOT NULL,
+  createdAt TEXT NOT NULL
+);
