@@ -54,16 +54,11 @@ Based on two projects, a backend REST API in `projects/back` and a frontend web 
 - Do not use `vp test` for the e2e tests. Vitest cannot run Playwright specs.
 - If the back and the front run already (`npm start` in the root folder), the tests use them. Then the database is not emptied. To empty it, stop the servers and use `npm run reset` in the root folder.
 - Put each test in `e2e/tests/<name>.spec.ts`.
-- The front URL is `http://localhost:4000`. Use `BASE_URL` to change it. Use relative paths in `page.goto()`, for example `page.goto('/')`.
-- The back URL is `http://localhost:3000`. Use `API_URL` to change it. It must be equal to `API_BASE_URL` of the front.
+- The front URL is `http://localhost:4000`. 
+- The back URL is `http://localhost:3000`. 
 - `e2e/core/` holds the shared setup: `env.ts` (URLs), `global-setup.ts` (checks and seed) and `seed-data.ts`.
 - For data that a scenario must find before it starts (a `setup` in the spec), add it to `e2e/core/seed-data.ts`. For all other data, use unique values.
 - Find elements by role and accessible name, for example `getByRole('button', { name: 'Register' })`.
-- When a test comes from a spec in `specs/`, do these steps:
-  - Write the spec path in a comment: `// Spec: specs/<name>.spec.yaml`.
-  - Use the requirement ID and title in `test.describe()`, for example `R0001 Register a user with valid data`.
-  - Use the scenario ID and name in `test()`, for example `S001 Successful registration`.
-  - Write `// GIVEN`, `// WHEN` and `// THEN` comments for the steps.
 - Make each test independent. Use unique data, for example an email with `Date.now()`.
 
 ### Code complexity limits

@@ -7,3 +7,8 @@ export const existingUser = {
 };
 
 export const seedUsers = [existingUser];
+
+// Spec: specs/S0003-schedule-launch.spec.md
+export const seedRocket = { name: "Seed Rocket", capacity: 5, range: "orbital" };
+
+export const seedRockets = [seedRocket];

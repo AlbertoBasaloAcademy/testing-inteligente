@@ -4,6 +4,7 @@ import { registerAuth } from "./auth/auth.routes.ts";
 
 import { usersRegistration } from "./users/users.routes.ts";
 import { registerRockets } from "./rockets/rockets.routes.ts";
+import { registerLaunches } from "./launches/launches.routes.ts";
 export function registerFeatures(services: ApplicationServices) {
   const auth = registerAuth(services);
   const registrations: readonly RouteRegistration[] = [
@@ -15,6 +16,7 @@ export function registerFeatures(services: ApplicationServices) {
     ...auth.registrations,
     usersRegistration,
     registerRockets(services),
+    registerLaunches(services),
   ];
   return { registrations, resolve: auth.resolve };
 }
