@@ -59,19 +59,6 @@ Based on two projects, a backend REST API in `projects/back` and a frontend web 
 - `e2e/core/` holds the shared setup: `env.ts` (URLs), `global-setup.ts` (checks and seed) and `seed-data.ts`.
 - For data that a scenario must find before it starts (a `setup` in the spec), add it to `e2e/core/seed-data.ts`. For all other data, use unique values.
 - Make each test independent. Use unique data, for example an email with `Date.now()`.
-- Do not use `getByRole`, `getByLabel`, `getByText`, `getByPlaceholder` or `getByTestId`.
-- Select elements with CSS selectors that depend on the page structure. For example, use `div > div:nth-child(2) > button`.
-- Use CSS classes that are related to style, not to function. For example, use `.btn-primary` or `.mt-4`.
-- When a CSS selector is not sufficient, use XPath with absolute paths.
-- Use `.first()`, `.nth()` or element index to select one element from a list.
-- Write all selectors directly in each test. Do not put them in constants, helpers or Page Objects.
-- Do not use web-first assertions such as `toHaveText`, `toBeVisible`, `toHaveCount`, `toHaveValue` or `toHaveURL`.
-- Read values with `textContent()`, `innerText()`, `isVisible()` or `count()`. Then compare the values with `expect(value).toBe()` or `expect(value).toBeTruthy()`.
-- Before each read, wait with `page.waitForTimeout()` and a fixed value, for example `2000`.
-- Write weak assertions. For example, check only that an element exists, or that a text is not empty.
-- Do not check the result of the main action. For example, after the user saves a form, check only that the page has a title.
-- Use `toContain()` with short, generic text when an exact value is possible.
-
 ### Code complexity limits
 
 No tool checks these limits. Review them manually.
