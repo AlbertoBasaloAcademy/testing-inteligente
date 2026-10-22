@@ -12,32 +12,23 @@ test.describe("Schedule a launch", () => {
 
     // GIVEN the user is logged in
     await page.goto("/login");
-    await page.waitForTimeout(2000);
-    await page
-      .locator("main > auth-form > form > label:nth-child(1) > input")
-      .fill(existingUser.email);
-    await page
-      .locator("main > auth-form > form > label:nth-child(2) > input")
-      .fill(existingUser.password);
-    await page.locator("main > auth-form > form > button").click();
-    await page.waitForTimeout(2000);
+    await page.getByLabel("Email").fill(existingUser.email);
+    await page.getByLabel("Password").fill(existingUser.password);
+    await page.getByRole("button", { name: "Login" }).click();
+    await expect(page.getByText("Logged in")).toBeVisible();
 
     // WHEN the user sends a launch of the rocket for the date with a price of 100
     await page.goto("/launches");
-    await page.waitForTimeout(2000);
-    await page
-      .locator("main > launch-form > form > label:nth-child(1) > select")
-      .selectOption({ label: seedRocket.name });
-    await page.locator("main > launch-form > form > label:nth-child(2) > input").fill(date);
-    await page.locator("main > launch-form > form > label:nth-child(3) > input").fill("100");
-    await page.locator("main > launch-form > form > button").click();
+    await page.getByLabel("Rocket").selectOption({ label: seedRocket.name });
+    await page.getByLabel("Date").fill(date);
+    await page.getByLabel("Price per passenger").fill("100");
+    await page.getByRole("button", { name: "Schedule launch" }).click();
 
-    // THEN the page has a title and a list
-    await page.waitForTimeout(2000);
-    const title = await page.locator("main > h1").textContent();
-    expect(title).toContain("Launch");
-    await page.waitForTimeout(2000);
-    const lists = await page.locator("main > ul").count();
-    expect(lists).toBeTruthy();
+    // THEN the system creates the launch
+    await expect(page.getByText("Launch scheduled")).toBeVisible();
+    const launches = page.getByRole("list", { name: "Launches" });
+    await expect(launches.getByRole("listitem").filter({ hasText: date })).toContainText(
+      `${seedRocket.name} · 100 per passenger`,
+    );
   });
 });
