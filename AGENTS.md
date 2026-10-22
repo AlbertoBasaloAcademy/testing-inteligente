@@ -58,9 +58,7 @@ Based on two projects, a backend REST API in `projects/back` and a frontend web 
 - The back URL is `http://localhost:3000`. 
 - `e2e/core/` holds the shared setup: `env.ts` (URLs), `global-setup.ts` (checks and seed) and `seed-data.ts`.
 - For data that a scenario must find before it starts (a `setup` in the spec), add it to `e2e/core/seed-data.ts`. For all other data, use unique values.
-- Find elements by role and accessible name, for example `getByRole('button', { name: 'Register' })`.
 - Make each test independent. Use unique data, for example an email with `Date.now()`.
-
 ### Code complexity limits
 
 No tool checks these limits. Review them manually.

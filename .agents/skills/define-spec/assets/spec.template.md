@@ -12,7 +12,7 @@ slug: name-of-the-spec
 
 ### User stories
 
-- As a [user type], I want to {**perform an action**} so that I can {achieve a goal}.
+- US1: As a [user type], I want to {**perform an action**} so that I can {achieve a goal}.
 
 ### Business rules
 
@@ -38,4 +38,4 @@ slug: name-of-the-spec
 
 ## Verification
 
-- [ ] {E.A.R.S. Acceptance Criteria}
+- [ ] R1 (US1): {E.A.R.S. Acceptance Criterion}

@@ -11,11 +11,11 @@ function createTemplate(rockets: readonly Rocket[]) {
     .map((rocket) => `<option value="${escapeHtml(rocket.id)}">${escapeHtml(rocket.name)}</option>`)
     .join("");
   const template = document.createElement("template");
-  template.innerHTML = `<h2>Schedule a launch</h2><form>
+  template.innerHTML = `<h2>Schedule a launch</h2><p role="status" id="launch-result"></p><form>
 <label>Rocket<select name="rocketId" required>${options}</select><small data-field="rocketId" role="status"></small></label>
 <label>Date<input name="date" type="date" required><small data-field="date" role="status"></small></label>
 <label>Price per passenger<input name="pricePerPassenger" type="number" step="any" required><small data-field="pricePerPassenger" role="status"></small></label>
-<button type="submit">Schedule launch</button><p role="status" id="launch-result"></p></form>`;
+<button type="submit">Schedule launch</button></form>`;
   return template;
 }
 function readInput(form: HTMLFormElement): LaunchInput {
@@ -36,7 +36,7 @@ function showResult(element: LaunchForm, result: LaunchScheduleResult) {
   if (result.status === "created") output.textContent = "Launch scheduled";
   if (result.status === "unavailable") output.textContent = "Launches unavailable";
   if (result.status !== "rejected") return;
-  output.textContent = result.message;
+  output.textContent = Object.keys(result.fields).length ? "" : result.message;
   for (const field of element.querySelectorAll<HTMLElement>("[data-field]"))
     field.textContent = result.fields[field.dataset.field ?? ""] ?? "";
 }
