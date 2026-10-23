@@ -1,6 +1,6 @@
-# Spec: specs/S0002-rocket-fleet.spec.md
+# Spec: specs/S0002-rocket-fleet/spec.md
 
-Feature: List the rockets
+Feature: [US2] List the rockets
   As a registered user
   I want to list the rockets
   So that I can see the full fleet

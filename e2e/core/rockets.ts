@@ -1,4 +1,4 @@
-// Shared steps for the rocket fleet specs (specs/S0002-*.feature).
+// Shared steps for the rocket fleet specs (specs/S0002-rocket-fleet/*.feature).
 import { expect, type APIRequestContext, type APIResponse, type Page } from "@playwright/test";
 import { backUrl } from "./env";
 import { existingUser } from "./seed-data";

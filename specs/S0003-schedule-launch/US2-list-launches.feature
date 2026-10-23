@@ -1,6 +1,6 @@
-# Spec: specs/S0003-schedule-launch.spec.md
+# Spec: specs/S0003-schedule-launch/spec.md
 
-Feature: List the launches
+Feature: [US2] List the launches
   As a registered user
   I want to list the launches
   So that I can see the planned launches

@@ -1,6 +1,6 @@
-# Spec: specs/S0002-rocket-fleet.spec.md
+# Spec: specs/S0002-rocket-fleet/spec.md
 
-Feature: Add a rocket
+Feature: [US1] Add a rocket
   As a registered user
   I want to add a rocket
   So that I can grow the fleet

@@ -57,7 +57,7 @@ The agency cannot plan launches for the rockets of its fleet. Users cannot set a
 
 ### E2E
 
-- Put the tests in `e2e/tests/schedule-launch.spec.ts`.
+- Put the tests in `e2e/tests/S0003-schedule-launch/`.
 - Add a seed user and a seed rocket to `e2e/core/seed-data.ts`.
 - Use a unique future date that you calculate from `Date.now()`.
 - Schedule a launch of the seed rocket and find it in the list.

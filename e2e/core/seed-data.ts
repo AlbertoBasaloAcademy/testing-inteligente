@@ -1,5 +1,5 @@
 // Minimal seed data. global-setup creates it before the tests.
-// Spec: specs/register-user.spec.yaml (R0002 S001)
+// Spec: specs/S0001-register-user/spec.yaml (R0002 S001)
 export const existingUser = {
   name: "Existing User",
   email: "already_taken@example.com",
@@ -8,7 +8,7 @@ export const existingUser = {
 
 export const seedUsers = [existingUser];
 
-// Spec: specs/S0003-schedule-launch.spec.md
+// Spec: specs/S0003-schedule-launch/spec.md
 export const seedRocket = { name: "Seed Rocket", capacity: 5, range: "orbital" };
 
 export const seedRockets = [seedRocket];

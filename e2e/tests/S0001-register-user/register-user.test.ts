@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { existingUser } from "../core/seed-data";
+import { existingUser } from "../../core/seed-data";
 
 async function openRegisterPage(page: Page): Promise<void> {
   await page.goto("/");
@@ -10,9 +10,9 @@ async function openRegisterPage(page: Page): Promise<void> {
   await expect(page).toHaveURL(/\/register$/);
 }
 
-// Spec: specs/register-user.spec.yaml
-test.describe("R0001 Register a user with valid data", () => {
-  test("S001 Successful registration", async ({ page }) => {
+// Spec: specs/S0001-register-user/spec.yaml
+test.describe("R0001 Register a user with valid data", { tag: "@S0001" }, () => {
+  test("S001 Successful registration", { tag: "@S0001-R0001" }, async ({ page }) => {
     // Precondition: no user exists with this email, so each run uses a unique one.
     const user = {
       username: "John Doe",
@@ -34,8 +34,8 @@ test.describe("R0001 Register a user with valid data", () => {
   });
 });
 
-test.describe("R0002 Reject registration with an existing email", () => {
-  test("S001 Registration with an existing email", async ({ page }) => {
+test.describe("R0002 Reject registration with an existing email", { tag: "@S0001" }, () => {
+  test("S001 Registration with an existing email", { tag: "@S0001-R0002" }, async ({ page }) => {
     // Setup: global-setup creates the seed user with this email.
     const expectedError = "Email already registered";
 

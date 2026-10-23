@@ -12,9 +12,9 @@ The agency has no record of its rockets. Users cannot add a rocket or see the ro
 
 ### User stories
 
-- As a registered user, I want to **add a rocket** so that I can grow the fleet.
-- As a registered user, I want to **list the rockets** so that I can see the full fleet.
-- As a registered user, I want to **see the details of a rocket** so that I can know its capacity and range.
+- US1: As a registered user, I want to **add a rocket** so that I can grow the fleet.
+- US2: As a registered user, I want to **list the rockets** so that I can see the full fleet.
+- US3: As a registered user, I want to **see the details of a rocket** so that I can know its capacity and range.
 
 ### Business rules
 
@@ -54,7 +54,7 @@ The agency has no record of its rockets. Users cannot add a rocket or see the ro
 
 ### E2E
 
-- Put the tests in `e2e/tests/rocket-fleet.spec.ts`.
+- Put the tests in `e2e/tests/S0002-rocket-fleet/`.
 - Log in as a seed user from `e2e/core/seed-data.ts`.
 - Use a unique rocket name with `Date.now()`.
 - Add a rocket and find it in the list.
@@ -64,11 +64,11 @@ The agency has no record of its rockets. Users cannot add a rocket or see the ro
 
 ## Verification
 
-- [ ] WHEN a registered user sends a valid rocket, THE system SHALL create the rocket and return 201.
-- [ ] WHEN a user sends a request without a valid token, THE system SHALL return 401.
-- [ ] IF the rocket name has less than 3 or more than 40 characters, THEN THE system SHALL return 400 with the field `name`.
-- [ ] IF the rocket name exists already, THEN THE system SHALL return 409.
-- [ ] IF the capacity is not between 1 and 10, THEN THE system SHALL return 400 with the field `capacity`.
-- [ ] IF the range is not a permitted value, THEN THE system SHALL return 400 with the field `range`.
-- [ ] WHEN a registered user opens `/rockets`, THE system SHALL show all the rockets of the fleet.
-- [ ] WHEN a registered user opens `/rockets/:id` of a rocket that does not exist, THE system SHALL show a "not found" message.
+- [ ] R1 (US1): WHEN a registered user sends a valid rocket, THE system SHALL create the rocket and return 201.
+- [ ] R2 (US1, US2, US3): WHEN a user sends a request without a valid token, THE system SHALL return 401.
+- [ ] R3 (US1): IF the rocket name has less than 3 or more than 40 characters, THEN THE system SHALL return 400 with the field `name`.
+- [ ] R4 (US1): IF the rocket name exists already, THEN THE system SHALL return 409.
+- [ ] R5 (US1): IF the capacity is not between 1 and 10, THEN THE system SHALL return 400 with the field `capacity`.
+- [ ] R6 (US1): IF the range is not a permitted value, THEN THE system SHALL return 400 with the field `range`.
+- [ ] R7 (US2): WHEN a registered user opens `/rockets`, THE system SHALL show all the rockets of the fleet.
+- [ ] R8 (US3): WHEN a registered user opens `/rockets/:id` of a rocket that does not exist, THE system SHALL show a "not found" message.

@@ -1,6 +1,6 @@
-# Spec: specs/S0003-schedule-launch.spec.md
+# Spec: specs/S0003-schedule-launch/spec.md
 
-Feature: Schedule a launch
+Feature: [US1] Schedule a launch
   As a registered user
   I want to schedule a launch of a rocket
   So that I can offer seats on a future date

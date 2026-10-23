@@ -1,6 +1,6 @@
-# Spec: specs/S0002-rocket-fleet.spec.md
+# Spec: specs/S0002-rocket-fleet/spec.md
 
-Feature: See the details of a rocket
+Feature: [US3] See the details of a rocket
   As a registered user
   I want to see the details of a rocket
   So that I can know its capacity and range
