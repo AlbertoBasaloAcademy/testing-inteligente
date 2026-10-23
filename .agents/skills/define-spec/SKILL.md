@@ -24,7 +24,7 @@ Write one spec for one feature. Use the template [spec.template.md](assets/spec.
 6. **Solution**: write fewer than 10 steps for each part.
    - **Back**: resources, endpoints, status codes, checks and `logic` rules.
    - **Front**: pages, forms, fields, messages and navigation.
-   - **E2E**: spec file, seed data, unique data and main flows.
+   - **E2E**: test folder `e2e/tests/<id>-<slug>/`, seed data, unique data and main flows.
 7. **Verification**: write 1 to 9 EARS criteria.
 
 ## Rules for the criteria
@@ -56,4 +56,4 @@ Write one spec for one feature. Use the template [spec.template.md](assets/spec.
 ## Save
 
 - Show the spec to the user.
-- Save it in `specs/<id>-<slug>.spec.md` only after the user confirms.
+- Save it in `specs/<id>-<slug>/spec.md` only after the user confirms.

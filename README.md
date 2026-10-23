@@ -50,7 +50,7 @@ npm run typecheck     # comprobar tipos
 - Si ya hay servidores arrancados (`npm start` en la raíz), los tests los reutilizan y la base de datos no se vacía. Para vaciarla: parar los servidores y `npm run reset` en la raíz.
 - `BASE_URL` cambia la URL del front (por defecto `http://localhost:4000`).
 - `API_URL` cambia la URL del back (por defecto `http://localhost:3000`); debe coincidir con `API_BASE_URL` del front.
-- Los tests están en `e2e/tests/*.spec.ts`; las especificaciones en `specs/*.spec.yaml`.
+- Los tests están en `e2e/tests/<id>-<slug>/`; las especificaciones en `specs/<id>-<slug>/`.
 
 ---
 

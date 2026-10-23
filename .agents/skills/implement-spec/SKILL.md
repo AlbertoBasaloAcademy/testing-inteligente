@@ -10,7 +10,7 @@ Implement the back and the front of one spec. The result is an application that 
 ## Read the context
 
 1. Read `AGENTS.md`.
-2. Read the spec in `specs/<id>-<slug>.spec.md`.
+2. Read the spec in `specs/<id>-<slug>/spec.md`.
 3. Read the code in `projects/back` and `projects/front` that is related to the spec.
 4. Find the existing style: folders, names, layers and test files.
 

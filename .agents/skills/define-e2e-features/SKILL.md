@@ -21,8 +21,8 @@ Use the template [spec.user-story.template.feature](assets/spec.user-story.templ
 ## Write the features
 
 1. Write one `.feature` file for each user story.
-2. On the first line, write a comment with the spec path: `# Spec: specs/<id>-<slug>.spec.md`.
-3. **Feature**: write the title of the story. Write the `As a`, `I want to` and `So that` lines from the story.
+2. On the first line, write a comment with the spec path: `# Spec: specs/<id>-<slug>/spec.md`.
+3. **Feature**: write the title of the story. Start it with the story code: `Feature: [US1] ...`. Write the `As a`, `I want to` and `So that` lines from the story.
 4. **Background**: write the preconditions that all the scenarios of the story share.
 5. **Scenario**: write one scenario for each EARS criterion of the story.
    - Start the scenario name with the criterion code: `Scenario: [R1] Add a valid rocket`.
@@ -53,5 +53,5 @@ Use the template [spec.user-story.template.feature](assets/spec.user-story.templ
 ## Save
 
 - Show the features to the user.
-- Save each feature in the folder of the spec: `specs/<id>-<story-slug>.feature`. For example, `specs/S0002-add-rocket.feature`.
+- Save each feature in the folder of the spec: `specs/<id>-<slug>/<story-code>-<story-slug>.feature`. For example, `US1-<slug>.feature`.
 - Save only after the user confirms.
