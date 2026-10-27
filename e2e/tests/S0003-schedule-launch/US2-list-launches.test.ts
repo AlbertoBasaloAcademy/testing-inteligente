@@ -3,6 +3,7 @@ import { uniqueFutureDate } from "../../core/launches";
 import { logInPage } from "../../core/rockets";
 import { seedRocket } from "../../core/seed-data";
 import { LaunchesPage } from "../../pages/launches.page";
+import { LoginPage } from "../../pages/login.page";
 
 // Spec: specs/S0003-schedule-launch/US2-list-launches.feature
 test.describe("[US2] List the launches", { tag: ["@S0003", "@S0003-US2"] }, () => {
@@ -37,11 +38,12 @@ test.describe("[US2] List the launches", { tag: ["@S0003", "@S0003-US2"] }, () =
     async ({ page }) => {
       // GIVEN the user has no token
       // WHEN the user opens the page "/launches"
-      await page.goto("/launches");
+      await new LaunchesPage(page).goto();
 
       // THEN the system sends the user to the login page
-      await expect(page.getByRole("heading", { name: "Login" })).toBeVisible();
-      await expect(page.getByRole("button", { name: "Login" })).toBeVisible();
+      const loginPage = new LoginPage(page);
+      await expect(loginPage.heading).toBeVisible();
+      await expect(loginPage.loginButton).toBeVisible();
     },
   );
 });

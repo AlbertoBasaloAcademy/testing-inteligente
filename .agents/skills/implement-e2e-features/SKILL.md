@@ -1,6 +1,6 @@
 ---
 name: implement-e2e-features
-description: Writes or changes the Playwright e2e tests in e2e/. Selects elements by role, accessible name or visible label, and checks the observable result of each requirement with retrying assertions. Use it each time you generate, write, change or fix an e2e test, or when the user invokes /implement-e2e-features.
+description: Writes or changes the Playwright e2e tests in e2e/. Uses Page Objects in e2e/pages/ for the navigation, the locators and the actions of each page. Selects elements by role, accessible name or visible label, and checks the observable result of each requirement with retrying assertions. Use it each time you generate, write, change or fix an e2e test, or when the user invokes /implement-e2e-features.
 ---
 
 # Implement the e2e tests
@@ -32,6 +32,28 @@ test.describe('[US1] Schedule a launch', { tag: ['@S0003', '@S0003-US1'] }, () =
     // ...
   });
 });
+```
+
+## Use Page Objects
+
+1. Before you make a new class, find a Page Object in `e2e/pages/` that you can use again.
+2. Put each Page Object class in `e2e/pages/<page-name>.page.ts`.
+3. The constructor receives `Page`. The class contains the navigation, the locators and the actions of the page.
+4. Give each method a name that tells a user action, for example `scheduleLaunch`.
+   - The method receives the data of the case as parameters.
+   - Do not import the seed data in the Page Object.
+5. Make locators public to check the visible results.
+6. Keep these items in the test: the data of the case, the assertions of the requirement and the expected results.
+7. If a test checks an HTTP response, the method that does the action returns that response. Start the wait for the response before the action.
+8. Use the same operation to prepare a case and to do the action that the test checks, when possible.
+9. Do not write again in the test an action or a locator that a Page Object has already.
+10. The rules in the other sections (locators, checks, `await`, organization and tags) also apply to the code of the Page Objects, when applicable.
+
+```ts
+const launches = new LaunchesPage(page);
+const response = await launches.scheduleLaunch({ rocketName, date, price });
+expect(response.status()).toBe(201);
+await expect(launches.launchOn(date)).toBeVisible();
 ```
 
 ## Select the elements

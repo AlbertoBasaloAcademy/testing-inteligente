@@ -1,6 +1,7 @@
 // Shared steps for the rocket fleet specs (specs/S0002-rocket-fleet/*.feature).
 import { expect, type APIRequestContext, type APIResponse, type Page } from "@playwright/test";
 import { backUrl } from "./env";
+import { LoginPage } from "../pages/login.page";
 import { existingUser } from "./seed-data";
 
 export type RocketInput = { name: string; capacity: number; range: string };
@@ -39,12 +40,11 @@ export async function addRocket(
   return ((await response.json()) as { id: string }).id;
 }
 
+// Logs in the seed user through the login page.
 export async function logInPage(page: Page): Promise<void> {
-  await page.goto("/login");
-  await page.getByRole("textbox", { name: "Email" }).fill(existingUser.email);
-  await page.getByLabel("Password").fill(existingUser.password);
-  await page.getByRole("button", { name: "Login" }).click();
-  await expect(page.getByText("Logged in")).toBeVisible();
+  const loginPage = new LoginPage(page);
+  await loginPage.logIn(existingUser);
+  await expect(loginPage.loggedInMessage).toBeVisible();
 }
 
 // Values of the "token" column in the Examples tables.

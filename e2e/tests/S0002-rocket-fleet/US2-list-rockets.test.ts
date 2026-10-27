@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { backUrl } from "../../core/env";
 import { addRocket, logIn, logInPage, tokenExamples, uniqueName } from "../../core/rockets";
+import { RocketsPage } from "../../pages/rockets.page";
 
 // Spec: specs/S0002-rocket-fleet/US2-list-rockets.feature
 test.describe("[US2] List the rockets", { tag: ["@S0002", "@S0002-US2"] }, () => {
@@ -36,11 +37,11 @@ test.describe("[US2] List the rockets", { tag: ["@S0002", "@S0002-US2"] }, () =>
     await logInPage(page);
 
     // WHEN the user opens the page "/rockets"
-    await page.goto("/rockets");
+    const rocketsPage = new RocketsPage(page);
+    await rocketsPage.goto();
 
     // THEN the system shows the rockets "Falcon" and "Vega"
-    const list = page.getByRole("list", { name: "Rockets" });
-    await expect(list.getByRole("link", { name: names.falcon })).toBeVisible();
-    await expect(list.getByRole("link", { name: names.vega })).toBeVisible();
+    await expect(rocketsPage.rocketLink(names.falcon)).toBeVisible();
+    await expect(rocketsPage.rocketLink(names.vega)).toBeVisible();
   });
 });

@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { backUrl } from "../../core/env";
 import { addRocket, logIn, logInPage, tokenExamples, uniqueName } from "../../core/rockets";
+import { RocketDetailsPage } from "../../pages/rocket-details.page";
 
 // Spec: specs/S0002-rocket-fleet/US3-see-rocket-details.feature
 test.describe("[US3] See the details of a rocket", { tag: ["@S0002", "@S0002-US3"] }, () => {
@@ -38,10 +39,11 @@ test.describe("[US3] See the details of a rocket", { tag: ["@S0002", "@S0002-US3
       await logInPage(page);
 
       // WHEN the user opens the page "/rockets/unknown-id"
-      await page.goto("/rockets/unknown-id");
+      const detailsPage = new RocketDetailsPage(page);
+      await detailsPage.goto("unknown-id");
 
       // THEN the system shows a "not found" message
-      await expect(page.getByRole("status").filter({ hasText: /not found/i })).toBeVisible();
+      await expect(detailsPage.status(/not found/i)).toBeVisible();
     },
   );
 });

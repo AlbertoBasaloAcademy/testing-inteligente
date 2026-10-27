@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { isoDate, uniqueFutureDate } from "../../core/launches";
 import { logInPage } from "../../core/rockets";
-import { existingUser, seedRocket } from "../../core/seed-data";
+import { seedRocket } from "../../core/seed-data";
 import { LaunchesPage } from "../../pages/launches.page";
 
 // Spec: specs/S0003-schedule-launch/US1-schedule-launch.feature
@@ -14,11 +14,7 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
     const date = new Date(Date.now() + days * 86_400_000).toISOString().slice(0, 10);
 
     // GIVEN the user is logged in
-    await page.goto("/login");
-    await page.getByLabel("Email").fill(existingUser.email);
-    await page.getByLabel("Password").fill(existingUser.password);
-    await page.getByRole("button", { name: "Login" }).click();
-    await expect(page.getByText("Logged in")).toBeVisible();
+    await logInPage(page);
 
     // WHEN the user sends a launch of the rocket for the date with a price of 100
     const launchesPage = new LaunchesPage(page);
