@@ -1,7 +1,8 @@
 import { expect, test } from "@playwright/test";
-import { scheduleLaunch, uniqueFutureDate } from "../../core/launches";
+import { uniqueFutureDate } from "../../core/launches";
 import { logInPage } from "../../core/rockets";
 import { seedRocket } from "../../core/seed-data";
+import { LaunchesPage } from "../../pages/launches.page";
 
 // Spec: specs/S0003-schedule-launch/US2-list-launches.feature
 test.describe("[US2] List the launches", { tag: ["@S0003", "@S0003-US2"] }, () => {
@@ -11,16 +12,21 @@ test.describe("[US2] List the launches", { tag: ["@S0003", "@S0003-US2"] }, () =
     // AND the rocket has a launch on a unique future date with a price of 100
     // GIVEN the user is logged in
     await logInPage(page);
+    const launchesPage = new LaunchesPage(page);
     const date = uniqueFutureDate();
-    expect((await scheduleLaunch(page, { date, price: "100" })).status()).toBe(201);
+    const response = await launchesPage.scheduleLaunch({
+      rocketName: seedRocket.name,
+      date,
+      price: "100",
+    });
+    expect(response.status()).toBe(201);
 
     // WHEN the user opens the page "/launches"
-    await page.goto("/launches");
+    await launchesPage.goto();
 
     // THEN the system shows the launch of the rocket
     // AND the launch shows the rocket name, the date and the price per passenger
-    const launches = page.getByRole("list", { name: "Launches" });
-    await expect(launches.getByRole("listitem").filter({ hasText: date })).toHaveText(
+    await expect(launchesPage.launchOn(date)).toHaveText(
       `${date} · ${seedRocket.name} · 100 per passenger`,
     );
   });

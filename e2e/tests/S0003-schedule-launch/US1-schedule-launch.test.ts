@@ -1,7 +1,8 @@
 import { expect, test } from "@playwright/test";
-import { isoDate, scheduleLaunch, uniqueFutureDate } from "../../core/launches";
+import { isoDate, uniqueFutureDate } from "../../core/launches";
 import { logInPage } from "../../core/rockets";
 import { existingUser, seedRocket } from "../../core/seed-data";
+import { LaunchesPage } from "../../pages/launches.page";
 
 // Spec: specs/S0003-schedule-launch/US1-schedule-launch.feature
 test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () => {
@@ -20,16 +21,12 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
     await expect(page.getByText("Logged in")).toBeVisible();
 
     // WHEN the user sends a launch of the rocket for the date with a price of 100
-    await page.goto("/launches");
-    await page.getByLabel("Rocket").selectOption({ label: seedRocket.name });
-    await page.getByLabel("Date").fill(date);
-    await page.getByLabel("Price per passenger").fill("100");
-    await page.getByRole("button", { name: "Schedule launch" }).click();
+    const launchesPage = new LaunchesPage(page);
+    await launchesPage.scheduleLaunch({ rocketName: seedRocket.name, date, price: "100" });
 
     // THEN the system creates the launch
-    await expect(page.getByText("Launch scheduled")).toBeVisible();
-    const launches = page.getByRole("list", { name: "Launches" });
-    await expect(launches.getByRole("listitem").filter({ hasText: date })).toContainText(
+    await expect(launchesPage.message("Launch scheduled")).toBeVisible();
+    await expect(launchesPage.launchOn(date)).toContainText(
       `${seedRocket.name} · 100 per passenger`,
     );
   });
@@ -47,15 +44,18 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
         await logInPage(page);
 
         // WHEN the user sends a launch of the rocket for the date with a price of 100
-        const response = await scheduleLaunch(page, { date, price: "100" });
+        const launchesPage = new LaunchesPage(page);
+        const response = await launchesPage.scheduleLaunch({
+          rocketName: seedRocket.name,
+          date,
+          price: "100",
+        });
 
         // THEN the system returns 400
         // AND the error has the field "date"
         expect(response.status()).toBe(400);
         expect(((await response.json()) as { fields: object }).fields).toHaveProperty("date");
-        await expect(
-          page.getByRole("status").filter({ hasText: "date must be after the current date" }),
-        ).toBeVisible();
+        await expect(launchesPage.status("date must be after the current date")).toBeVisible();
       },
     );
   }
@@ -69,16 +69,19 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
         await logInPage(page);
 
         // WHEN the user sends a launch of the rocket for a future date with the price
-        const response = await scheduleLaunch(page, { date: uniqueFutureDate(), price });
+        const launchesPage = new LaunchesPage(page);
+        const response = await launchesPage.scheduleLaunch({
+          rocketName: seedRocket.name,
+          date: uniqueFutureDate(),
+          price,
+        });
 
         // THEN the system returns 400
         // AND the error has the field "pricePerPassenger"
         expect(response.status()).toBe(400);
         const body = (await response.json()) as { fields: object };
         expect(body.fields).toHaveProperty("pricePerPassenger");
-        await expect(
-          page.getByRole("status").filter({ hasText: "pricePerPassenger must be a number" }),
-        ).toBeVisible();
+        await expect(launchesPage.status("pricePerPassenger must be a number")).toBeVisible();
       },
     );
   }
@@ -90,18 +93,17 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
       // GIVEN the user is logged in
       // AND the rocket has a launch on a unique future date
       await logInPage(page);
-      const date = uniqueFutureDate();
-      expect((await scheduleLaunch(page, { date, price: "100" })).status()).toBe(201);
-      await expect(page.getByText("Launch scheduled")).toBeVisible();
+      const launchesPage = new LaunchesPage(page);
+      const launch = { rocketName: seedRocket.name, date: uniqueFutureDate(), price: "100" };
+      expect((await launchesPage.scheduleLaunch(launch)).status()).toBe(201);
+      await expect(launchesPage.message("Launch scheduled")).toBeVisible();
 
       // WHEN the user sends a launch of the rocket for the same date with a price of 100
-      const response = await scheduleLaunch(page, { date, price: "100" });
+      const response = await launchesPage.scheduleLaunch(launch);
 
       // THEN the system returns 409
       expect(response.status()).toBe(409);
-      await expect(
-        page.getByRole("status").filter({ hasText: "Rocket has a launch on this date" }),
-      ).toBeVisible();
+      await expect(launchesPage.status("Rocket has a launch on this date")).toBeVisible();
     },
   );
 });
