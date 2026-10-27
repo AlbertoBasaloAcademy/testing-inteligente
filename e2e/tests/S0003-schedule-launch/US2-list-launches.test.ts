@@ -1,9 +1,8 @@
 import { expect, test } from "@playwright/test";
-import { uniqueFutureDate } from "../../core/launches";
 import { logInPage } from "../../core/rockets";
-import { seedRocket } from "../../core/seed-data";
 import { LaunchesPage } from "../../pages/launches.page";
 import { LoginPage } from "../../pages/login.page";
+import { createLaunchData } from "../../test-data/launches";
 
 // Spec: specs/S0003-schedule-launch/US2-list-launches.feature
 test.describe("[US2] List the launches", { tag: ["@S0003", "@S0003-US2"] }, () => {
@@ -14,12 +13,8 @@ test.describe("[US2] List the launches", { tag: ["@S0003", "@S0003-US2"] }, () =
     // GIVEN the user is logged in
     await logInPage(page);
     const launchesPage = new LaunchesPage(page);
-    const date = uniqueFutureDate();
-    const response = await launchesPage.scheduleLaunch({
-      rocketName: seedRocket.name,
-      date,
-      price: "100",
-    });
+    const launch = createLaunchData();
+    const response = await launchesPage.scheduleLaunch(launch);
     expect(response.status()).toBe(201);
 
     // WHEN the user opens the page "/launches"
@@ -27,8 +22,8 @@ test.describe("[US2] List the launches", { tag: ["@S0003", "@S0003-US2"] }, () =
 
     // THEN the system shows the launch of the rocket
     // AND the launch shows the rocket name, the date and the price per passenger
-    await expect(launchesPage.launchOn(date)).toHaveText(
-      `${date} · ${seedRocket.name} · 100 per passenger`,
+    await expect(launchesPage.launchOn(launch.date)).toHaveText(
+      `${launch.date} · ${launch.rocketName} · ${launch.price} per passenger`,
     );
   });
 

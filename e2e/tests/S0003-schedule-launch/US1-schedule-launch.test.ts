@@ -3,6 +3,7 @@ import { isoDate, uniqueFutureDate } from "../../core/launches";
 import { logInPage } from "../../core/rockets";
 import { seedRocket } from "../../core/seed-data";
 import { LaunchesPage } from "../../pages/launches.page";
+import { createLaunchData, rejectedPrices } from "../../test-data/launches";
 
 // Spec: specs/S0003-schedule-launch/US1-schedule-launch.feature
 test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () => {
@@ -10,28 +11,27 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
     // GIVEN a registered user exists (seed user)
     // AND the rocket exists in the fleet (seed rocket)
     // AND the rocket has no launch on a unique future date
-    const days = 1 + (Date.now() % 2_500_000);
-    const date = new Date(Date.now() + days * 86_400_000).toISOString().slice(0, 10);
+    const launch = createLaunchData();
 
     // GIVEN the user is logged in
     await logInPage(page);
 
     // WHEN the user sends a launch of the rocket for the date with a price of 100
     const launchesPage = new LaunchesPage(page);
-    await launchesPage.scheduleLaunch({ rocketName: seedRocket.name, date, price: "100" });
+    await launchesPage.scheduleLaunch(launch);
 
     // THEN the system creates the launch
     await expect(launchesPage.message("Launch scheduled")).toBeVisible();
-    await expect(launchesPage.launchOn(date)).toContainText(
-      `${seedRocket.name} · 100 per passenger`,
+    await expect(launchesPage.launchOn(launch.date)).toContainText(
+      `${launch.rocketName} · ${launch.price} per passenger`,
     );
   });
 
   const invalidDates = [
-    { example: "today", date: isoDate(0) },
-    { example: "yesterday", date: isoDate(-1) },
+    { example: "today", days: 0 },
+    { example: "yesterday", days: -1 },
   ];
-  for (const { example, date } of invalidDates) {
+  for (const { example, days } of invalidDates) {
     test(
       `[R4] Reject a date that is not valid or not in the future (${example})`,
       { tag: "@S0003-R4" },
@@ -43,7 +43,7 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
         const launchesPage = new LaunchesPage(page);
         const response = await launchesPage.scheduleLaunch({
           rocketName: seedRocket.name,
-          date,
+          date: isoDate(days),
           price: "100",
         });
 
@@ -56,7 +56,7 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
     );
   }
 
-  for (const price of ["0", "-10"]) {
+  for (const { price, expectedStatus, expectedField, expectedMessage } of rejectedPrices) {
     test(
       `[R5] Reject a price that is not a number greater than 0 (${price})`,
       { tag: "@S0003-R5" },
@@ -74,10 +74,10 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
 
         // THEN the system returns 400
         // AND the error has the field "pricePerPassenger"
-        expect(response.status()).toBe(400);
+        expect(response.status()).toBe(expectedStatus);
         const body = (await response.json()) as { fields: object };
-        expect(body.fields).toHaveProperty("pricePerPassenger");
-        await expect(launchesPage.status("pricePerPassenger must be a number")).toBeVisible();
+        expect(body.fields).toHaveProperty(expectedField);
+        await expect(launchesPage.status(expectedMessage)).toBeVisible();
       },
     );
   }
@@ -90,7 +90,7 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
       // AND the rocket has a launch on a unique future date
       await logInPage(page);
       const launchesPage = new LaunchesPage(page);
-      const launch = { rocketName: seedRocket.name, date: uniqueFutureDate(), price: "100" };
+      const launch = createLaunchData();
       expect((await launchesPage.scheduleLaunch(launch)).status()).toBe(201);
       await expect(launchesPage.message("Launch scheduled")).toBeVisible();
 
