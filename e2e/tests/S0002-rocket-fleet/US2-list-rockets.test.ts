@@ -1,23 +1,25 @@
 import { expect, test } from "@playwright/test";
 import { backUrl } from "../../core/env";
-import { addRocket, logIn, logInPage, tokenExamples, uniqueName } from "../../core/rockets";
+import { addRocket, logIn, logInPage, type RocketInput } from "../../core/rockets";
 import { RocketsPage } from "../../pages/rockets.page";
+import { createFalconData, createVegaData, tokenExamples } from "../../test-data/rockets";
 
 // Spec: specs/S0002-rocket-fleet/US2-list-rockets.feature
 test.describe("[US2] List the rockets", { tag: ["@S0002", "@S0002-US2"] }, () => {
-  const names = { falcon: "", vega: "" };
+  let falcon: RocketInput;
+  let vega: RocketInput;
 
   test.beforeEach(async ({ request }) => {
     // GIVEN a registered user exists (seed user)
     // AND the rockets "Falcon" and "Vega" exist
     const token = await logIn(request);
-    names.falcon = uniqueName("Falcon");
-    names.vega = uniqueName("Vega");
-    await addRocket(request, { name: names.falcon, capacity: 5, range: "orbital" }, token);
-    await addRocket(request, { name: names.vega, capacity: 3, range: "moon" }, token);
+    falcon = createFalconData();
+    vega = createVegaData();
+    await addRocket(request, falcon, token);
+    await addRocket(request, vega, token);
   });
 
-  for (const { token: example, headers } of tokenExamples) {
+  for (const { token: example, headers, expectedStatus } of tokenExamples) {
     test(
       `[R2] Reject a request without a valid token (${example})`,
       { tag: "@S0002-R2" },
@@ -27,7 +29,7 @@ test.describe("[US2] List the rockets", { tag: ["@S0002", "@S0002-US2"] }, () =>
         const response = await request.get(`${backUrl}/api/rockets`, { headers });
 
         // THEN the system returns 401
-        expect(response.status()).toBe(401);
+        expect(response.status()).toBe(expectedStatus);
       },
     );
   }
@@ -41,7 +43,7 @@ test.describe("[US2] List the rockets", { tag: ["@S0002", "@S0002-US2"] }, () =>
     await rocketsPage.goto();
 
     // THEN the system shows the rockets "Falcon" and "Vega"
-    await expect(rocketsPage.rocketLink(names.falcon)).toBeVisible();
-    await expect(rocketsPage.rocketLink(names.vega)).toBeVisible();
+    await expect(rocketsPage.rocketLink(falcon.name)).toBeVisible();
+    await expect(rocketsPage.rocketLink(vega.name)).toBeVisible();
   });
 });

@@ -43,7 +43,7 @@ test.describe('[US1] Schedule a launch', { tag: ['@S0003', '@S0003-US1'] }, () =
    - The method receives the data of the case as parameters.
    - Do not import the seed data in the Page Object.
 5. Make locators public to check the visible results.
-6. Keep these items in the test: the data of the case, the assertions of the requirement and the expected results.
+6. Keep these items in the test: the selection of the data of the case, the assertions of the requirement and the expected results. The test can import the data and the expected results from `e2e/test-data/`.
 7. If a test checks an HTTP response, the method that does the action returns that response. Start the wait for the response before the action.
 8. Use the same operation to prepare a case and to do the action that the test checks, when possible.
 9. Do not write again in the test an action or a locator that a Page Object has already.
@@ -54,6 +54,38 @@ const launches = new LaunchesPage(page);
 const response = await launches.scheduleLaunch({ rocketName, date, price });
 expect(response.status()).toBe(201);
 await expect(launches.launchOn(date)).toBeVisible();
+```
+
+## Use the test data
+
+1. Before you write new data, find the inputs, the expected results and the generators in `e2e/test-data/` that you can use again.
+2. Put the data of each spec in `e2e/test-data/<resource>.ts`. Extract a value only if it makes the test clearer or if more than one test uses it.
+3. For cases with inputs and expected results, use an array of objects. Write one object for each case.
+4. For data that must be unique, use a function that returns a new object for each call.
+5. Get the expected results from the requirement. Do not get them from the implementation or from its responses.
+6. Keep each generated value in a variable. Use the same variable for the action and for the check.
+7. The test selects the data and gives it to the Page Object. The test keeps the assertions.
+8. Do not import the data of the case in the Page Object.
+9. A data module does not do actions and does not create records.
+10. Keep the seed (`e2e/core/seed-data.ts`) and the current preparation. Do not add dependencies or fixtures.
+
+```ts
+// R5: cases with inputs and expected results.
+export const rejectedPrices = [
+  { price: "0", expectedStatus: 400, expectedField: "pricePerPassenger" },
+  { price: "-10", expectedStatus: 400, expectedField: "pricePerPassenger" },
+];
+
+// R1: a new object with a unique date for each call.
+export function createLaunchData(): LaunchForm {
+  return { rocketName: seedRocket.name, date: uniqueFutureDate(), price: "100" };
+}
+```
+
+```ts
+const launch = createLaunchData();
+await launches.scheduleLaunch(launch);
+await expect(launches.launchOn(launch.date)).toBeVisible();
 ```
 
 ## Select the elements

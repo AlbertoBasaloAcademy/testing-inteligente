@@ -46,9 +46,3 @@ export async function logInPage(page: Page): Promise<void> {
   await loginPage.logIn(existingUser);
   await expect(loginPage.loggedInMessage).toBeVisible();
 }
-
-// Values of the "token" column in the Examples tables.
-export const tokenExamples = [
-  { token: "no token", headers: {} },
-  { token: "a token not valid", headers: bearer("not-a-valid-token") },
-];

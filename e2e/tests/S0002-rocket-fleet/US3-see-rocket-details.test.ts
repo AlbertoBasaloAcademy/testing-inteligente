@@ -1,7 +1,8 @@
 import { expect, test } from "@playwright/test";
 import { backUrl } from "../../core/env";
-import { addRocket, logIn, logInPage, tokenExamples, uniqueName } from "../../core/rockets";
+import { addRocket, logIn, logInPage } from "../../core/rockets";
 import { RocketDetailsPage } from "../../pages/rocket-details.page";
+import { createFalconData, tokenExamples } from "../../test-data/rockets";
 
 // Spec: specs/S0002-rocket-fleet/US3-see-rocket-details.feature
 test.describe("[US3] See the details of a rocket", { tag: ["@S0002", "@S0002-US3"] }, () => {
@@ -11,11 +12,10 @@ test.describe("[US3] See the details of a rocket", { tag: ["@S0002", "@S0002-US3
     // GIVEN a registered user exists (seed user)
     // AND the rocket "Falcon" exists
     const token = await logIn(request);
-    const rocket = { name: uniqueName("Falcon"), capacity: 5, range: "orbital" };
-    falconId = await addRocket(request, rocket, token);
+    falconId = await addRocket(request, createFalconData(), token);
   });
 
-  for (const { token: example, headers } of tokenExamples) {
+  for (const { token: example, headers, expectedStatus } of tokenExamples) {
     test(
       `[R2] Reject a request without a valid token (${example})`,
       { tag: "@S0002-R2" },
@@ -25,7 +25,7 @@ test.describe("[US3] See the details of a rocket", { tag: ["@S0002", "@S0002-US3
         const response = await request.get(`${backUrl}/api/rockets/${falconId}`, { headers });
 
         // THEN the system returns 401
-        expect(response.status()).toBe(401);
+        expect(response.status()).toBe(expectedStatus);
       },
     );
   }
