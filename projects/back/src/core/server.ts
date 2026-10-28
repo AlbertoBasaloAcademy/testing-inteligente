@@ -37,7 +37,7 @@ export function createServer(settings: ServerSettings = {}) {
     if (request.method === "OPTIONS") {
       response.set({
         "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Request-Id",
-        "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+        "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS",
       });
       response.sendStatus(204);
       return;
