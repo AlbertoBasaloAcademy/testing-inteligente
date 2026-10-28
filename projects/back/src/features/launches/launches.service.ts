@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { ExpectedError } from "../../shared/error.type.ts";
 import type { Launch, LaunchInput, LaunchesRepository } from "./launches.type.ts";
+import { checkTransition, readStatusChange } from "./launches.status.service.ts";
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -52,6 +53,7 @@ export function createLaunchesService(repository: LaunchesRepository, today = cu
         id: randomUUID(),
         ...input,
         rocketName: rocket.name,
+        status: "planned",
         createdAt: new Date().toISOString(),
       };
       repository.insert(launch);
@@ -59,6 +61,14 @@ export function createLaunchesService(repository: LaunchesRepository, today = cu
     },
     list() {
       return repository.list();
+    },
+    changeStatus(id: string, value: unknown): Launch {
+      const change = readStatusChange(value);
+      const launch = repository.findById(id);
+      if (!launch) throw new ExpectedError({ status: 404, message: "Launch not found" });
+      checkTransition(launch, change.status);
+      repository.updateStatus(id, change);
+      return { ...launch, ...change };
     },
   };
 }

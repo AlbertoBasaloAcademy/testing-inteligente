@@ -8,11 +8,16 @@ function createFakeRepository(): LaunchesRepository {
   const launches: Launch[] = [];
   return {
     list: () => [...launches],
+    findById: (id) => launches.find((launch) => launch.id === id),
     findRocket: (id) => (id === rocket.id ? rocket : undefined),
     findByRocketAndDate: (rocketId, date) =>
       launches.find((launch) => launch.rocketId === rocketId && launch.date === date),
     insert: (launch) => {
       launches.push(launch);
+    },
+    updateStatus: (id, change) => {
+      const launch = launches.find((item) => item.id === id);
+      if (launch) Object.assign(launch, change);
     },
   };
 }
@@ -38,7 +43,7 @@ const valid = { rocketId: "r1", date: "2026-10-23", pricePerPassenger: 100 };
 test("a valid launch is created with an id and the rocket name and can be listed", () => {
   const service = createService();
   const launch = service.schedule(valid);
-  expect(launch).toMatchObject({ ...valid, rocketName: "Falcon" });
+  expect(launch).toMatchObject({ ...valid, rocketName: "Falcon", status: "planned" });
   expect(launch.id).toBeTruthy();
   expect(service.list()).toStrictEqual([launch]);
 });

@@ -13,6 +13,9 @@ export function registerLaunches(services: ApplicationServices): RouteRegistrati
       router.get("/", (_request, response) => {
         response.json(launches.list());
       });
+      router.patch("/:id", (request, response) => {
+        response.json(launches.changeStatus(request.params.id, request.body));
+      });
     },
   };
 }

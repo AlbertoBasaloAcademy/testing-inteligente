@@ -12,7 +12,7 @@ test("migrations are recorded once and unknown versions fail", () => {
   const database = new DatabaseSync(":memory:");
   migrateDatabase(database);
   migrateDatabase(database);
-  expect(database.prepare("SELECT COUNT(*) AS count FROM schema_versions").get()?.count).toBe(5);
+  expect(database.prepare("SELECT COUNT(*) AS count FROM schema_versions").get()?.count).toBe(6);
   database
     .prepare("INSERT INTO schema_versions VALUES (?, ?)")
     .run("9999-unknown.sql", new Date().toISOString());

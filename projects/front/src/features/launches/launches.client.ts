@@ -15,5 +15,14 @@ export function createLaunchesClient(http: HttpClient): LaunchesClient {
         })
       ).json()) as Launch;
     },
+    async changeStatus(id, change) {
+      return (await (
+        await http.request(`/api/launches/${encodeURIComponent(id)}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(change),
+        })
+      ).json()) as Launch;
+    },
   };
 }
