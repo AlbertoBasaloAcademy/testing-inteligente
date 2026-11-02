@@ -26,6 +26,11 @@ export function registerPages(homeCards: readonly CardRegistration[]): readonly 
     { path: "/rockets", access: "session", load: () => import("./rockets/rockets.page.ts") },
     { path: "/launches", access: "session", load: () => import("./launches/launches.page.ts") },
     {
+      path: "/launches/:id/bookings",
+      access: "session",
+      load: () => import("./bookings/bookings.page.ts"),
+    },
+    {
       path: "/rockets/:id",
       access: "session",
       load: () => import("./rockets/rockets.detail.page.ts"),

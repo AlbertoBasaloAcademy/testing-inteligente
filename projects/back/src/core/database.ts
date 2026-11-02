@@ -38,6 +38,7 @@ function applyMigration(database: DatabaseSync, migration: { file: string; direc
 export function openDatabase(path: string) {
   mkdirSync(dirname(path), { recursive: true });
   const database = new DatabaseSync(path);
+  database.exec("PRAGMA busy_timeout = 5000");
   migrateDatabase(database);
   return database;
 }

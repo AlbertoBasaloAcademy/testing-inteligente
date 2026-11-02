@@ -22,6 +22,10 @@ function createItem(launch: Launch, change: Change) {
   const price = priceFormat.format(launch.pricePerPassenger);
   item.textContent = `${launch.date} · ${launch.rocketName} · ${price} per passenger · `;
   item.append(...createStatus(launch));
+  const link = document.createElement("a");
+  link.href = `/launches/${encodeURIComponent(launch.id)}/bookings`;
+  link.textContent = "Passengers";
+  item.append(" ", link);
   item.append(createStatusControls(launch, (statusChange) => change(launch.id, statusChange)));
   return item;
 }
