@@ -13,11 +13,15 @@ export default defineConfig({
   workers: isCI ? 1 : undefined,
   timeout: 30_000,
   expect: { timeout: 5_000 },
-  reporter: [["list"], ["html", { open: "never" }]],
+  reporter: [
+    ["list"],
+    ["html", { open: "never" }],
+    ["json", { outputFile: "test-results/results.json" }],
+  ],
   use: {
     baseURL: frontUrl,
     trace: "retain-on-failure",
-    screenshot: "only-on-failure",
+    screenshot: { mode: "only-on-failure", fullPage: true },
     video: "retain-on-failure",
   },
   projects: [
