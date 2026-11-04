@@ -9,59 +9,36 @@ slug: passenger-bookings
 C is a cause, G is a spec gap, and V is a verification criterion.
 
 Spec: [S0005](spec.md)  
-E2E report date: 2026-11-03
+E2E report date: 2026-11-04
 
 ## Problem
 
-### C1 - Invalid status transition in test setup
+### C1 - Passenger page shows the booking count as available seats
 
-- Failures: `S0005-R7-3`.
-- Origin: `pruebas`.
+- Failures: `S0005-R8`.
+- Origin: `código`.
+- Correcting agent: `código` (Front).
 - Confidence: high.
-- Requirement: [US1 feature](US1-book-passenger.feature), line 110, "Then the system returns 409".
-- Expected: A booking for a failed launch returns 409 and is not saved.
-- Observed: The setup requests the transition from planned to failed and receives 409 before it sends the booking request.
-- Test: [US1 test](../../e2e/tests/S0005-passenger-bookings/US1-book-passenger.test.ts).
-- Spec: [S0004](../S0004-launch-lifecycle/spec.md).
-- Evidence: [failure context](e2e-evidence/S0005-R7-3/error-context-attempt-1.md).
+- Requirement: [US2 feature](US2-see-passengers.feature), line 21, "And the page shows 1 available seat".
+- Expected: A launch with rocket capacity 3 and two bookings shows 1 available seat.
+- Observed: The passenger page shows two bookings and 2 available seats.
+- Test: [US2 test](../../e2e/tests/S0005-passenger-bookings/US2-see-passengers.test.ts).
+- Spec: [S0005](spec.md).
+- Evidence: [failure context](e2e-evidence/S0005-R8/error-context-attempt-1.md), [screenshot](e2e-evidence/S0005-R8/screenshot-attempt-1.png).
 - Missing information: None.
 
-### C2 - Incorrect passenger page route in Page Object
+### G1 - Initial launch status is not defined in the feature
 
-- Failures: `S0005-R8`, `S0005-R9-1`, `S0005-R9-2`.
-- Origin: `pruebas`.
-- Confidence: high.
-- Requirement: [S0005](spec.md), line 54, "Open `/launches/:id/bookings`."
-- Expected: The operator can open the passenger page and the access checks apply.
-- Observed: The tests open a different route and see a page not found.
-- Test: [US2 test](../../e2e/tests/S0005-passenger-bookings/US2-see-passengers.test.ts); [Page Object](../../e2e/pages/bookings.page.ts).
-- Spec: [US2 feature](US2-see-passengers.feature).
-- Evidence: [R8](e2e-evidence/S0005-R8/error-context-attempt-1.md), [R9 without token](e2e-evidence/S0005-R9-1/error-context-attempt-1.md), [R9 invalid token](e2e-evidence/S0005-R9-2/error-context-attempt-1.md).
-- Missing information: None.
-
-### C3 - Exact text assertion includes extra launch content
-
-- Failures: `S0003-R7`.
-- Origin: `pruebas`.
-- Confidence: high.
-- Requirement: [S0003 US2 feature](../S0003-schedule-launch/US2-list-launches.feature), line 17, "And the launch shows the rocket name, the date and the price per passenger".
-- Expected: The launch shows the three required values.
-- Observed: The assertion requires the full list item to contain only those values, but the item also contains the status and controls.
-- Test: [S0003 US2 test](../../e2e/tests/S0003-schedule-launch/US2-list-launches.test.ts).
-- Spec: [S0004](../S0004-launch-lifecycle/spec.md).
-- Evidence: [failure context](e2e-evidence/S0003-R7/error-context-attempt-1.md).
-- Missing information: None.
-
-### G1 - Passenger page navigation is not defined in the feature
-
-- Cause: C2.
-- Gap: [US2 feature](US2-see-passengers.feature) does not state how to open the passenger page.
+- Related cause: C1. This gap does not cause the observed seat count error.
+- Correcting agent: `spec`.
+- Gap: [US2 feature](US2-see-passengers.feature), line 9, "Given a launch exists", does not specify a status that permits the setup to create bookings.
+- Constraint: [S0005](spec.md), line 26, "A booking must be created only when the launch status is `planned` or `confirmed`."
 
 ## Solution
 
 ### Spec
 
-- G1: State how to open the passenger page in the US2 feature, consistent with S0005.
+- G1: Specify an initial launch status that permits the R8 scenario to create its two bookings. Keep the capacity, passenger data and expected available seat count.
 
 ### Back
 
@@ -69,19 +46,14 @@ E2E report date: 2026-11-03
 
 ### Front
 
-- None.
+- C1: Show the available seat count returned by the back on the passenger page. Keep the rocket capacity and passenger details.
 
 ### E2E
 
-- C1: Prepare a failed launch through valid status transitions. Keep the booking rejection and no-booking assertions.
-- C2: Open the passenger page specified by S0005. Keep the passenger details, availability and login assertions.
-- C3: Check the three required launch values without requiring the list item to exclude other content.
+- None. Keep the current R8 assertions, including capacity 3 and 1 available seat.
 
 ## Verification
 
-- [x] V1 (C1): In a new run of the full suite, `S0005-R7-3` reaches the booking request, checks the unchanged 409 and no-booking assertions, and passes.
-- [x] V2 (C2, G1): In a new run of the full suite, `S0005-R8` opens the passenger page, checks the unchanged passenger details and availability assertions, and passes.
-- [x] V3 (C2, G1): In a new run of the full suite, `S0005-R9-1` opens the passenger page without a token, checks the unchanged login assertion, and passes.
-- [x] V4 (C2, G1): In a new run of the full suite, `S0005-R9-2` opens the passenger page with an invalid token, checks the unchanged login assertion, and passes.
-- [x] V5 (C3): In a new run of the full suite, `S0003-R7` checks the rocket name, date and price and passes when the item also shows other content.
-- [x] V6: When the full E2E suite runs, all tests pass.
+- [ ] V1 (G1): The R8 feature specifies an initial launch status that permits its booking setup.
+- [ ] V2 (C1): In a new run of the full suite, `S0005-R8` shows both bookings, rocket capacity 3 and 1 available seat, and passes. Its assertions do not change.
+- [ ] V3: When the full E2E suite runs, all tests pass.
