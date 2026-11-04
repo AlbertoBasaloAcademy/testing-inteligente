@@ -43,13 +43,19 @@ Run the selected tests. Record results and evidence without diagnosis or repairs
    Extract the page content as specified in Rules.
 7. Remove the previous `e2e-evidence/` from the selected spec folder.
    Verify that its resolved path is inside that folder before removal.
+   If you run the tests again, remove it again before you copy.
+   Copy evidence only from the run that the report describes.
    Copy each available context file and failure screenshot to
    `e2e-evidence/<test-id>/`.
-   Keep separate filenames for each attempt.
+   Use only these filenames, where `<n>` is the attempt number:
+   `error-context-attempt-<n>.md` and `screenshot-attempt-<n>.png`.
    Do not copy traces or videos.
 8. Replace `e2e-report.md` in the selected spec folder with the report.
    Use the template and the output rules.
    Check counts, test IDs, excerpt lengths and evidence links.
+   Make sure that each link opens a file,
+   and that each file in `e2e-evidence/` has a link.
+   Remove files that have no link.
 
 ## Rules
 
