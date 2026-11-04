@@ -22,6 +22,8 @@
 
 Based on two projects, a backend REST API in `projects/back` and a frontend web application in `projects/front`.
 
+- `docs/` holds the course material. It is not a source for the project. Do not read it, except a file that the user names.
+
 ### Back API
 - `projects/back` owns the data. Only it connects to persistence. 
 - REST API: paths start with `/api`; a resource is a plural noun. JSON bodies, ISO 8601 dates, `Authorization: Bearer <token>`. Status codes: 200, 201, 204, 400, 401, 403, 404, 409, 413, 500. Every error has the body `{ "error": "<message>" }`; an input error adds `fields`. An error never shows a stack, SQL or a path.
