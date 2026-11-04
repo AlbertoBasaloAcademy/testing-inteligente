@@ -79,9 +79,9 @@ E2E report date: 2026-11-03
 
 ## Verification
 
-- [ ] V1 (C1): In a new run of the full suite, `S0005-R7-3` reaches the booking request, checks the unchanged 409 and no-booking assertions, and passes.
-- [ ] V2 (C2, G1): In a new run of the full suite, `S0005-R8` opens the passenger page, checks the unchanged passenger details and availability assertions, and passes.
-- [ ] V3 (C2, G1): In a new run of the full suite, `S0005-R9-1` opens the passenger page without a token, checks the unchanged login assertion, and passes.
-- [ ] V4 (C2, G1): In a new run of the full suite, `S0005-R9-2` opens the passenger page with an invalid token, checks the unchanged login assertion, and passes.
-- [ ] V5 (C3): In a new run of the full suite, `S0003-R7` checks the rocket name, date and price and passes when the item also shows other content.
-- [ ] V6: When the full E2E suite runs, all tests pass.
+- [x] V1 (C1): In a new run of the full suite, `S0005-R7-3` reaches the booking request, checks the unchanged 409 and no-booking assertions, and passes.
+- [x] V2 (C2, G1): In a new run of the full suite, `S0005-R8` opens the passenger page, checks the unchanged passenger details and availability assertions, and passes.
+- [x] V3 (C2, G1): In a new run of the full suite, `S0005-R9-1` opens the passenger page without a token, checks the unchanged login assertion, and passes.
+- [x] V4 (C2, G1): In a new run of the full suite, `S0005-R9-2` opens the passenger page with an invalid token, checks the unchanged login assertion, and passes.
+- [x] V5 (C3): In a new run of the full suite, `S0003-R7` checks the rocket name, date and price and passes when the item also shows other content.
+- [x] V6: When the full E2E suite runs, all tests pass.

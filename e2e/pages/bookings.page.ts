@@ -26,7 +26,7 @@ export class BookingsPage {
   }
 
   async goto(launchId: string): Promise<void> {
-    await this.page.goto(`/launches/${encodeURIComponent(launchId)}/passengers`);
+    await this.page.goto(`/launches/${encodeURIComponent(launchId)}/bookings`);
   }
 
   passenger(name: string): Locator {

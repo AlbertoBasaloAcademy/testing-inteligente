@@ -234,7 +234,7 @@ test.describe("[US1] Book a passenger on a launch", { tag: ["@S0005", "@S0005-US
             ).status(),
           ).toBe(200);
         } else {
-          if (status === "successful") await changeStatus(request, launchId, "confirmed", token);
+          await changeStatus(request, launchId, "confirmed", token);
           await changeStatus(request, launchId, status, token);
         }
         expect((await sendBooking(request, launchId, createPassenger(), token)).status()).toBe(409);

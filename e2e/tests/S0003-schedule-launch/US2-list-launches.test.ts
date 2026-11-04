@@ -22,7 +22,7 @@ test.describe("[US2] List the launches", { tag: ["@S0003", "@S0003-US2"] }, () =
 
     // THEN the system shows the launch of the rocket
     // AND the launch shows the rocket name, the date and the price per passenger
-    await expect(launchesPage.launchOn(launch.date)).toHaveText(
+    await expect(launchesPage.launchOn(launch.date)).toContainText(
       `${launch.date} · ${launch.rocketName} · ${launch.price} per passenger`,
     );
   });
