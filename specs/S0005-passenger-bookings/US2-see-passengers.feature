@@ -10,6 +10,7 @@ Feature: [US2] See the passengers of a launch and its available seats
 
   Scenario: [R8] Show passengers and available seats
     Given the operator has a valid token
+    And the launch status is "planned"
     And the rocket capacity is 3
     And the launch has these bookings:
       | name       | nationality | identityDocument | email                  | phone        |

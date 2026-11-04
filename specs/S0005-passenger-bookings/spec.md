@@ -2,6 +2,8 @@
 id: S0005
 name: Passenger Bookings
 slug: passenger-bookings
+e2e-date: 2026-11-04T17:50:19.950+01:00 
+e2e-result: PASS. 80 passed; 0 failed; 0 skipped; 0 flaky. Exit code: 0.
 ---
 
 # S0005 - Passenger Bookings

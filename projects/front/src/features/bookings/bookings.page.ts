@@ -39,7 +39,7 @@ export async function mount(context: PageContext) {
   async function refresh() {
     try {
       const data = (await (await context.services.http.request(path)).json()) as Availability;
-      content.innerHTML = `<p>Rocket capacity: ${data.capacity} · Available seats: ${data.bookings.length}</p><ul>${data.bookings.map((booking) => `<li>${keys.map((key) => `${labels[key]}: ${escapeHtml(booking[key])}`).join(" · ")}</li>`).join("")}</ul>`;
+      content.innerHTML = `<p>Rocket capacity: ${data.capacity} · Available seats: ${data.availableSeats}</p><ul>${data.bookings.map((booking) => `<li>${keys.map((key) => `${labels[key]}: ${escapeHtml(booking[key])}`).join(" · ")}</li>`).join("")}</ul>`;
       const allowed = data.status === "planned" || data.status === "confirmed";
       formArea.innerHTML =
         allowed && data.availableSeats > 0
