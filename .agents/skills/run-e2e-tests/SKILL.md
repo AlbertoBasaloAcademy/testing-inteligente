@@ -19,7 +19,7 @@ Run the selected tests. Record results and evidence without diagnosis or repairs
 
 1. Check `http://localhost:3000/api/health` and `http://localhost:4000`.
    Require HTTP 200 from both endpoints.
-2. If either check fails, run `npm run reset` from the root.
+2. If either check fails, run `npm run stop`, then `npm run reset`, from the root.
    If reset fails, stop and report the command error.
    Start `npm start` from the root in the background.
    Keep the process ID and log paths.
@@ -77,8 +77,7 @@ Run the selected tests. Record results and evidence without diagnosis or repairs
 - Record failed retry attempts, flaky outcomes and run errors.
   Do not classify skipped tests or zero selected tests as a complete pass.
 - Leave the servers running.
-  Report their state and an exact stop command for the recorded process tree.
-  For existing servers, identify their process IDs before giving a stop command.
+  Report their state and the stop command: `npm run stop` from the root.
 
 ## Output
 

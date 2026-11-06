@@ -3,6 +3,7 @@
 import { spawn } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { readRunningPid, removePid, savePid } from "./servers.pid.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const projects = [
@@ -51,6 +52,12 @@ function startProject(project) {
   children.push(child);
 }
 
+if (readRunningPid() !== null) {
+  console.error("The servers are running already. Use `npm run stop` to stop them.");
+  process.exit(1);
+}
+savePid();
+process.on("exit", removePid);
 process.on("SIGINT", () => stopAll(0));
 process.on("SIGTERM", () => stopAll(0));
 projects.forEach(startProject);
