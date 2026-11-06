@@ -40,6 +40,8 @@ Based on two projects, a backend REST API in `projects/back` and a frontend web 
 - Each project has a local `vite.config.ts` with a unique `test.name` (`back`, `front`) and `test.include`.
 - To format, lint and check the types, use `vp check` (`vp check --fix` to fix). Do not add a separate `tsc` check, except `npm run typecheck` in `e2e/`.
 - To run all the unit tests, use `npm test` (`vp test --run`) in the root folder. It runs `projects/*` only, not the e2e tests.
+- To install all the projects and Chromium, use `npm run setup` in the root folder.
+- To run all the checks and all the tests, use `npm run verify` in the root folder.
 - The pre-commit hook (`.vite-hooks/pre-commit`) runs `vp staged`: `vp check --fix` on all staged files and `vp test related --run` on staged `.ts` files. A failure stops the commit.
 
 ## Tests

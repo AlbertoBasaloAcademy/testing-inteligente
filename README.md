@@ -17,10 +17,13 @@ https://github.com/AlbertoBasaloAcademy/testing-inteligente
 ## Instalar (una vez)
 
 ```bash
-npm install
-cd projects/back && npm install && cd ../..
-cd projects/front && npm install && cd ../..
-cd e2e && npm install && npx playwright install chromium && cd ..
+npm run setup         # comprueba Node e instala todos los proyectos y Chromium
+```
+
+## Comprobar todo
+
+```bash
+npm run verify        # formato, lint, tipos, tests unitarios y e2e
 ```
 
 ## Tests unitarios
