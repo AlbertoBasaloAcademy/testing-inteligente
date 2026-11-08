@@ -4,33 +4,17 @@ Curso de pruebas de software con inteligencia artificial y Playwright.
 
 Esta rama contiene el índice del curso. Selecciona una rama para consultar o ejecutar el código.
 
-## Estados del proyecto
-
-| Rama | Contenido |
-| --- | --- |
-| [inicial](/../inicial/README.md) | Código antes de la primera lección. |
-| [final](/../final/README.md) | Código al terminar el curso. Incluye las instrucciones de instalación y pruebas. |
-| master | Portada e índice del curso. |
+**[Empezar el curso](/../inicial/README.md)** · **[Ver el resultado final](/../final/README.md)**
 
 ## Lecciones
 
 Cada rama contiene el estado del proyecto al terminar la lección.
 
-| Módulo | Lección | Rama |
-| --- | --- | --- |
-| 01 | 01 | [M01-L01](/../M01-L01/README.md) |
-| 01 | 02 | [M01-L02](/../M01-L02/README.md) |
-| 01 | 03 | [M01-L03](/../M01-L03/README.md) |
-| 01 | 04 | [M01-L04](/../M01-L04/README.md) |
-| 02 | 01 | [M02/L01](/../M02/L01/README.md) |
-| 02 | 02 | [M02/L02](/../M02/L02/README.md) |
-| 02 | 03 | [M02/L03](/../M02/L03/README.md) |
-| 02 | 04 | [M02/L04](/../M02/L04/README.md) |
-| 02 | 05 | [M02/L05](/../M02/L05/README.md) |
-| 03 | 01 | [M03/L01](/../M03/L01/README.md) |
-| 03 | 02 | [M03/L02](/../M03/L02/README.md) |
-| 03 | 03 | [M03/L03](/../M03/L03/README.md) |
-| 03 | 04 | [M03/L04](/../M03/L04/README.md) |
+| Módulo | Lecciones |
+| --- | --- |
+| 1 | [Lección 1](/../M01-L01/README.md) · [Lección 2](/../M01-L02/README.md) · [Lección 3](/../M01-L03/README.md) · [Lección 4](/../M01-L04/README.md) |
+| 2 | [Lección 1](/../M02/L01/README.md) · [Lección 2](/../M02/L02/README.md) · [Lección 3](/../M02/L03/README.md) · [Lección 4](/../M02/L04/README.md) · [Lección 5](/../M02/L05/README.md) |
+| 3 | [Lección 1](/../M03/L01/README.md) · [Lección 2](/../M03/L02/README.md) · [Lección 3](/../M03/L03/README.md) · [Lección 4](/../M03/L04/README.md) |
 
 ## Empezar el curso
 
