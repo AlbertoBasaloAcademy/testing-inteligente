@@ -15,6 +15,7 @@ Cada rama contiene el estado del proyecto al terminar la lección.
 | 1 | [Lección 1](/../M01-L01/README.md) · [Lección 2](/../M01-L02/README.md) · [Lección 3](/../M01-L03/README.md) · [Lección 4](/../M01-L04/README.md) |
 | 2 | [Lección 1](/../M02/L01/README.md) · [Lección 2](/../M02/L02/README.md) · [Lección 3](/../M02/L03/README.md) · [Lección 4](/../M02/L04/README.md) · [Lección 5](/../M02/L05/README.md) |
 | 3 | [Lección 1](/../M03/L01/README.md) · [Lección 2](/../M03/L02/README.md) · [Lección 3](/../M03/L03/README.md) · [Lección 4](/../M03/L04/README.md) |
+| 4 | [Lección 0](/../M04/L00/README.md) |
 
 ## Empezar el curso
 
