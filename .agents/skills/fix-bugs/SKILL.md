@@ -1,6 +1,6 @@
 ---
-name: implement-fix
-description: Implements an approved correction plan from fix.spec.md. Use it to apply the fixes for a spec code, or when the user invokes /implement-fix.
+name: fix-bugs
+description: Implements an approved correction plan from fix.spec.md. Use it to apply the fixes for a spec code, or when the user invokes /fix-bugs.
 ---
 
 # Implement a fix
@@ -38,7 +38,7 @@ Apply the solution in one correction spec. Keep each change within its stated sc
    Read and obey the [implementation rules](../implement-spec/SKILL.md#rules)
    for these changes.
 6. Apply `E2E`.
-   Read and obey the [E2E rules](../implement-e2e-features/references/e2e-rules.md).
+   Read and obey the [E2E rules](../implement-test/references/e2e-rules.md).
    Change tests for another spec only if `fix.spec.md` requests it.
 7. Run `npm run check`, then `npm test`, in the root folder.
    Run `npm test -- --list` in `e2e/`.
@@ -47,7 +47,7 @@ Apply the solution in one correction spec. Keep each change within its stated sc
    If a required change is outside that scope, show an updated plan.
    Stop and request approval before that change.
 9. Show the results and the `Verification` table.
-   Leave the E2E execution to `/run-e2e-tests` in another conversation.
+   Leave the E2E execution to `/detect-bugs` in another conversation.
 
 ## Rules
 

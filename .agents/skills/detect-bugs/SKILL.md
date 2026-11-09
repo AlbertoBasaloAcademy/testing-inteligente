@@ -1,6 +1,6 @@
 ---
-name: run-e2e-tests
-description: Runs Playwright tests for one spec or the full suite and writes an evidence report. Use it to check an existing spec, or when the user invokes /run-e2e-tests.
+name: detect-bugs
+description: Runs Playwright tests for one spec or the full suite and writes an evidence report. Use it to check an existing spec, or when the user invokes /detect-bugs.
 ---
 
 # Run E2E tests

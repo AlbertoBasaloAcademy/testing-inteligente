@@ -41,7 +41,7 @@ Make each skill obey the [skill guide](references/skill-guide.md). Keep the beha
 
    | Skill | File:line | Code | Problem | Fix |
    | --- | --- | --- | --- | --- |
-   | implement-e2e-features | SKILL.md:1 | L1 | 108 lines | Move the rules to `references/` |
+   | implement-test | SKILL.md:1 | L1 | 108 lines | Move the rules to `references/` |
 
 2. After the fixes, a table with the lines of each `SKILL.md`, before and after.
 3. The diff of each changed file.
@@ -49,4 +49,4 @@ Make each skill obey the [skill guide](references/skill-guide.md). Keep the beha
 
    | Skill | Old rule | Status | New place or code |
    | --- | --- | --- | --- |
-   | implement-e2e-features | Use `getByRole` first | moved | `references/e2e-principles.md` E1.1 |
+   | implement-test | Use `getByRole` first | moved | `references/e2e-principles.md` E1.1 |

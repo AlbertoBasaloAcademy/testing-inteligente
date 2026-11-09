@@ -1,6 +1,6 @@
 ---
-name: define-e2e-features
-description: Writes the Gherkin .feature files of a spec that exists in specs/. One .feature for each user story, one scenario for each EARS criterion of that story. Uses the templates in assets/. Use it when you write the .feature files of a spec, or when the user invokes /define-e2e-features.
+name: define-test
+description: Writes the Gherkin .feature files of a spec that exists in specs/. One .feature for each user story, one scenario for each EARS criterion of that story. Uses the templates in assets/. Use it when you write the .feature files of a spec, or when the user invokes /define-test.
 ---
 
 # Define the features of a spec
@@ -32,7 +32,7 @@ Use the template [spec.user-story.template.feature](assets/spec.user-story.templ
 ## Rules
 
 - Use only the stories and the rules of the spec. Do not invent rules.
-- Obey the file and code rules E1 in [e2e-rules.md](../implement-e2e-features/references/e2e-rules.md).
+- Obey the file and code rules E1 in [e2e-rules.md](../implement-test/references/e2e-rules.md).
 - Do not write tests. Do not write application code.
 
 ## Output

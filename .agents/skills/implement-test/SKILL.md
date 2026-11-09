@@ -1,6 +1,6 @@
 ---
-name: implement-e2e-features
-description: Writes or changes the Playwright e2e tests in e2e/ with Page Objects, locators by role or label, and retrying assertions. Use it each time you generate, write, change or fix an e2e test, or when the user invokes /implement-e2e-features.
+name: implement-test
+description: Writes or changes the Playwright e2e tests in e2e/ with Page Objects, locators by role or label, and retrying assertions. Use it each time you generate, write, change or fix an e2e test, or when the user invokes /implement-test.
 ---
 
 # Implement the e2e tests

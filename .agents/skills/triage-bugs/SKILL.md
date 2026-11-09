@@ -1,6 +1,6 @@
 ---
-name: triage-e2e-failure
-description: Analyze all failures in an E2E report and prepare a correction spec. Use it when an E2E report has failures to investigate, or when the user invokes /triage-e2e-failure.
+name: triage-bugs
+description: Analyze all failures in an E2E report and prepare a correction spec. Use it when an E2E report has failures to investigate, or when the user invokes /triage-bugs.
 ---
 
 # Triage E2E failure

@@ -1,6 +1,6 @@
 ---
-name: review-e2e-tests
-description: Reviews the Playwright e2e tests in e2e/tests/ against the e2e rules and the EARS criteria of the specs. Shows a report, then fixes the tests after the user approves. Use it after you write or change e2e tests, or when the user invokes /review-e2e-tests.
+name: fix-test
+description: Reviews the Playwright e2e tests in e2e/tests/ against the e2e rules and the EARS criteria of the specs. Shows a report, then fixes the tests after the user approves. Use it after you write or change e2e tests, or when the user invokes /fix-test.
 ---
 
 # Review the e2e tests
@@ -9,7 +9,7 @@ Make each e2e test obey the e2e rules and check the response of its EARS criteri
 
 ## Input
 
-1. Read the rules E1 to E7 in [e2e-rules.md](../implement-e2e-features/references/e2e-rules.md).
+1. Read the rules E1 to E7 in [e2e-rules.md](../implement-test/references/e2e-rules.md).
 2. Read the rule of independent tests in `AGENTS.md`, section "E2E tests".
 3. Read each `*.test.ts` file in `e2e/tests/`. Playwright runs only these files.
 4. Read the Page Objects in `e2e/pages/` and the data in `e2e/test-data/` that the tests import.

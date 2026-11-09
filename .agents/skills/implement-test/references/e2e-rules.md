@@ -1,6 +1,6 @@
 # E2E rules
 
-The e2e tests obey these rules. Each rule has a code. The skills `define-e2e-features` and `implement-e2e-features` link to these rules.
+The e2e tests obey these rules. Each rule has a code. The skills `define-test` and `implement-test` link to these rules.
 
 ## E1 Files and codes
 
