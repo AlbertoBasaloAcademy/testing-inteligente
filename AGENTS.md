@@ -38,7 +38,7 @@ Based on two projects, a backend REST API in `projects/back` and a frontend web 
 - The root, `projects/back`, `projects/front` and `e2e/` use Vite+ (`vp`). The root `package.json` has `"type": "module"`.
 - The root `vite.config.ts` holds the shared configuration: `lint` (Oxlint, typeAware, typeCheck), `fmt` (Oxfmt), `staged` and `test.projects`.
 - Each project has a local `vite.config.ts` with a unique `test.name` (`back`, `front`) and `test.include`.
-- To format, lint and check the types, use `vp check` (`vp check --fix` to fix). Do not add a separate `tsc` check, except `npm run typecheck` in `e2e/`.
+- To format, lint and check the types of all projects, including e2e, use `npm run check` in the root folder. It runs `vp check --fix` and changes files. Do not add a separate `tsc` check.
 - To run all the unit tests, use `npm test` (`vp test --run`) in the root folder. It runs `projects/*` only, not the e2e tests.
 - To install all the projects and Chromium, use `npm run setup` in the root folder.
 - To run all the checks and all the tests, use `npm run verify` in the root folder.
@@ -53,7 +53,7 @@ Based on two projects, a backend REST API in `projects/back` and a frontend web 
 ### E2E tests
 
 - The e2e tests are in `e2e/`. They use Playwright with TypeScript and the `chromium` project only.
-- To run the tests, use `npm run test:e2e` in the root folder, or `npm test` in `e2e/`. To check the types, use `npm run typecheck` in `e2e/`.
+- To run the tests, use `npm run test:e2e` in the root folder, or `npm test` in `e2e/`. To check the types, use `npm run check` in the root folder.
 - `npm run test:e2e` starts the back and the front. Before it starts the back, it empties the database.
 - Do not use `vp test` for the e2e tests. Vitest cannot run Playwright specs.
 - If the back and the front run already (`npm start` in the root folder), the tests use them. Then the database is not emptied. To empty it, use `npm run stop` and then `npm run reset` in the root folder.

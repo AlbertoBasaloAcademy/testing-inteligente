@@ -20,7 +20,7 @@ release. Add a tool name to select part of the graph. For example, run
 ## Review Checklist
 
 - [ ] Run `vp install` after pulling remote changes and before getting started.
-- [ ] Run `vp check` and `vp test` to format, lint, type check and test changes.
+- [ ] Run `npm run check` in the root folder for static checks. Run `npm test` in `e2e/` for Playwright tests.
 - [ ] Check if there are `vite.config.ts` tasks or `package.json` scripts necessary for validation, run via `vp run <script>`.
 - [ ] If setup, runtime, or package-manager behavior looks wrong, run `vp env doctor` and include its output when asking for help.
 
@@ -32,5 +32,4 @@ Obey the root `AGENTS.md` (section "E2E tests"). This file adds only the e2e dat
 
 - Run the tests with `npm test` in `e2e/`, or `npm run test:e2e` in the root folder. Playwright runs them.
 - Do not use `vp test` in `e2e/`. Vitest cannot run Playwright specs.
-- To check the types, use `npm run typecheck` (`tsc --noEmit`).
-- To format and lint, use `vp check` in the root folder.
+- To format, lint and check the types, use `npm run check` in the root folder. It applies automatic fixes.

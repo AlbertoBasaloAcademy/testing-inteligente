@@ -40,8 +40,8 @@ Apply the solution in one correction spec. Keep each change within its stated sc
 6. Apply `E2E`.
    Read and obey the [E2E rules](../implement-e2e-features/references/e2e-rules.md).
    Change tests for another spec only if `fix.spec.md` requests it.
-7. Run `vp check`, then `npm test`, in the root folder.
-   Run `npm run typecheck`, then `npm test -- --list`, in `e2e/`.
+7. Run `npm run check`, then `npm test`, in the root folder.
+   Run `npm test -- --list` in `e2e/`.
 8. Correct check failures only within the approved scope.
    Run the affected checks again after a correction.
    If a required change is outside that scope, show an updated plan.
