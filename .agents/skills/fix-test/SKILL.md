@@ -1,9 +1,9 @@
 ---
 name: fix-test
-description: Reviews the Playwright e2e tests in e2e/tests/ against the e2e rules and the EARS criteria of the specs. Shows a report, then fixes the tests after the user approves. Use it after you write or change e2e tests, or when the user invokes /fix-test.
+description: Fixes the Playwright e2e tests in e2e/tests/ against the e2e rules and the EARS criteria of the specs, and adds a test for each scenario without a test. Does not stop for approval. Use it after you write or change e2e tests, or when the user invokes /fix-test.
 ---
 
-# Review the e2e tests
+# Fix the e2e tests
 
 Make each e2e test obey the e2e rules and check the response of its EARS criterion. Keep what each test checks.
 
@@ -14,37 +14,31 @@ Make each e2e test obey the e2e rules and check the response of its EARS criteri
 3. Read each `*.test.ts` file in `e2e/tests/`. Playwright runs only these files.
 4. Read the Page Objects in `e2e/pages/` and the data in `e2e/test-data/` that the tests import.
 5. For each test file, read the spec and the `.feature` files in `specs/<id>-<slug>/`.
-6. If the user names some specs or test files, review only those.
+6. If the user names some specs or test files, fix only those.
 
 ## Steps
 
-1. Compare each test with each rule E1 to E7 and with the rule of independent tests.
-2. Compare the expected result of each test with the response of its EARS criterion in the spec.
-3. Find each scenario that has no test. Find each test that has no scenario.
-4. Show the report. Then stop and ask the user to approve the fixes.
-5. Run the e2e tests with the commands in `AGENTS.md`. Record the result of each test as the baseline.
-6. Fix the approved problems.
-7. Run the same e2e tests and the type check again.
-8. Compare the result of each test with the baseline.
+1. Compare each test with each rule E1 to E7 and with the rule of independent tests. Fix each problem.
+2. Compare the expected result of each test with the response of its EARS criterion in the spec. Make the expected result agree with the criterion.
+3. Find each scenario that has no test. Add a test for it.
+4. Find each test that has no scenario. Write it in the table only.
 
 ## Rules
 
 - Keep what each test checks. Keep each `expect` of each test.
 - Do not make an assertion weaker. For example, do not change `toHaveText` to `toBeVisible`.
-- Do not make a spec code (E1.5). For a test that has no scenario, write it in the report only.
+- Do not make a spec code (E1.5).
 - Do not change the specs, the `.feature` files or the application code in `projects/`.
-- If the expected result of a test does not agree with its criterion, ask the user.
-- If a test fails in the baseline, write it in the report. Do not change the application to make it pass.
+- Do not run the e2e tests. Do not run the type check. The pre-commit hook does it.
 
 ## Output
 
-1. The report. One row for each problem:
+1. A table with one row for each change:
 
-   | File:line | Code | Problem | Fix |
-   | --- | --- | --- | --- |
-   | `US1-schedule-launch.test.ts:14` | E3.3 | Checks only the URL | Check the new launch in the list |
-   | `US1-schedule-launch.feature:9` | R4 | Scenario without a test | Add a `test` for R4 |
+   | File:line | Rule or criterion | Change |
+   | --- | --- | --- |
+   | `US1-schedule-launch.test.ts:14` | E3.3 | Check the new launch in the list, not only the URL |
+   | `US1-schedule-launch.test.ts:40` | R4 | Add a `test` for R4 |
+   | `US2-cancel-launch.test.ts:22` | — | Test without a scenario. Not changed |
 
-2. After the fixes, a table with the result of each test, before and after.
-3. The diff of each changed file.
-4. Verify that each test that passed in the baseline passes after the fixes.
+2. The diff of each changed file.
