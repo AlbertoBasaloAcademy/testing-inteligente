@@ -33,4 +33,5 @@ secrets.json
 
 # Agent scratch
 /.claude/agents/runs
+specs/**/e2e-evidence/
 .vitest/
