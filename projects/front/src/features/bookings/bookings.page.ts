@@ -53,6 +53,12 @@ export async function mount(context: PageContext) {
   function handleError(failure: unknown) {
     if (failure instanceof ExpectedError && failure.details.status === 401)
       return leaveToLogin(context);
+    if (failure instanceof ExpectedError && failure.details.status === 403) {
+      content.replaceChildren();
+      formArea.replaceChildren();
+      error.textContent = failure.message;
+      return;
+    }
     error.textContent = failure instanceof ExpectedError ? failure.message : "Bookings unavailable";
     if (failure instanceof ExpectedError)
       for (const field of formArea.querySelectorAll<HTMLElement>("[data-field]"))

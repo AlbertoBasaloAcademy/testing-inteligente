@@ -2,7 +2,7 @@ export interface PublicUser {
   id: string;
   email: string;
   name: string;
-  role: "user";
+  role: "operator" | "passenger";
   createdAt: string;
 }
 export interface AuthSession {

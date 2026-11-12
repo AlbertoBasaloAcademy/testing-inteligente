@@ -1,14 +1,14 @@
-import { expect, test } from "vite-plus/test";
-import { DatabaseSync } from "node:sqlite";
 import express from "express";
+import { DatabaseSync } from "node:sqlite";
 import request from "supertest";
-import { completeServer } from "../../core/server.ts";
+import { expect, test } from "vite-plus/test";
 import { migrateDatabase } from "../../core/database.ts";
+import { completeServer } from "../../core/server.ts";
 import { mountRegistrations } from "../../core/session.ts";
-import { createAuthRepository } from "./auth.repository.ts";
-import { createAuthService } from "./auth.service.ts";
 import { Email } from "../../shared/email.value.ts";
 import { tokenHash } from "./auth.password.service.ts";
+import { createAuthRepository } from "./auth.repository.ts";
+import { createAuthService } from "./auth.service.ts";
 
 test("credentials are salted and only token hash is stored; expired session is invalid", async () => {
   const database = new DatabaseSync(":memory:");
@@ -23,6 +23,7 @@ test("credentials are salted and only token hash is stored; expired session is i
   const row = database.prepare("SELECT * FROM sessions").get()!;
   expect(row.tokenHash).toBe(tokenHash(logged.token));
   expect(Object.values(row).includes(logged.token)).toBe(false);
+  expect(logged.user.role).toBe("passenger");
   expect(auth.resolve(logged.token)).toBeTruthy();
   database.exec("UPDATE sessions SET expiresAt = '2000-01-01T00:00:00.000Z'");
   expect(auth.resolve(logged.token)).toBe(undefined);

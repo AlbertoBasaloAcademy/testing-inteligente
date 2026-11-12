@@ -1,6 +1,7 @@
 import type { ApplicationServices, RouteRegistration } from "../../shared/http/application.type.ts";
-import { createLaunchesService } from "./launches.service.ts";
+import { currentUser, runAsOperator } from "../auth/auth.api.ts";
 import { createLaunchesRepository } from "./launches.repository.ts";
+import { createLaunchesService } from "./launches.service.ts";
 
 export function registerLaunches(services: ApplicationServices): RouteRegistration {
   const launches = createLaunchesService(createLaunchesRepository(services.database));
@@ -8,13 +9,19 @@ export function registerLaunches(services: ApplicationServices): RouteRegistrati
     basePath: "/api/launches",
     register(router) {
       router.post("/", (request, response) => {
-        response.status(201).json(launches.schedule(request.body));
+        const launch = runAsOperator(currentUser(response.locals.user), () =>
+          launches.schedule(request.body),
+        );
+        response.status(201).json(launch);
       });
       router.get("/", (_request, response) => {
         response.json(launches.list());
       });
       router.patch("/:id", (request, response) => {
-        response.json(launches.changeStatus(request.params.id, request.body));
+        const launch = runAsOperator(currentUser(response.locals.user), () =>
+          launches.changeStatus(request.params.id, request.body),
+        );
+        response.json(launch);
       });
     },
   };

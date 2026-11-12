@@ -64,7 +64,7 @@ The agency cannot record passengers on a launch. Operators need to book passenge
 ### E2E
 
 - Put the tests in `e2e/tests/S0005-passenger-bookings/`.
-- Use the seed user. Add required initial launches, rockets and bookings to `e2e/core/seed-data.ts`.
+- Log in as the operator. Add required initial launches, rockets and bookings to `e2e/core/seed-data.ts`.
 - Keep each test independent. Use unique documents and emails for data created during a test.
 - Book passengers on `planned` and `confirmed` launches. Check their contact data and available seats.
 - Check missing fields and an email with an invalid format.

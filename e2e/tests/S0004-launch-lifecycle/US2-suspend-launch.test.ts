@@ -19,9 +19,9 @@ test.describe(
     let launchId: string;
 
     test.beforeEach(async ({ page }) => {
-      // GIVEN a registered user exists (seed user)
+      // GIVEN a registered operator exists
       // AND the rocket "Seed Rocket" exists in the fleet (seed rocket)
-      // AND the user is logged in
+      // AND the operator is logged in
       await logInPage(page);
 
       // AND a launch of "Seed Rocket" has the status "planned"

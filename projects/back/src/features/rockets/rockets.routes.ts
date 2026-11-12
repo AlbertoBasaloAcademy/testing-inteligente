@@ -1,6 +1,7 @@
 import type { ApplicationServices, RouteRegistration } from "../../shared/http/application.type.ts";
-import { createRocketsService } from "./rockets.service.ts";
+import { currentUser, runAsOperator } from "../auth/auth.api.ts";
 import { createRocketsRepository } from "./rockets.repository.ts";
+import { createRocketsService } from "./rockets.service.ts";
 
 export function registerRockets(services: ApplicationServices): RouteRegistration {
   const rockets = createRocketsService(createRocketsRepository(services.database));
@@ -8,7 +9,10 @@ export function registerRockets(services: ApplicationServices): RouteRegistratio
     basePath: "/api/rockets",
     register(router) {
       router.post("/", (request, response) => {
-        response.status(201).json(rockets.add(request.body));
+        const rocket = runAsOperator(currentUser(response.locals.user), () =>
+          rockets.add(request.body),
+        );
+        response.status(201).json(rocket);
       });
       router.get("/", (_request, response) => {
         response.json(rockets.list());

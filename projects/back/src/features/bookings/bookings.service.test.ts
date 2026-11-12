@@ -56,6 +56,12 @@ test("rejects bookings above capacity", () => {
   expect(() => service.book("one", { ...passenger, identityDocument: "B" })).toThrow();
   expect(service.list("one").bookings).toHaveLength(1);
 });
+test("availability returns the free seats and no passenger data", () => {
+  const { service } = setup();
+  service.book("one", passenger);
+  expect(service.availability("one")).toStrictEqual({ capacity: 2, availableSeats: 1 });
+  expect(() => service.availability("missing")).toThrow();
+});
 test("rejects bookings for each disallowed status and missing launches", () => {
   for (const status of ["successful", "suspended", "failed"] as const) {
     const { service } = setup(status);

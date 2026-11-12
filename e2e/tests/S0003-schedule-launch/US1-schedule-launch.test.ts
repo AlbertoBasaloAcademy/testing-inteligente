@@ -8,12 +8,12 @@ import { createLaunchData, rejectedPrices } from "../../test-data/launches";
 // Spec: specs/S0003-schedule-launch/US1-schedule-launch.feature
 test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () => {
   test("[R1] Schedule a valid launch", { tag: "@S0003-R1" }, async ({ page }) => {
-    // GIVEN a registered user exists (seed user)
+    // GIVEN a registered operator exists
     // AND the rocket exists in the fleet (seed rocket)
     // AND the rocket has no launch on a unique future date
     const launch = createLaunchData();
 
-    // GIVEN the user is logged in
+    // GIVEN the operator is logged in
     await logInPage(page);
 
     // WHEN the user sends a launch of the rocket for the date with a price of 100
@@ -36,7 +36,7 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
       `[R4] Reject a date that is not valid or not in the future (${example})`,
       { tag: "@S0003-R4" },
       async ({ page }) => {
-        // GIVEN the user is logged in
+        // GIVEN the operator is logged in
         await logInPage(page);
 
         // WHEN the user sends a launch of the rocket for the date with a price of 100
@@ -61,7 +61,7 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
       `[R5] Reject a price that is not a number greater than 0 (${price})`,
       { tag: "@S0003-R5" },
       async ({ page }) => {
-        // GIVEN the user is logged in
+        // GIVEN the operator is logged in
         await logInPage(page);
 
         // WHEN the user sends a launch of the rocket for a future date with the price
@@ -86,7 +86,7 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
     "[R6] Reject a second launch of a rocket on the same date",
     { tag: "@S0003-R6" },
     async ({ page }) => {
-      // GIVEN the user is logged in
+      // GIVEN the operator is logged in
       // AND the rocket has a launch on a unique future date
       await logInPage(page);
       const launchesPage = new LaunchesPage(page);

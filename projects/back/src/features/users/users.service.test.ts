@@ -2,7 +2,13 @@ import { expect, test } from "vite-plus/test";
 import { readAccount } from "./users.service.ts";
 
 test("account exposes only own public details and hides other identifiers", () => {
-  const user = { id: "own", name: "Name", email: "email", role: "user", createdAt: "date" };
+  const user = {
+    id: "own",
+    name: "Name",
+    email: "email",
+    role: "passenger" as const,
+    createdAt: "date",
+  };
   expect(readAccount({ id: "own", user })).toStrictEqual({
     name: "Name",
     email: "email",

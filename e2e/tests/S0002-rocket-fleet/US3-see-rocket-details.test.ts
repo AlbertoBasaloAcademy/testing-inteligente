@@ -9,7 +9,7 @@ test.describe("[US3] See the details of a rocket", { tag: ["@S0002", "@S0002-US3
   let falconId: string;
 
   test.beforeEach(async ({ request }) => {
-    // GIVEN a registered user exists (seed user)
+    // GIVEN a registered operator exists
     // AND the rocket "Falcon" exists
     const token = await logIn(request);
     falconId = await addRocket(request, createFalconData(), token);

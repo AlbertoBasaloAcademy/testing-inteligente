@@ -1,5 +1,5 @@
-import type { AuthSession, PublicUser } from "./auth.type.ts";
 import type { SessionPorts } from "./auth.persistence.type.ts";
+import type { AuthSession, PublicUser } from "./auth.type.ts";
 
 export function createSessionStore(ports: SessionPorts) {
   let user: PublicUser | undefined;
@@ -38,6 +38,12 @@ export function restoreUser(value: PublicUser) {
 }
 export function clearSession() {
   sessionStore.clearSession();
+}
+export function sessionLabel(user: { name: string; role: string }) {
+  return `${user.name} (${user.role})`;
+}
+export function canManage(user: { role: string } | undefined) {
+  return user?.role === "operator";
 }
 export function createSubmission() {
   let isSending = false;

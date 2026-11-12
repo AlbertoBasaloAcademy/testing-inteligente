@@ -1,18 +1,18 @@
 # Spec: specs/S0003-schedule-launch/spec.md
 
 Feature: [US1] Schedule a launch
-  As a registered user
+  As an operator
   I want to schedule a launch of a rocket
   So that I can offer seats on a future date
 
   Background:
-    Given a registered user exists
+    Given a registered operator exists
     And the rocket "Falcon" exists in the fleet
 
   Scenario: [R1] Schedule a valid launch
-    Given the user is logged in
+    Given the operator is logged in
     And the rocket "Falcon" has no launch tomorrow
-    When the user sends a launch of "Falcon" for tomorrow with a price of 100
+    When the operator sends a launch of "Falcon" for tomorrow with a price of 100
     Then the system creates the launch
     And the system returns 201
 
@@ -27,15 +27,15 @@ Feature: [US1] Schedule a launch
       | a token not valid |
 
   Scenario: [R3] Reject a rocket that is not in the fleet
-    Given the user is logged in
+    Given the operator is logged in
     And no rocket in the fleet has the id "unknown-rocket"
-    When the user sends a launch of the rocket id "unknown-rocket" for tomorrow with a price of 100
+    When the operator sends a launch of the rocket id "unknown-rocket" for tomorrow with a price of 100
     Then the system returns 400
     And the error has the field "rocketId"
 
   Scenario Outline: [R4] Reject a date that is not valid or not in the future
-    Given the user is logged in
-    When the user sends a launch of "Falcon" for the date "<date>" with a price of 100
+    Given the operator is logged in
+    When the operator sends a launch of "Falcon" for the date "<date>" with a price of 100
     Then the system returns 400
     And the error has the field "date"
 
@@ -47,8 +47,8 @@ Feature: [US1] Schedule a launch
       | yesterday  |
 
   Scenario Outline: [R5] Reject a price that is not a number greater than 0
-    Given the user is logged in
-    When the user sends a launch of "Falcon" for tomorrow with a price of <price>
+    Given the operator is logged in
+    When the operator sends a launch of "Falcon" for tomorrow with a price of <price>
     Then the system returns 400
     And the error has the field "pricePerPassenger"
 
@@ -59,7 +59,7 @@ Feature: [US1] Schedule a launch
       | "abc" |
 
   Scenario: [R6] Reject a second launch of a rocket on the same date
-    Given the user is logged in
+    Given the operator is logged in
     And the rocket "Falcon" has a launch tomorrow
-    When the user sends a launch of "Falcon" for tomorrow with a price of 100
+    When the operator sends a launch of "Falcon" for tomorrow with a price of 100
     Then the system returns 409

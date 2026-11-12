@@ -1,7 +1,8 @@
 import type { PageContext } from "../../shared/page.type.ts";
+import { canManage, readUser } from "../auth/auth.store.ts";
 import { createRocketsClient } from "./rockets.client.ts";
-import { createRocketsStore } from "./rockets.store.ts";
 import { leaveToLogin, mountRocketForm } from "./rockets.component.ts";
+import { createRocketsStore } from "./rockets.store.ts";
 import type { Rocket } from "./rockets.type.ts";
 
 function createItem(rocket: Rocket) {
@@ -28,10 +29,11 @@ export async function mount(context: PageContext) {
     list.replaceChildren(...state.rockets.map(createItem));
     status.textContent = state.rockets.length ? "" : "No rockets yet";
   }
-  mountRocketForm(context, async (input) => {
-    const result = await store.add(input);
-    if (result.status === "created") await refresh();
-    return result;
-  });
+  if (canManage(readUser()))
+    mountRocketForm(context, async (input) => {
+      const result = await store.add(input);
+      if (result.status === "created") await refresh();
+      return result;
+    });
   await refresh();
 }

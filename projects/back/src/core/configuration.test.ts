@@ -1,5 +1,5 @@
-import { expect, test } from "vite-plus/test";
 import { DatabaseSync } from "node:sqlite";
+import { expect, test } from "vite-plus/test";
 import { migrateDatabase } from "./database.ts";
 import { readSettings } from "./settings.ts";
 
@@ -12,7 +12,7 @@ test("migrations are recorded once and unknown versions fail", () => {
   const database = new DatabaseSync(":memory:");
   migrateDatabase(database);
   migrateDatabase(database);
-  expect(database.prepare("SELECT COUNT(*) AS count FROM schema_versions").get()?.count).toBe(7);
+  expect(database.prepare("SELECT COUNT(*) AS count FROM schema_versions").get()?.count).toBe(8);
   database
     .prepare("INSERT INTO schema_versions VALUES (?, ?)")
     .run("9999-unknown.sql", new Date().toISOString());

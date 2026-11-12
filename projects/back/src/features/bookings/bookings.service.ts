@@ -38,6 +38,13 @@ export function createBookingsService(repository: BookingsRepository) {
       const launch = requireLaunch(repository, id);
       return { ...launch, availableSeats: launch.capacity - launch.bookings.length };
     },
+    availability(id: string) {
+      const launch = requireLaunch(repository, id);
+      return {
+        capacity: launch.capacity,
+        availableSeats: launch.capacity - launch.bookings.length,
+      };
+    },
     book(id: string, value: unknown) {
       const passenger = readPassenger(value);
       return repository.transaction(() => {

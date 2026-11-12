@@ -1,22 +1,22 @@
 # Spec: specs/S0004-launch-lifecycle/spec.md
 
 Feature: [US1] Change the status of a launch
-  As a registered user
+  As an operator
   I want to change the status of a launch
   So that I can follow the launch to its end
 
   Background:
-    Given a registered user exists
+    Given a registered operator exists
     And the rocket "Seed Rocket" exists in the fleet
-    And the user is logged in
+    And the operator is logged in
 
   Scenario: [R1] Give a new launch the status planned
-    When the user schedules a launch of "Seed Rocket" for a unique future date
+    When the operator schedules a launch of "Seed Rocket" for a unique future date
     Then the launch has the status "planned"
 
   Scenario Outline: [R2] Change the status to a permitted new status
     Given a launch of "Seed Rocket" has the status "<current>"
-    When the user sends the status "<next>" for the launch
+    When the operator sends the status "<next>" for the launch
     Then the system returns 200
     And the launch has the status "<next>"
 
@@ -28,7 +28,7 @@ Feature: [US1] Change the status of a launch
 
   Scenario Outline: [R3] Reject a change of status that is not permitted
     Given a launch of "Seed Rocket" has the status "<current>"
-    When the user sends the status "<next>" for the launch
+    When the operator sends the status "<next>" for the launch
     Then the system returns 409
     And the launch has the status "<current>"
 
@@ -41,5 +41,5 @@ Feature: [US1] Change the status of a launch
 
   Scenario: [R4] Reject a change of status of a launch that does not exist
     Given no launch has the id "unknown-launch"
-    When the user sends the status "confirmed" for the launch id "unknown-launch"
+    When the operator sends the status "confirmed" for the launch id "unknown-launch"
     Then the system returns 404

@@ -12,13 +12,13 @@ The agency has no record of its rockets. Users cannot add a rocket or see the ro
 
 ### User stories
 
-- US1: As a registered user, I want to **add a rocket** so that I can grow the fleet.
+- US1: As an operator, I want to **add a rocket** so that I can grow the fleet.
 - US2: As a registered user, I want to **list the rockets** so that I can see the full fleet.
 - US3: As a registered user, I want to **see the details of a rocket** so that I can know its capacity and range.
 
 ### Business rules
 
-- A user must be registered to add, list or see rockets.
+- Only an operator can add a rocket. A registered user can list rockets and see one rocket.
 - A rocket must have a name with 3 to 40 characters.
 - A rocket name must be unique in the fleet.
 - A rocket must have a capacity of 1 to 10 passengers.
@@ -28,7 +28,7 @@ The agency has no record of its rockets. Users cannot add a rocket or see the ro
 
 - Edit a rocket.
 - Delete a rocket.
-- Roles and permissions other than a registered user.
+- A role other than `operator` and `passenger`.
 
 ## Solution
 
@@ -55,7 +55,7 @@ The agency has no record of its rockets. Users cannot add a rocket or see the ro
 ### E2E
 
 - Put the tests in `e2e/tests/S0002-rocket-fleet/`.
-- Log in as a seed user from `e2e/core/seed-data.ts`.
+- Log in as the operator to add a rocket. A registered user can list the rockets and open a rocket.
 - Use a unique rocket name with `Date.now()`.
 - Add a rocket and find it in the list.
 - Open the rocket and check its details.
@@ -64,7 +64,7 @@ The agency has no record of its rockets. Users cannot add a rocket or see the ro
 
 ## Verification
 
-- [ ] R1 (US1): WHEN a registered user sends a valid rocket, THE system SHALL create the rocket and return 201.
+- [ ] R1 (US1): WHEN an operator sends a valid rocket, THE system SHALL create the rocket and return 201.
 - [ ] R2 (US1, US2, US3): WHEN a user sends a request without a valid token, THE system SHALL return 401.
 - [ ] R3 (US1): IF the rocket name has less than 3 or more than 40 characters, THEN THE system SHALL return 400 with the field `name`.
 - [ ] R4 (US1): IF the rocket name exists already, THEN THE system SHALL return 409.

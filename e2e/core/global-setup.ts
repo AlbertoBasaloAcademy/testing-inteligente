@@ -1,11 +1,11 @@
 // Prepares the systems before the tests:
 // 1. back-api and front-web respond.
 // 2. front-web uses the same back-api as the tests.
-// 3. The seed data exists (users, then rockets).
+// 3. The seed data exists (users, then rockets). The operator creates the rockets.
 // webServer empties the database (see playwright.config.ts); this file only warns if it did not.
 // The tests never access the database. They use only the back-api endpoints.
 import { backUrl, frontUrl } from "./env";
-import { existingUser, seedRockets, seedUsers } from "./seed-data";
+import { operatorAccount, seedRockets, seedUsers } from "./seed-data";
 
 const START_HINT = 'Run "npm start" in the root folder, or let Playwright start the servers.';
 
@@ -61,14 +61,14 @@ async function seedUser(user: (typeof seedUsers)[number]): Promise<void> {
   throw new Error(`Cannot seed user ${user.email}: ${response.status} ${await response.text()}`);
 }
 
-async function logIn(): Promise<string> {
-  const { email, password } = existingUser;
+async function logInOperator(): Promise<string> {
+  const { email, password } = operatorAccount;
   const response = await request(`${backUrl}/api/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
-  if (!response.ok) throw new Error(`Cannot log in the seed user: ${response.status}`);
+  if (!response.ok) throw new Error(`Cannot log in the operator: ${response.status}`);
   return ((await response.json()) as { token: string }).token;
 }
 
@@ -88,6 +88,6 @@ export default async function globalSetup(): Promise<void> {
   await checkFront();
   warnIfNotReset(runs);
   for (const user of seedUsers) await seedUser(user);
-  const token = await logIn();
+  const token = await logInOperator();
   for (const rocket of seedRockets) await seedRocket(rocket, token);
 }

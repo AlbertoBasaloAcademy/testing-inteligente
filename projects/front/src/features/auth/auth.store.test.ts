@@ -1,5 +1,5 @@
 import { expect, test } from "vite-plus/test";
-import { createSubmission, createSessionStore } from "./auth.store.ts";
+import { canManage, createSessionStore, createSubmission, sessionLabel } from "./auth.store.ts";
 
 test("submission state prevents overlapping requests and permits retry", () => {
   const submission = createSubmission();
@@ -33,7 +33,7 @@ test("session logic uses fake persistence and notifications without browser glob
     id: "user-id",
     email: "user@example.test",
     name: "User",
-    role: "user" as const,
+    role: "passenger" as const,
     createdAt: "2026-10-06T00:00:00.000Z",
   };
   expect(store.readUser()).toBe(undefined);
@@ -49,4 +49,13 @@ test("session logic uses fake persistence and notifications without browser glob
   expect(store.readUser()).toBe(user);
   expect(writes).toStrictEqual(["opaque-token"]);
   expect(notifications).toBe(3);
+});
+test("the menu label shows the name and the role", () => {
+  expect(sessionLabel({ name: "Ana", role: "passenger" })).toBe("Ana (passenger)");
+  expect(sessionLabel({ name: "Operator", role: "operator" })).toBe("Operator (operator)");
+});
+test("only an operator can manage rockets, launches and bookings", () => {
+  expect(canManage({ role: "operator" })).toBe(true);
+  expect(canManage({ role: "passenger" })).toBe(false);
+  expect(canManage(undefined)).toBe(false);
 });

@@ -1,18 +1,23 @@
 import type { Database } from "../../shared/database/database.type.ts";
-import type { AuthRepository, PublicUser } from "./auth.type.ts";
+import type { AuthRepository, PublicUser, Role } from "./auth.type.ts";
 
 const FIND = "SELECT * FROM users WHERE email = ?";
+const FIND_ROLE = "SELECT * FROM users WHERE role = ? LIMIT 1";
 const INSERT = "INSERT INTO users(id,email,name,role,passwordHash,createdAt) VALUES (?,?,?,?,?,?)";
 const SESSION = "INSERT INTO sessions(tokenHash,userId,createdAt,expiresAt) VALUES (?,?,?,?)";
 const DELETE_SESSION = "DELETE FROM sessions WHERE tokenHash = ?";
 const RESOLVE =
   "SELECT users.* FROM sessions JOIN users ON users.id = sessions.userId WHERE sessions.tokenHash = ? AND sessions.expiresAt > ?";
+function readRole(value: unknown): Role {
+  if (value === "operator" || value === "passenger") return value;
+  throw new Error("Unknown role");
+}
 function publicUser(row: Record<string, unknown>): PublicUser {
   return {
     id: String(row.id),
     email: String(row.email),
     name: String(row.name),
-    role: "user",
+    role: readRole(row.role),
     createdAt: String(row.createdAt),
   };
 }
@@ -20,6 +25,10 @@ export function createAuthRepository(database: Database): AuthRepository {
   return {
     find(email) {
       const row = database.prepare(FIND).get(email.value);
+      return row ? { user: publicUser(row), passwordHash: String(row.passwordHash) } : undefined;
+    },
+    findByRole(role) {
+      const row = database.prepare(FIND_ROLE).get(role);
       return row ? { user: publicUser(row), passwordHash: String(row.passwordHash) } : undefined;
     },
     insert(stored) {

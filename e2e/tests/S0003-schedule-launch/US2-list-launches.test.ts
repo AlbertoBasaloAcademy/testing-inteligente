@@ -7,7 +7,7 @@ import { createLaunchData } from "../../test-data/launches";
 // Spec: specs/S0003-schedule-launch/US2-list-launches.feature
 test.describe("[US2] List the launches", { tag: ["@S0003", "@S0003-US2"] }, () => {
   test("[R7] Show all the launches with their data", { tag: "@S0003-R7" }, async ({ page }) => {
-    // GIVEN a registered user exists (seed user)
+    // GIVEN a registered operator exists
     // AND the rocket exists in the fleet (seed rocket)
     // AND the rocket has a launch on a unique future date with a price of 100
     // GIVEN the user is logged in

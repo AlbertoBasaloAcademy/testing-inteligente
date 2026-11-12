@@ -1,7 +1,13 @@
-import type { PageServices, SessionPlatform } from "../../shared/page.type.ts";
 import { ExpectedError } from "../../shared/error.type.ts";
+import type { PageServices, SessionPlatform } from "../../shared/page.type.ts";
 import { createAuthClient } from "./auth.client.ts";
-import { restoreUser, readUser, clearSession, initializeSessionStore } from "./auth.store.ts";
+import {
+  clearSession,
+  initializeSessionStore,
+  readUser,
+  restoreUser,
+  sessionLabel,
+} from "./auth.store.ts";
 
 import { createSessionPersistence } from "./auth.session.repository.ts";
 export async function initializeAuth(services: PageServices): Promise<SessionPlatform> {
@@ -36,7 +42,9 @@ export async function initializeAuth(services: PageServices): Promise<SessionPla
     },
     links() {
       const user = readUser();
-      return user ? [{ path: `/users/${user.id}`, label: user.name, access: "session" }] : [];
+      return user
+        ? [{ path: `/users/${user.id}`, label: sessionLabel(user), access: "session" as const }]
+        : [];
     },
     controls() {
       return readUser() ? [{ label: "Logout", run: logout }] : [];

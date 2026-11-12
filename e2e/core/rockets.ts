@@ -2,7 +2,7 @@
 import { expect, type APIRequestContext, type APIResponse, type Page } from "@playwright/test";
 import { backUrl } from "./env";
 import { LoginPage } from "../pages/login.page";
-import { existingUser } from "./seed-data";
+import { operatorAccount } from "./seed-data";
 
 export type RocketInput = { name: string; capacity: number; range: string };
 
@@ -16,7 +16,7 @@ export function bearer(token: string): Record<string, string> {
 }
 
 export async function logIn(request: APIRequestContext): Promise<string> {
-  const { email, password } = existingUser;
+  const { email, password } = operatorAccount;
   const response = await request.post(`${backUrl}/api/auth/login`, { data: { email, password } });
   expect(response.status()).toBe(200);
   return ((await response.json()) as { token: string }).token;
@@ -40,9 +40,9 @@ export async function addRocket(
   return ((await response.json()) as { id: string }).id;
 }
 
-// Logs in the seed user through the login page.
+// Logs in the operator through the login page.
 export async function logInPage(page: Page): Promise<void> {
   const loginPage = new LoginPage(page);
-  await loginPage.logIn(existingUser);
+  await loginPage.logIn(operatorAccount);
   await expect(loginPage.loggedInMessage).toBeVisible();
 }

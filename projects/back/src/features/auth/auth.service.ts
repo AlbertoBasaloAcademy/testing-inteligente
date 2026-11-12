@@ -1,13 +1,13 @@
 import { randomUUID } from "node:crypto";
 import { ExpectedError } from "../../shared/error.type.ts";
-import type { AuthRepository, Credentials, Registration, PublicUser } from "./auth.type.ts";
 import {
-  hashPassword,
-  verifyPassword,
   dummyPasswordHash,
-  tokenHash,
+  hashPassword,
   newToken,
+  tokenHash,
+  verifyPassword,
 } from "./auth.password.service.ts";
+import type { AuthRepository, Credentials, PublicUser, Registration } from "./auth.type.ts";
 
 export function createAuthService(options: {
   repository: AuthRepository;
@@ -25,7 +25,7 @@ export function createAuthService(options: {
         id: randomUUID(),
         email: input.email.value,
         name: input.name,
-        role: "user",
+        role: "passenger",
         createdAt: new Date().toISOString(),
       };
       repository.insert({ user, passwordHash });

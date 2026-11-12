@@ -12,12 +12,12 @@ The agency cannot plan launches for the rockets of its fleet. Users cannot set a
 
 ### User stories
 
-- US1: As a registered user, I want to **schedule a launch of a rocket** so that I can offer seats on a future date.
+- US1: As an operator, I want to **schedule a launch of a rocket** so that I can offer seats on a future date.
 - US2: As a registered user, I want to **list the launches** so that I can see the planned launches.
 
 ### Business rules
 
-- A user must be registered to schedule or list launches.
+- Only an operator can schedule a launch. A registered user can list launches.
 - A launch must use a rocket of the fleet in S0002 - Rocket Fleet.
 - A launch must have a date in the format `YYYY-MM-DD`.
 - A launch date must be after the current date.
@@ -58,7 +58,7 @@ The agency cannot plan launches for the rockets of its fleet. Users cannot set a
 ### E2E
 
 - Put the tests in `e2e/tests/S0003-schedule-launch/`.
-- Add a seed user and a seed rocket to `e2e/core/seed-data.ts`.
+- Add a seed rocket to `e2e/core/seed-data.ts`. Log in as the operator to schedule a launch. A registered user can list the launches.
 - Use a unique future date that you calculate from `Date.now()`.
 - Schedule a launch of the seed rocket and find it in the list.
 - Schedule a second launch of the same rocket on the same date and check the error.
@@ -66,7 +66,7 @@ The agency cannot plan launches for the rockets of its fleet. Users cannot set a
 
 ## Verification
 
-- [ ] R1 (US1): When a registered user sends a valid launch, the system shall create the launch and return 201.
+- [ ] R1 (US1): When an operator sends a valid launch, the system shall create the launch and return 201.
 - [ ] R2 (US1): If the request has no valid token, then the system shall return 401.
 - [ ] R3 (US1): If the rocket is not in the fleet, then the system shall return 400 with the field `rocketId`.
 - [ ] R4 (US1): If the date is not a valid date or is not after the current date, then the system shall return 400 with the field `date`.

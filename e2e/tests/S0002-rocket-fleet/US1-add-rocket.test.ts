@@ -7,7 +7,7 @@ test.describe("[US1] Add a rocket", { tag: ["@S0002", "@S0002-US1"] }, () => {
   let token: string;
 
   test.beforeEach(async ({ request }) => {
-    // GIVEN a registered user exists (seed user) and the user is logged in
+    // GIVEN a registered operator exists and the operator is logged in
     token = await logIn(request);
   });
 
@@ -46,7 +46,7 @@ test.describe("[US1] Add a rocket", { tag: ["@S0002", "@S0002-US1"] }, () => {
       `[R3, R5, R6] Reject a rocket with a field that is not valid (${criterion} #${index + 1} ${expectedField})`,
       { tag: `@S0002-${criterion}` },
       async ({ request }) => {
-        // GIVEN the user is logged in (beforeEach)
+        // GIVEN the operator is logged in (beforeEach)
         // WHEN the user sends the rocket with a field that is not valid
         const response = await sendRocket(request, rocket, bearer(token));
 

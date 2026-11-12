@@ -1,10 +1,11 @@
 import type { Email } from "../../shared/email.value.ts";
 
+export type Role = "operator" | "passenger";
 export interface PublicUser {
   id: string;
   email: string;
   name: string;
-  role: "user";
+  role: Role;
   createdAt: string;
 }
 export interface StoredUser {
@@ -13,6 +14,7 @@ export interface StoredUser {
 }
 export interface AuthRepository {
   find(email: Email): StoredUser | undefined;
+  findByRole(role: Role): StoredUser | undefined;
   insert(user: StoredUser): void;
   createSession(session: {
     tokenHash: string;
