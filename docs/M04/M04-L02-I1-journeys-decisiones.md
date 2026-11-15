@@ -26,7 +26,7 @@ Guía de trabajo para la lección M04 L02. Registra las decisiones del brainstor
 | D4 | `define-test` escribe también los journeys. No hay una skill `define-journey`. | Aprobada |
 | D5 | Las reglas del test del journey son la sección **E8** de `e2e-rules.md`. | Aprobada |
 | D6 | Un journey no usa un `storageState` guardado cuando el login es un paso del journey. | Propuesta |
-| D7 | Un fallo de un journey se asigna a la spec del `test.step` que falla. | Propuesta |
+| D7 | Un journey tiene su propio report y su propio triaje, igual que una spec. Vea 6.4. | Aprobada |
 
 ## 4. Estructura
 
@@ -109,12 +109,34 @@ La skill muestra `assets/` y `references/` con carga progresiva.
 |---|---|
 | `test-builder` | Acepta un código `J`. Pasa el código a `define-test`. |
 | `define-spec` | El número libre siguiente cuenta solo las carpetas `S*`. |
-| `detect-bugs` | Funciona con `specs/<code>-<slug>/` y `--grep @<code>`. Añadir: asignar un fallo a la spec de su `test.step` (D7). |
-| `triage-bugs` | Pospuesto con J0002. |
+| `detect-bugs` | Sin cambios. Funciona con `specs/<code>-<slug>/` y `--grep @<code>`. |
+| `triage-bugs` | Con un código `J`: leer las specs de los pasos del `.feature` (no hay `spec.md`). En `fix.spec.md`, enlazar el `.feature`. |
+
+### 6.4 Report y triaje de un journey (D7)
+
+Modelo actual: el report y el triaje pertenecen a la unidad que se prueba.
+
+- Si `detect-bugs S0055` encuentra un fallo de S0032, lo pone en `Regressions` del report de S0055.
+- `triage-bugs S0055` escribe el `fix.spec.md` de S0055.
+- S0032 cambia solo si su definición está mal. El `fix.spec.md` de S0055 lo indica en la sección *Spec*.
+
+Un journey usa el mismo modelo:
+
+- `detect-bugs J0001` escribe `specs/J0001-<slug>/e2e-report.md`. Los fallos de las specs van a `Regressions`.
+- `triage-bugs J0001` escribe `specs/J0001-<slug>/fix.spec.md`.
+- El código del `test.step` (`[S0002-R1]`) es una pista para el triaje. No asigna el fallo a una spec.
+
+Un journey se ejecuta con las specs en verde. Por eso, un fallo suele ser de uno de estos dos tipos:
+
+- **Grave**: la integración entre specs falla. Por ejemplo, el cohete de S0002 no aparece en el selector de S0003.
+- **Trivial**: el test falla. Por ejemplo, un Page Object, un locator o un dato.
+
+El journey debe dejar rastro suficiente en sí mismo: el report, la evidencia y el paso con su código.
 
 ## 7. Siguientes pasos
 
-- [ ] Confirmar D6 y D7.
+- [x] Confirmar D7.
+- [ ] Confirmar D6.
 - [ ] Aplicar los cambios de 6.1, 6.2 y 6.3 en un commit `docs(skills)`.
 - [ ] Escribir J0001 con `test-builder J0001`.
 - [ ] Ejecutar `detect-bugs J0001`.
