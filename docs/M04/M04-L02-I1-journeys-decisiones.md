@@ -15,6 +15,7 @@ Guía de trabajo para la lección M04 L02. Registra las decisiones del brainstor
 - Incluido: **J0001 Operator plans a launch**. El operador entra, crea un cohete y planifica un lanzamiento. Specs: S0006, S0002, S0003.
 - Pospuesto: **J0002 Visitor books a seat**. S0006 excluye "A booking made by a passenger". Este journey necesita una spec nueva (S0007).
 - La lección incluye también los storages (`storageState`). El journey muestra el contraste con ellos.
+- Los tests de spec usan `storageState` para ir rápido. Si `playwright.config.ts` lo define, el journey lo hereda. El journey lo anula de forma explícita (E8.9).
 
 ## 3. Decisiones
 
@@ -25,7 +26,7 @@ Guía de trabajo para la lección M04 L02. Registra las decisiones del brainstor
 | D3 | El test va en `e2e/tests/J0001-<slug>/J0001-<slug>.test.ts`. Tags: `@journey` y `@J0001`. | Aprobada |
 | D4 | `define-test` escribe también los journeys. No hay una skill `define-journey`. | Aprobada |
 | D5 | Las reglas del test del journey son la sección **E8** de `e2e-rules.md`. | Aprobada |
-| D6 | Un journey no usa un `storageState` guardado cuando el login es un paso del journey. | Propuesta |
+| D6 | Un journey empieza con un contexto de navegador vacío. No usa `storageState`. Si el actor necesita sesión, entra por la UI como un paso del journey. | Aprobada |
 | D7 | Un journey tiene su propio report y su propio triaje, igual que una spec. Vea 6.4. | Aprobada |
 
 ## 4. Estructura
@@ -100,7 +101,7 @@ La skill muestra `assets/` y `references/` con carga progresiva.
 - **E8.6** Use the Page Objects that exist (E6). If a page has no Page Object, add one. Do not write locators in the test.
 - **E8.7** Check only the observable result at the end of each step (E3). Do not check again all the rules of the spec.
 - **E8.8** Use unique data (E7). Use the seed only for the operator account.
-- **E8.9** Do not use a saved `storageState` when the login is a step of the journey. Log in through the UI.
+- **E8.9** Start the journey with an empty browser context: `test.use({ storageState: { cookies: [], origins: [] } })`. Log in through the UI as a step of the journey.
 ```
 
 ### 6.3 Otras skills
@@ -136,7 +137,7 @@ El journey debe dejar rastro suficiente en sí mismo: el report, la evidencia y 
 ## 7. Siguientes pasos
 
 - [x] Confirmar D7.
-- [ ] Confirmar D6.
+- [x] Confirmar D6.
 - [ ] Aplicar los cambios de 6.1, 6.2 y 6.3 en un commit `docs(skills)`.
 - [ ] Escribir J0001 con `test-builder J0001`.
 - [ ] Ejecutar `detect-bugs J0001`.
