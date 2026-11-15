@@ -1,0 +1,120 @@
+# M04 L02 · Journeys: decisiones de diseño
+
+Guía de trabajo para la lección M04 L02. Registra las decisiones del brainstorm sobre los journeys.
+
+## 1. Concepto
+
+- Un journey es un objetivo completo de un usuario. Atraviesa varias specs.
+- Cada paso del journey apunta a un criterio que existe: `S0002-R1`, `S0003-R1`.
+- Un journey no añade reglas de negocio. Compone las reglas de las specs.
+- Si un paso no tiene criterio, es un hueco. Pare y proponga una spec nueva con `spec-builder`.
+- El journey usa solo la UI. Recorre el camino real del usuario.
+
+## 2. Alcance de la lección
+
+- Incluido: **J0001 Operator plans a launch**. El operador entra, crea un cohete y planifica un lanzamiento. Specs: S0006, S0002, S0003.
+- Pospuesto: **J0002 Visitor books a seat**. S0006 excluye "A booking made by a passenger". Este journey necesita una spec nueva (S0007).
+- La lección incluye también los storages (`storageState`). El journey muestra el contraste con ellos.
+
+## 3. Decisiones
+
+| # | Decisión | Estado |
+|---|---|---|
+| D1 | Los journeys van en `specs/`, con el código `J0001`. El prefijo `J` los distingue de las specs `S`. | Aprobada |
+| D2 | Un journey contiene solo un `.feature`: `specs/J0001-<slug>/J0001-<slug>.feature`. No tiene `spec.md` ni `journey.md`. | Aprobada |
+| D3 | El test va en `e2e/tests/J0001-<slug>/J0001-<slug>.test.ts`. Tags: `@journey` y `@J0001`. | Aprobada |
+| D4 | `define-test` escribe también los journeys. No hay una skill `define-journey`. | Aprobada |
+| D5 | Las reglas del test del journey son la sección **E8** de `e2e-rules.md`. | Aprobada |
+| D6 | Un journey no usa un `storageState` guardado cuando el login es un paso del journey. | Propuesta |
+| D7 | Un fallo de un journey se asigna a la spec del `test.step` que falla. | Propuesta |
+
+## 4. Estructura
+
+```
+specs/
+  J0001-operator-plans-launch/
+    J0001-operator-plans-launch.feature
+    e2e-report.md
+e2e/tests/
+  J0001-operator-plans-launch/
+    J0001-operator-plans-launch.test.ts
+```
+
+## 5. Ejemplo de `.feature`
+
+```gherkin
+# Journey: J0001 · Specs: S0006, S0002, S0003
+@journey @J0001
+Feature: [J0001] Operator plans a launch
+  As an operator
+  I want to add a rocket and schedule a launch on it
+  So that passengers can book seats on that launch
+
+  Scenario: Operator adds a rocket and schedules a launch
+    Given the operator logs in                     # S0006-US2
+    When the operator adds a rocket                # S0002-R1
+    And the operator schedules a launch on it      # S0003-R1
+    Then the launch shows in the list as planned   # S0003-R?
+```
+
+Revise los códigos `R?` con las specs antes de escribir el `.feature` final.
+
+## 6. Cambios en las skills
+
+### 6.1 `define-test` (parte común + journey)
+
+La skill muestra `assets/` y `references/` con carga progresiva.
+
+```
+.agents/skills/define-test/
+  SKILL.md                              # parte común y bifurcación S/J
+  assets/
+    spec.user-story.template.feature    # existe
+    journey.template.feature            # nuevo
+  references/
+    journey-steps.md                    # nuevo; se lee solo con un código J
+```
+
+- Parte común en `SKILL.md`:
+  - Input: un código. `S` es una spec. `J` es un journey.
+  - Reglas Gherkin: keywords en inglés, sin reglas inventadas, reglas E1.
+  - Output: mostrar, esperar la confirmación, guardar.
+- Solo para un journey (`references/journey-steps.md`):
+  - Obtener el actor y el objetivo.
+  - Encontrar las specs que el journey atraviesa.
+  - Escribir el código del criterio en cada paso: `# S0002-R1`.
+  - Si un paso no tiene criterio, parar e informar del hueco. No inventar el criterio.
+  - Escribir un `Feature: [J0001] ...` con uno o pocos escenarios. No escribir un escenario para cada criterio.
+- Riesgo: la skill crece con más modos. Mantenga la bifurcación en el Input y en un solo paso.
+
+### 6.2 `implement-test` → `e2e-rules.md`, sección E8 (borrador)
+
+```markdown
+## E8 Journeys
+
+- **E8.1** A journey has a folder `specs/J<id>-<slug>/` with one `.feature`: `J<id>-<slug>.feature`.
+- **E8.2** Write one test file for the journey: `e2e/tests/J<id>-<slug>/J<id>-<slug>.test.ts`.
+- **E8.3** Write one `test.describe` with the tags `@journey` and `@J<id>`. Write one `test` for each scenario.
+- **E8.4** Write one `test.step` for each step of the journey. Start its title with the criterion code: `[S0002-R1] Add a rocket`.
+- **E8.5** Do all the actions through the UI. Do not use the API to prepare or to check data.
+- **E8.6** Use the Page Objects that exist (E6). If a page has no Page Object, add one. Do not write locators in the test.
+- **E8.7** Check only the observable result at the end of each step (E3). Do not check again all the rules of the spec.
+- **E8.8** Use unique data (E7). Use the seed only for the operator account.
+- **E8.9** Do not use a saved `storageState` when the login is a step of the journey. Log in through the UI.
+```
+
+### 6.3 Otras skills
+
+| Skill | Cambio |
+|---|---|
+| `test-builder` | Acepta un código `J`. Pasa el código a `define-test`. |
+| `define-spec` | El número libre siguiente cuenta solo las carpetas `S*`. |
+| `detect-bugs` | Funciona con `specs/<code>-<slug>/` y `--grep @<code>`. Añadir: asignar un fallo a la spec de su `test.step` (D7). |
+| `triage-bugs` | Pospuesto con J0002. |
+
+## 7. Siguientes pasos
+
+- [ ] Confirmar D6 y D7.
+- [ ] Aplicar los cambios de 6.1, 6.2 y 6.3 en un commit `docs(skills)`.
+- [ ] Escribir J0001 con `test-builder J0001`.
+- [ ] Ejecutar `detect-bugs J0001`.
