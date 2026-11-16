@@ -54,9 +54,8 @@ Based on two projects, a backend REST API in `projects/back` and a frontend web 
 
 - The e2e tests are in `e2e/`. They use Playwright with TypeScript and the `chromium` project only.
 - To run the tests, use `npm run test:e2e` in the root folder, or `npm test` in `e2e/`. To check the types, use `npm run check` in the root folder.
-- `npm run test:e2e` starts the back and the front. Before it starts the back, it empties the database.
+- `npm run test:e2e` stops the servers of `npm start`. Then it empties the database and starts the back and the front. Each run starts with an empty database.
 - Do not use `vp test` for the e2e tests. Vitest cannot run Playwright specs.
-- If the back and the front run already (`npm start` in the root folder), the tests use them. Then the database is not emptied. To empty it, use `npm run stop` and then `npm run reset` in the root folder.
 - Put each test in `e2e/tests/<id>-<slug>/<story-code>-<slug>.test.ts`.
 - The front URL is `http://localhost:4000`. 
 - The back URL is `http://localhost:3000`. 

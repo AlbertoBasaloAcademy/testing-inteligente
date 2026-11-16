@@ -1,5 +1,5 @@
 Date: {{ISO_8601_DATE_TIME_WITH_OFFSET}}
-Command: `{{COMMAND}}` (from `e2e/`)
+Command: `{{COMMAND}}` (from the root)
 Result: {{OUTCOME_AND_COUNTS}}
 
 <!-- For a complete pass, remove this comment and all content below it. -->
