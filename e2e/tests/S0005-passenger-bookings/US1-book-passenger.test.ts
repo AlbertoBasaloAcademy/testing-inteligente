@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { getBookings, sendBooking } from "../../core/bookings";
 import { sendStatus } from "../../core/launches";
-import { logIn, logInPage } from "../../core/rockets";
+import { logIn } from "../../core/rockets";
 import { LaunchesPage } from "../../pages/launches.page";
 import { createPassenger, invalidPassengerInputs } from "../../test-data/bookings";
 import { createLaunchData } from "../../test-data/launches";
@@ -31,7 +31,6 @@ test.describe("[US1] Book a passenger on a launch", { tag: ["@S0005", "@S0005-US
       { tag: "@S0005-R1" },
       async ({ page, request }) => {
         const token = await logIn(request);
-        await logInPage(page);
         const launchId = await scheduleLaunch(page);
         if (status === "confirmed") await changeStatus(request, launchId, status, token);
         const passenger = createPassenger();
@@ -54,7 +53,6 @@ test.describe("[US1] Book a passenger on a launch", { tag: ["@S0005", "@S0005-US
       { tag: "@S0005-R2" },
       async ({ page, request }) => {
         const token = await logIn(request);
-        await logInPage(page);
         const launchId = await scheduleLaunch(page);
         const passenger = createPassenger();
         const response = await sendBooking(
@@ -74,7 +72,6 @@ test.describe("[US1] Book a passenger on a launch", { tag: ["@S0005", "@S0005-US
   for (const { field, input } of invalidPassengerInputs) {
     test(`[R3] Reject ${input} for ${field}`, { tag: "@S0005-R3" }, async ({ page, request }) => {
       const token = await logIn(request);
-      await logInPage(page);
       const launchId = await scheduleLaunch(page);
       const passenger: Record<string, unknown> = { ...createPassenger() };
       if (input === "missing") delete passenger[field];
@@ -112,7 +109,6 @@ test.describe("[US1] Book a passenger on a launch", { tag: ["@S0005", "@S0005-US
     { tag: "@S0005-R5" },
     async ({ page, request }) => {
       const token = await logIn(request);
-      await logInPage(page);
       const launchId = await scheduleLaunch(page);
       const passenger = createPassenger();
       expect((await sendBooking(request, launchId, passenger, token)).status()).toBe(201);
@@ -139,7 +135,6 @@ test.describe("[US1] Book a passenger on a launch", { tag: ["@S0005", "@S0005-US
     { tag: "@S0005-R5" },
     async ({ page, request }) => {
       const token = await logIn(request);
-      await logInPage(page);
       const launchId = await scheduleLaunch(page);
       const passenger = createPassenger();
       const secondPassenger = {
@@ -167,7 +162,6 @@ test.describe("[US1] Book a passenger on a launch", { tag: ["@S0005", "@S0005-US
     { tag: "@S0005-R6" },
     async ({ page, request }) => {
       const token = await logIn(request);
-      await logInPage(page);
       const launchId = await scheduleLaunch(page);
       for (let index = 0; index < 5; index += 1) {
         expect((await sendBooking(request, launchId, createPassenger(), token)).status()).toBe(201);
@@ -189,7 +183,6 @@ test.describe("[US1] Book a passenger on a launch", { tag: ["@S0005", "@S0005-US
     { tag: "@S0005-R6" },
     async ({ page, request }) => {
       const token = await logIn(request);
-      await logInPage(page);
       const launchId = await scheduleLaunch(page);
       for (let index = 0; index < 4; index += 1) {
         expect((await sendBooking(request, launchId, createPassenger(), token)).status()).toBe(201);
@@ -216,7 +209,6 @@ test.describe("[US1] Book a passenger on a launch", { tag: ["@S0005", "@S0005-US
       { tag: "@S0005-R7" },
       async ({ page, request }) => {
         const token = await logIn(request);
-        await logInPage(page);
         const launchId = await scheduleLaunch(page);
         if (status === "suspended") {
           expect(

@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { backUrl } from "../../core/env";
-import { addRocket, logIn, logInPage, type RocketInput } from "../../core/rockets";
+import { addRocket, logIn, type RocketInput } from "../../core/rockets";
 import { RocketsPage } from "../../pages/rockets.page";
 import { createFalconData, createVegaData, tokenExamples } from "../../test-data/rockets";
 
@@ -35,9 +35,6 @@ test.describe("[US2] List the rockets", { tag: ["@S0002", "@S0002-US2"] }, () =>
   }
 
   test("[R7] Show all the rockets of the fleet", { tag: "@S0002-R7" }, async ({ page }) => {
-    // GIVEN the user is logged in
-    await logInPage(page);
-
     // WHEN the user opens the page "/rockets"
     const rocketsPage = new RocketsPage(page);
     await rocketsPage.goto();

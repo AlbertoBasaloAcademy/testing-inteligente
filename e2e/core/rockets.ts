@@ -1,7 +1,6 @@
 // Shared steps for the rocket fleet specs (specs/S0002-rocket-fleet/*.feature).
-import { expect, type APIRequestContext, type APIResponse, type Page } from "@playwright/test";
+import { expect, type APIRequestContext, type APIResponse } from "@playwright/test";
 import { backUrl } from "./env";
-import { LoginPage } from "../pages/login.page";
 import { operatorAccount } from "./seed-data";
 
 export type RocketInput = { name: string; capacity: number; range: string };
@@ -38,11 +37,4 @@ export async function addRocket(
   const response = await sendRocket(request, rocket, bearer(token));
   expect(response.status()).toBe(201);
   return ((await response.json()) as { id: string }).id;
-}
-
-// Logs in the operator through the login page.
-export async function logInPage(page: Page): Promise<void> {
-  const loginPage = new LoginPage(page);
-  await loginPage.logIn(operatorAccount);
-  await expect(loginPage.loggedInMessage).toBeVisible();
 }

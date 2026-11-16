@@ -1,6 +1,8 @@
 import { expect, test, type Page } from "@playwright/test";
 import { existingUser } from "../../core/seed-data";
 
+test.use({ storageState: { cookies: [], origins: [] } });
+
 async function openRegisterPage(page: Page): Promise<void> {
   await page.goto("/");
   await page

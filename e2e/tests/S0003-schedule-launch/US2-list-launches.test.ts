@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { logInPage } from "../../core/rockets";
 import { LaunchesPage } from "../../pages/launches.page";
 import { LoginPage } from "../../pages/login.page";
 import { createLaunchData } from "../../test-data/launches";
@@ -10,8 +9,6 @@ test.describe("[US2] List the launches", { tag: ["@S0003", "@S0003-US2"] }, () =
     // GIVEN a registered operator exists
     // AND the rocket exists in the fleet (seed rocket)
     // AND the rocket has a launch on a unique future date with a price of 100
-    // GIVEN the user is logged in
-    await logInPage(page);
     const launchesPage = new LaunchesPage(page);
     const launch = createLaunchData();
     const response = await launchesPage.scheduleLaunch(launch);
@@ -26,6 +23,10 @@ test.describe("[US2] List the launches", { tag: ["@S0003", "@S0003-US2"] }, () =
       `${launch.date} · ${launch.rocketName} · ${launch.price} per passenger`,
     );
   });
+});
+
+test.describe("[US2] List the launches", { tag: ["@S0003", "@S0003-US2"] }, () => {
+  test.use({ storageState: { cookies: [], origins: [] } });
 
   test(
     "[R8] Send a user without a valid token to the login page (no token)",

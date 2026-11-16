@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { sendStatus } from "../../core/launches";
-import { logIn, logInPage } from "../../core/rockets";
+import { logIn } from "../../core/rockets";
 import { LaunchesPage, type LaunchForm } from "../../pages/launches.page";
 import {
   createLaunchData,
@@ -21,9 +21,6 @@ test.describe(
     test.beforeEach(async ({ page }) => {
       // GIVEN a registered operator exists
       // AND the rocket "Seed Rocket" exists in the fleet (seed rocket)
-      // AND the operator is logged in
-      await logInPage(page);
-
       // AND a launch of "Seed Rocket" has the status "planned"
       launchesPage = new LaunchesPage(page);
       launch = createLaunchData();

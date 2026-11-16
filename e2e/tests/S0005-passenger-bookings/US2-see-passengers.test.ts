@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { sendBooking } from "../../core/bookings";
-import { addRocket, logIn, logInPage } from "../../core/rockets";
+import { addRocket, logIn } from "../../core/rockets";
 import { seedRocket } from "../../core/seed-data";
 import { BookingsPage } from "../../pages/bookings.page";
 import { LaunchesPage } from "../../pages/launches.page";
@@ -28,7 +28,6 @@ test.describe(
       { tag: "@S0005-R8" },
       async ({ page, request }) => {
         const token = await logIn(request);
-        await logInPage(page);
         const rocket = createCapacityThreeRocket();
         await addRocket(request, rocket, token);
         const launchId = await createLaunch(page, rocket.name);
@@ -55,7 +54,6 @@ test.describe(
     for (const tokenCase of ["no token", "an invalid token"]) {
       test(`[R9] Send ${tokenCase} to login`, { tag: "@S0005-R9" }, async ({ page, request }) => {
         const token = await logIn(request);
-        await logInPage(page);
         const launchId = await createLaunch(page, seedRocket.name);
         if (tokenCase === "no token") {
           await page.evaluate(() => localStorage.clear());

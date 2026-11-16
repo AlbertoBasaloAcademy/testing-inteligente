@@ -1,6 +1,5 @@
 import { expect, test } from "@playwright/test";
 import { isoDate, uniqueFutureDate } from "../../core/launches";
-import { logInPage } from "../../core/rockets";
 import { seedRocket } from "../../core/seed-data";
 import { LaunchesPage } from "../../pages/launches.page";
 import { createLaunchData, rejectedPrices } from "../../test-data/launches";
@@ -12,9 +11,6 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
     // AND the rocket exists in the fleet (seed rocket)
     // AND the rocket has no launch on a unique future date
     const launch = createLaunchData();
-
-    // GIVEN the operator is logged in
-    await logInPage(page);
 
     // WHEN the user sends a launch of the rocket for the date with a price of 100
     const launchesPage = new LaunchesPage(page);
@@ -36,9 +32,6 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
       `[R4] Reject a date that is not valid or not in the future (${example})`,
       { tag: "@S0003-R4" },
       async ({ page }) => {
-        // GIVEN the operator is logged in
-        await logInPage(page);
-
         // WHEN the user sends a launch of the rocket for the date with a price of 100
         const launchesPage = new LaunchesPage(page);
         const response = await launchesPage.scheduleLaunch({
@@ -61,9 +54,6 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
       `[R5] Reject a price that is not a number greater than 0 (${price})`,
       { tag: "@S0003-R5" },
       async ({ page }) => {
-        // GIVEN the operator is logged in
-        await logInPage(page);
-
         // WHEN the user sends a launch of the rocket for a future date with the price
         const launchesPage = new LaunchesPage(page);
         const response = await launchesPage.scheduleLaunch({
@@ -86,9 +76,7 @@ test.describe("[US1] Schedule a launch", { tag: ["@S0003", "@S0003-US1"] }, () =
     "[R6] Reject a second launch of a rocket on the same date",
     { tag: "@S0003-R6" },
     async ({ page }) => {
-      // GIVEN the operator is logged in
-      // AND the rocket has a launch on a unique future date
-      await logInPage(page);
+      // GIVEN the rocket has a launch on a unique future date
       const launchesPage = new LaunchesPage(page);
       const launch = createLaunchData();
       expect((await launchesPage.scheduleLaunch(launch)).status()).toBe(201);

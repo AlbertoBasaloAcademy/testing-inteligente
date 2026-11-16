@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { logInPage } from "../../core/rockets";
 import { LaunchesPage } from "../../pages/launches.page";
 import { createLaunchData, statusPaths, technicalSuspension } from "../../test-data/launches";
 
@@ -8,13 +7,6 @@ test.describe(
   "[US3] See the status of each launch in the list",
   { tag: ["@S0004", "@S0004-US3"] },
   () => {
-    test.beforeEach(async ({ page }) => {
-      // GIVEN a registered operator exists
-      // AND the rocket "Seed Rocket" exists in the fleet (seed rocket)
-      // AND the user is logged in
-      await logInPage(page);
-    });
-
     test("[R8] Show the status of each launch", { tag: "@S0004-R8" }, async ({ page }) => {
       // GIVEN a launch of "Seed Rocket" has the status "successful"
       const launchesPage = new LaunchesPage(page);

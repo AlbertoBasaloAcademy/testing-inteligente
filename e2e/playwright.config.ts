@@ -20,6 +20,7 @@ export default defineConfig({
   ],
   use: {
     baseURL: frontUrl,
+    storageState: ".auth/operator.json",
     trace: "retain-on-failure",
     screenshot: { mode: "only-on-failure", fullPage: true },
     video: "retain-on-failure",

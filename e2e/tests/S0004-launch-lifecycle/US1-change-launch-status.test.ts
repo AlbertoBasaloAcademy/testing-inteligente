@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { sendStatus } from "../../core/launches";
-import { logIn, logInPage } from "../../core/rockets";
+import { logIn } from "../../core/rockets";
 import { LaunchesPage } from "../../pages/launches.page";
 import {
   createLaunchData,
@@ -12,13 +12,6 @@ import {
 
 // Spec: specs/S0004-launch-lifecycle/US1-change-launch-status.feature
 test.describe("[US1] Change the status of a launch", { tag: ["@S0004", "@S0004-US1"] }, () => {
-  test.beforeEach(async ({ page }) => {
-    // GIVEN a registered operator exists
-    // AND the rocket "Seed Rocket" exists in the fleet (seed rocket)
-    // AND the operator is logged in
-    await logInPage(page);
-  });
-
   test("[R1] Give a new launch the status planned", { tag: "@S0004-R1" }, async ({ page }) => {
     // WHEN the user schedules a launch of "Seed Rocket" for a unique future date
     const launchesPage = new LaunchesPage(page);

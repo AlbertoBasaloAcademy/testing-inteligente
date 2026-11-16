@@ -2,12 +2,21 @@
 // 1. back-api and front-web respond.
 // 2. front-web uses the same back-api as the tests.
 // 3. The seed data exists (users, then rockets). The operator creates the rockets.
+// 4. A saved browser session exists for the operator and for the passenger.
 // webServer empties the database (see playwright.config.ts); this file only warns if it did not.
 // The tests never access the database. They use only the back-api endpoints.
+import { chromium, expect, type Browser } from "@playwright/test";
+import { mkdir } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { LoginPage } from "../pages/login.page";
 import { backUrl, frontUrl } from "./env";
-import { operatorAccount, seedRockets, seedUsers } from "./seed-data";
+import { existingUser, operatorAccount, seedRockets, seedUsers } from "./seed-data";
 
 const START_HINT = 'Run "npm start" in the root folder, or let Playwright start the servers.';
+const authDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../.auth");
+
+type RoleSession = { email: string; password: string; fileName: string };
 
 async function request(url: string, init?: RequestInit): Promise<Response> {
   try {
@@ -83,6 +92,31 @@ async function seedRocket(rocket: (typeof seedRockets)[number], token: string): 
   throw new Error(`Cannot seed rocket ${rocket.name}: ${response.status} ${await response.text()}`);
 }
 
+function roleFile(account: { email: string; password: string }, fileName: string): RoleSession {
+  return { email: account.email, password: account.password, fileName };
+}
+
+// Logs in through the form and saves the browser storage of that role.
+async function saveRoleSession(browser: Browser, role: RoleSession): Promise<void> {
+  const context = await browser.newContext({ baseURL: frontUrl });
+  const loginPage = new LoginPage(await context.newPage());
+  await loginPage.logIn(role);
+  await expect(loginPage.loggedInMessage).toBeVisible({ timeout: 15_000 });
+  await context.storageState({ path: path.join(authDir, role.fileName) });
+  await context.close();
+}
+
+async function saveSessions(): Promise<void> {
+  await mkdir(authDir, { recursive: true });
+  const browser = await chromium.launch();
+  try {
+    await saveRoleSession(browser, roleFile(operatorAccount, "operator.json"));
+    await saveRoleSession(browser, roleFile(existingUser, "passenger.json"));
+  } finally {
+    await browser.close();
+  }
+}
+
 export default async function globalSetup(): Promise<void> {
   const runs = await checkBack();
   await checkFront();
@@ -90,4 +124,5 @@ export default async function globalSetup(): Promise<void> {
   for (const user of seedUsers) await seedUser(user);
   const token = await logInOperator();
   for (const rocket of seedRockets) await seedRocket(rocket, token);
+  await saveSessions();
 }

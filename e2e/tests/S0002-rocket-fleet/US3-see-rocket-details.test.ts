@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { backUrl } from "../../core/env";
-import { addRocket, logIn, logInPage } from "../../core/rockets";
+import { addRocket, logIn } from "../../core/rockets";
 import { RocketDetailsPage } from "../../pages/rocket-details.page";
 import { createFalconData, tokenExamples } from "../../test-data/rockets";
 
@@ -34,10 +34,7 @@ test.describe("[US3] See the details of a rocket", { tag: ["@S0002", "@S0002-US3
     "[R8] Show a message for a rocket that does not exist",
     { tag: "@S0002-R8" },
     async ({ page }) => {
-      // GIVEN the user is logged in
-      // AND no rocket has the id "unknown-id"
-      await logInPage(page);
-
+      // GIVEN no rocket has the id "unknown-id"
       // WHEN the user opens the page "/rockets/unknown-id"
       const detailsPage = new RocketDetailsPage(page);
       await detailsPage.goto("unknown-id");
