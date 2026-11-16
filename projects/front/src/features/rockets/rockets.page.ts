@@ -26,9 +26,8 @@ export async function mount(context: PageContext) {
     const state = await store.list();
     if (state.status === "unauthorized") return leaveToLogin(context);
     if (state.status === "unavailable") return void (status.textContent = "Rockets unavailable");
-    // Shares the fleet with the launches page, so it does not load it again.
-    if (!sessionStorage.getItem("fleet"))
-      sessionStorage.setItem("fleet", JSON.stringify(state.rockets));
+    // Shares the current fleet with the launches page, so it does not load it again.
+    sessionStorage.setItem("fleet", JSON.stringify(state.rockets));
     list.replaceChildren(...state.rockets.map(createItem));
     status.textContent = state.rockets.length ? "" : "No rockets yet";
   }
