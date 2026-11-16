@@ -16,8 +16,8 @@ theme: ab-landscape
 
 ## Connections
 
-- Cada prueba entra por el formulario de login. ¿Cuánto tiempo **repite** la suite?
-- Todas las specs pasan. ¿Puede el operador **planificar un lanzamiento con un cohete nuevo**?
+- En L01, cada prueba entraba por el formulario de login. ¿Cuántas veces **repetimos lo mismo**?
+- Todas las specs pasan en verde. ¿Puede el operador **planificar un lanzamiento con un cohete nuevo**?
 
 ---
 
@@ -39,19 +39,16 @@ Consulta: [cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Coo
 
 ## Concepts
 
-### Guardar la sesión
+### Entrar una vez
 
-`storageState` guarda las cookies y el `localStorage` de cada origen en un archivo. Una prueba nueva empieza con ese estado.
+Playwright guarda el estado del navegador con `storageState`: las cookies y el `localStorage`. Una prueba nueva puede empezar con ese estado.
 
-| Dato de AstroBookings | Dónde |
-| --- | --- |
-| Sesión | `localStorage`: `session-token` |
-| Cookies | No hay |
+En AstroBookings no hay cookies. La sesión es un `session-token` en `localStorage`.
 
-- Entra **una vez** por el formulario para cada rol.
-- Cada prueba empieza con la sesión de su rol, o sin sesión.
+- Entramos **una vez** por el formulario con cada rol, antes de las pruebas.
+- Cada prueba empieza **ya dentro**, o sin sesión si lo necesita.
 
-> La sesión guardada es la misma que crea la web. No la fabriques con el token de la API.
+> Guarda la sesión que crea la web. No la fabriques con el token de la API.
 
 ---
 
@@ -59,7 +56,7 @@ Consulta: [cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Coo
 
 ### Una sesión compartida
 
-Varias pruebas en paralelo usan el mismo token. Una de ellas cierra la sesión.
+Una sesión guardada es una sesión **compartida**. Varias pruebas en paralelo usan el mismo token, y una de ellas cierra la sesión:
 
 | Paso | Qué ocurre |
 | --- | --- |
@@ -72,21 +69,9 @@ Varias pruebas en paralelo usan el mismo token. Una de ellas cierra la sesión.
 
 ## Concepts
 
-### Un journey
+### Un recorrido de usuario
 
-Un **objetivo completo** de un usuario. Atraviesa varias specs y **no añade reglas**.
-
-- Cada paso apunta a un criterio que existe: `# S0002-R1`.
-- Si un paso no tiene criterio, el agente para e informa del hueco.
-- Todo pasa por la UI, como lo hace el usuario.
-
-> Un journey no sustituye a las specs. Prueba que encajan.
-
----
-
-## Concepts
-
-### Prueba de spec y journey
+Un **journey** es un objetivo completo de un usuario. Atraviesa varias specs y **no añade reglas**: cada paso apunta a un criterio que ya existe.
 
 | | Prueba de spec | Journey |
 | --- | --- | --- |
@@ -95,35 +80,37 @@ Un **objetivo completo** de un usuario. Atraviesa varias specs y **no añade reg
 | Datos | La prueba los prepara | El usuario los crea |
 | Comprueba | Cada criterio de una spec | Un resultado al final de cada paso |
 
+> Un journey no sustituye a las specs. Comprueba que encajan.
+
 ---
 
 ## Concrete practice
 
 ### P1 · Una sesión para cada rol
 
-Mide la suite antes de cambiar nada. Después, en una conversación nueva, pide:
+Primero, medimos la suite tal como está. Después pedimos al agente:
 
-- `global-setup.ts` entra una vez con cada rol y guarda `e2e/.auth/<rol>.json`.
-- El `operator` es la sesión por defecto.
-- El registro y las pruebas sin token empiezan **sin sesión**.
+- Entrar una vez con el `operator` y con el `passenger`, y guardar cada sesión.
+- Usar la sesión del `operator` por defecto.
+- Empezar **sin sesión** el registro y las pruebas sin token.
 
-Pasa toda la suite, más rápida. Casi ninguna prueba entra por el formulario.
+Toda la suite pasa, más rápida. Casi ninguna prueba toca ya el formulario.
 
-> Mejora continua: `npm run test:e2e` ahora para los servidores y vacía la base de datos. Cada ejecución empieza igual.
+> Al preparar esta lección encontramos un problema: los servidores en marcha guardaban datos de otras ejecuciones. Ahora cada ejecución empieza limpia.
 
 ---
 
 ## Concrete practice
 
-### P2 · Journeys en las skills
+### P2 · Enseñar journeys a las skills
 
-No hay una skill nueva. Una primitiva gana un **modo**:
+No creamos una skill nueva. Enseñamos a las que ya tenemos:
 
-- `define-test`: un código `J` escribe un journey. Sus pasos están en `references/journey-steps.md`.
-- `e2e-rules.md`: la sección **E8**. Un `test.step` para cada paso, todo por la UI, sin sesión.
-- `triage-bugs`: con un journey, el código de un paso es una pista, no el culpable.
+- `define-test` escribe un journey cuando el código empieza por `J`.
+- Las reglas de los tests añaden cómo se prueba un journey: paso a paso, por la UI, sin sesión.
+- `triage-bugs` aprende que el código de un paso es **una pista**, no un culpable.
 
-Con un journey usas los mismos `/test-builder` y `/bugs-hunter`.
+Con un journey usamos los mismos `/test-builder` y `/bugs-hunter` de siempre.
 
 ---
 
@@ -133,36 +120,47 @@ Con un journey usas los mismos `/test-builder` y `/bugs-hunter`.
 
 > El operador entra, añade un cohete y planifica un lanzamiento con ese cohete. Al final ve el lanzamiento en la lista, con el estado `planned`.
 
-Antes de aprobar el `.feature`, comprueba que:
+El agente propone el `.feature` y para. No apruebes todavía:
 
-- La primera línea nombra `S0006`, `S0002`, `S0003` y `S0004`.
-- Cada paso tiene el código de un criterio que existe.
-- El test entra por el formulario y comprueba lo que ve el usuario.
+- ¿Nombra las cuatro specs que atraviesa: `S0006`, `S0002`, `S0003` y `S0004`?
+- ¿Cada paso tiene un criterio que existe? Búscalo en su spec.
+- ¿Algún paso inventa una regla?
 
 ---
 
 ## Concrete practice
 
-### P4 · Un fallo entre specs con `/bugs-hunter`
+### P4 · Todo en verde, menos el journey
 
-Un compañero cambia la página de lanzamientos: reutiliza la flota que guarda la página de cohetes.
+Un compañero «optimiza» la web: la página de lanzamientos reutiliza la flota que guardó la página de cohetes.
 
-- Pasan todas las specs. Falla solo el journey: el cohete nuevo **no está en el selector**.
-- En la pausa del triage: el origen es el código y el fallo es **grave**.
-- `fix-bugs` arregla el código. Dos commits: el arreglo y el journey.
+- Todas las specs siguen en verde. Usan el cohete de la semilla.
+- El journey falla: **el cohete nuevo no está en el selector**.
+- El paso que falla es de `S0003`, pero `S0003` no tiene la culpa. El fallo está **entre** dos specs.
+
+El triage encuentra el origen en el código. `fix-bugs` lo arregla y la suite vuelve a verde.
+
+---
+
+## Concrete practice
+
+### P4 · Lo que hemos comprobado
 
 | Comprobado | Fuera |
 | --- | --- |
-| El operador entra, añade un cohete y planifica un lanzamiento por la UI | `J0002`: el pasajero reserva su plaza |
+| El operador entra, añade un cohete y planifica un lanzamiento por la UI | `J0002`: el pasajero reserva su plaza. Necesita una spec nueva |
 | Las specs reutilizan la sesión guardada de cada rol | La caducidad del token |
+| El journey empieza sin sesión | Un navegador real cerrado y abierto otra vez |
+
+Dos commits: primero el arreglo, después el journey.
 
 ---
 
 ## Conclusion
 
-### Reglas y objetivos
+### Las piezas y el camino
 
-Las specs prueban cada regla con la sesión guardada. El journey prueba que el usuario llega a su objetivo.
+Las specs dicen que cada pieza funciona. El journey dice que el usuario llega a su objetivo.
 
 ### Antes de aceptar el resultado
 
