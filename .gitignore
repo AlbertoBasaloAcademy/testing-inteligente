@@ -5,6 +5,9 @@ tmp/
 *.log
 data/
 
+# Node
+node_modules/
+
 # Secrets and credentials
 .env
 .env.*
@@ -30,3 +33,5 @@ secrets.json
 
 # Agent scratch
 /.claude/agents/runs
+specs/**/e2e-evidence/
+.vitest/

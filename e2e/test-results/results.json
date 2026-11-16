@@ -1,0 +1,4086 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "c:\\code\\cast\\testing-inteligente\\e2e\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "c:\\code\\cast\\testing-inteligente\\e2e\\playwright.config.ts",
+    "rootDir": "c:/code/cast/testing-inteligente/e2e/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "c:\\code\\cast\\testing-inteligente\\e2e\\core\\global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 8
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "c:/code/cast/testing-inteligente/e2e/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 8
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "c:/code/cast/testing-inteligente/e2e/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "c:\\code\\cast\\testing-inteligente\\e2e\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 8
+        },
+        "name": "chromium",
+        "testDir": "c:\\code\\cast\\testing-inteligente\\e2e\\tests",
+        "snapshotDir": "c:\\code\\cast\\testing-inteligente\\e2e\\tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://localhost:4000",
+          "trace": "retain-on-failure",
+          "screenshot": {
+            "mode": "only-on-failure",
+            "fullPage": true
+          },
+          "video": "retain-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "chromium"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 8,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "home.test.ts",
+      "file": "home.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Home page",
+          "file": "home.test.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "responds with a successful status",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2334,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:15.568Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f6fe67ec88096199d1c8-946d88b819e6703b1d00",
+              "file": "home.test.ts",
+              "line": 4,
+              "column": 3
+            },
+            {
+              "title": "shows a title",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 2729,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:15.568Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f6fe67ec88096199d1c8-b55c8832b446c337eab6",
+              "file": "home.test.ts",
+              "line": 10,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "S0001-register-user\\register-user.test.ts",
+      "file": "S0001-register-user/register-user.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "R0001 Register a user with valid data",
+          "file": "S0001-register-user/register-user.test.ts",
+          "line": 14,
+          "column": 6,
+          "specs": [
+            {
+              "title": "S001 Successful registration",
+              "ok": true,
+              "tags": [
+                "S0001",
+                "S0001-R0001"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 4157,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:15.599Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b2c2b5d2b9ac2f2c7830-d7c5ca85e3adb5ec3bd0",
+              "file": "S0001-register-user/register-user.test.ts",
+              "line": 15,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "R0002 Reject registration with an existing email",
+          "file": "S0001-register-user/register-user.test.ts",
+          "line": 37,
+          "column": 6,
+          "specs": [
+            {
+              "title": "S001 Registration with an existing email",
+              "ok": true,
+              "tags": [
+                "S0001",
+                "S0001-R0002"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 2792,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:15.611Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b2c2b5d2b9ac2f2c7830-3a0239003f5d59c7e3b1",
+              "file": "S0001-register-user/register-user.test.ts",
+              "line": 38,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "S0002-rocket-fleet\\US1-add-rocket.test.ts",
+      "file": "S0002-rocket-fleet/US1-add-rocket.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "[US1] Add a rocket",
+          "file": "S0002-rocket-fleet/US1-add-rocket.test.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[R1] Add a valid rocket",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US1",
+                "S0002-R1"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 1201,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:15.614Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e33468562ced86367411-d2b416f8d8483ffea3cb",
+              "file": "S0002-rocket-fleet/US1-add-rocket.test.ts",
+              "line": 14,
+              "column": 3
+            },
+            {
+              "title": "[R2] Reject a request without a valid token (no token)",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US1",
+                "S0002-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 1212,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:15.633Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e33468562ced86367411-3de833ec465d9e7fd148",
+              "file": "S0002-rocket-fleet/US1-add-rocket.test.ts",
+              "line": 27,
+              "column": 5
+            },
+            {
+              "title": "[R2] Reject a request without a valid token (a token not valid)",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US1",
+                "S0002-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 1030,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:15.612Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e33468562ced86367411-0dbc48b0c1f9cb5504e3",
+              "file": "S0002-rocket-fleet/US1-add-rocket.test.ts",
+              "line": 27,
+              "column": 5
+            },
+            {
+              "title": "[R3, R5, R6] Reject a rocket with a field that is not valid (R3 #1 name)",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US1",
+                "S0002-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 1508,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:15.698Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e33468562ced86367411-4c8f3d76202e5b9f600d",
+              "file": "S0002-rocket-fleet/US1-add-rocket.test.ts",
+              "line": 45,
+              "column": 5
+            },
+            {
+              "title": "[R3, R5, R6] Reject a rocket with a field that is not valid (R3 #2 name)",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US1",
+                "S0002-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 1062,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:16.721Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e33468562ced86367411-8553d06d8681004464e0",
+              "file": "S0002-rocket-fleet/US1-add-rocket.test.ts",
+              "line": 45,
+              "column": 5
+            },
+            {
+              "title": "[R3, R5, R6] Reject a rocket with a field that is not valid (R5 #3 capacity)",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US1",
+                "S0002-R5"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 1204,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:16.883Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e33468562ced86367411-dde826122c841cd0da65",
+              "file": "S0002-rocket-fleet/US1-add-rocket.test.ts",
+              "line": 45,
+              "column": 5
+            },
+            {
+              "title": "[R3, R5, R6] Reject a rocket with a field that is not valid (R5 #4 capacity)",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US1",
+                "S0002-R5"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 1184,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:16.919Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e33468562ced86367411-5ca940120e9fba388fdd",
+              "file": "S0002-rocket-fleet/US1-add-rocket.test.ts",
+              "line": 45,
+              "column": 5
+            },
+            {
+              "title": "[R3, R5, R6] Reject a rocket with a field that is not valid (R6 #5 range)",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US1",
+                "S0002-R6"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 1169,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:17.270Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e33468562ced86367411-a43e771eebba1b5ab8a9",
+              "file": "S0002-rocket-fleet/US1-add-rocket.test.ts",
+              "line": 45,
+              "column": 5
+            },
+            {
+              "title": "[R4] Reject a rocket with a name that exists",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US1",
+                "S0002-R4"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 1081,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:17.810Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e33468562ced86367411-fe189af0bab6dfe3bd2a",
+              "file": "S0002-rocket-fleet/US1-add-rocket.test.ts",
+              "line": 61,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "S0002-rocket-fleet\\US2-list-rockets.test.ts",
+      "file": "S0002-rocket-fleet/US2-list-rockets.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "[US2] List the rockets",
+          "file": "S0002-rocket-fleet/US2-list-rockets.test.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[R2] Reject a request without a valid token (no token)",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US2",
+                "S0002-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 1120,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:18.148Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9e05b315770465e19303-79cda3ef5bc3dbaa85e0",
+              "file": "S0002-rocket-fleet/US2-list-rockets.test.ts",
+              "line": 23,
+              "column": 5
+            },
+            {
+              "title": "[R2] Reject a request without a valid token (a token not valid)",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US2",
+                "S0002-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 868,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:18.149Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9e05b315770465e19303-c0e3c7c503ff8ed6268d",
+              "file": "S0002-rocket-fleet/US2-list-rockets.test.ts",
+              "line": 23,
+              "column": 5
+            },
+            {
+              "title": "[R7] Show all the rockets of the fleet",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US2",
+                "S0002-R7"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10178,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:18.229Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9e05b315770465e19303-605bef86a0622165bfc9",
+              "file": "S0002-rocket-fleet/US2-list-rockets.test.ts",
+              "line": 37,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "S0002-rocket-fleet\\US3-see-rocket-details.test.ts",
+      "file": "S0002-rocket-fleet/US3-see-rocket-details.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "[US3] See the details of a rocket",
+          "file": "S0002-rocket-fleet/US3-see-rocket-details.test.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[R2] Reject a request without a valid token (no token)",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US3",
+                "S0002-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 1341,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:18.490Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "17f47ab8ce291edbc78e-d51aa46009743ac16f73",
+              "file": "S0002-rocket-fleet/US3-see-rocket-details.test.ts",
+              "line": 19,
+              "column": 5
+            },
+            {
+              "title": "[R2] Reject a request without a valid token (a token not valid)",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US3",
+                "S0002-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1449,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:18.604Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "17f47ab8ce291edbc78e-ca77ac51c4132e13571e",
+              "file": "S0002-rocket-fleet/US3-see-rocket-details.test.ts",
+              "line": 19,
+              "column": 5
+            },
+            {
+              "title": "[R8] Show a message for a rocket that does not exist",
+              "ok": true,
+              "tags": [
+                "S0002",
+                "S0002-US3",
+                "S0002-R8"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 6881,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:18.752Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "17f47ab8ce291edbc78e-31c872aeefb2df6248eb",
+              "file": "S0002-rocket-fleet/US3-see-rocket-details.test.ts",
+              "line": 33,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "S0003-schedule-launch\\US1-schedule-launch.test.ts",
+      "file": "S0003-schedule-launch/US1-schedule-launch.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "[US1] Schedule a launch",
+          "file": "S0003-schedule-launch/US1-schedule-launch.test.ts",
+          "line": 9,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[R1] Schedule a valid launch",
+              "ok": true,
+              "tags": [
+                "S0003",
+                "S0003-US1",
+                "S0003-R1"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 9404,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:18.939Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f066904a8619a660f96-265cd0b8c68ce93d6a29",
+              "file": "S0003-schedule-launch/US1-schedule-launch.test.ts",
+              "line": 10,
+              "column": 3
+            },
+            {
+              "title": "[R4] Reject a date that is not valid or not in the future (today)",
+              "ok": true,
+              "tags": [
+                "S0003",
+                "S0003-US1",
+                "S0003-R4"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 9878,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:19.063Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f066904a8619a660f96-84496b46b83c7f569b9a",
+              "file": "S0003-schedule-launch/US1-schedule-launch.test.ts",
+              "line": 35,
+              "column": 5
+            },
+            {
+              "title": "[R4] Reject a date that is not valid or not in the future (yesterday)",
+              "ok": true,
+              "tags": [
+                "S0003",
+                "S0003-US1",
+                "S0003-R4"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 9456,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:19.329Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f066904a8619a660f96-de341ca49f8a1324bfdd",
+              "file": "S0003-schedule-launch/US1-schedule-launch.test.ts",
+              "line": 35,
+              "column": 5
+            },
+            {
+              "title": "[R5] Reject a price that is not a number greater than 0 (0)",
+              "ok": true,
+              "tags": [
+                "S0003",
+                "S0003-US1",
+                "S0003-R5"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 8670,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:20.072Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f066904a8619a660f96-d19a2ae54c4b48a8c03b",
+              "file": "S0003-schedule-launch/US1-schedule-launch.test.ts",
+              "line": 60,
+              "column": 5
+            },
+            {
+              "title": "[R5] Reject a price that is not a number greater than 0 (-10)",
+              "ok": true,
+              "tags": [
+                "S0003",
+                "S0003-US1",
+                "S0003-R5"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 8185,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:20.124Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f066904a8619a660f96-b26a35678ebf3a7089d4",
+              "file": "S0003-schedule-launch/US1-schedule-launch.test.ts",
+              "line": 60,
+              "column": 5
+            },
+            {
+              "title": "[R6] Reject a second launch of a rocket on the same date",
+              "ok": true,
+              "tags": [
+                "S0003",
+                "S0003-US1",
+                "S0003-R6"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 13176,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:20.162Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5f066904a8619a660f96-87879668f7efae892802",
+              "file": "S0003-schedule-launch/US1-schedule-launch.test.ts",
+              "line": 85,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "S0003-schedule-launch\\US2-list-launches.test.ts",
+      "file": "S0003-schedule-launch/US2-list-launches.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "[US2] List the launches",
+          "file": "S0003-schedule-launch/US2-list-launches.test.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[R7] Show all the launches with their data",
+              "ok": true,
+              "tags": [
+                "S0003",
+                "S0003-US2",
+                "S0003-R7"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 9754,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:25.755Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7900e04d35948ac03df8-6256f6adaf6f843566ae",
+              "file": "S0003-schedule-launch/US2-list-launches.test.ts",
+              "line": 9,
+              "column": 3
+            },
+            {
+              "title": "[R8] Send a user without a valid token to the login page (no token)",
+              "ok": true,
+              "tags": [
+                "S0003",
+                "S0003-US2",
+                "S0003-R8"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 3876,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:28.442Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7900e04d35948ac03df8-0cf576449844a70b9962",
+              "file": "S0003-schedule-launch/US2-list-launches.test.ts",
+              "line": 30,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "S0004-launch-lifecycle\\US1-change-launch-status.test.ts",
+      "file": "S0004-launch-lifecycle/US1-change-launch-status.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "[US1] Change the status of a launch",
+          "file": "S0004-launch-lifecycle/US1-change-launch-status.test.ts",
+          "line": 14,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[R1] Give a new launch the status planned",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US1",
+                "S0004-R1"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7485,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:28.470Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2d6645088f39430b601d-5d78973b51626277145e",
+              "file": "S0004-launch-lifecycle/US1-change-launch-status.test.ts",
+              "line": 22,
+              "column": 3
+            },
+            {
+              "title": "[R2] Change the status to a permitted new status (planned to confirmed)",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US1",
+                "S0004-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 8087,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:28.567Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2d6645088f39430b601d-fe8915af71e4196a7259",
+              "file": "S0004-launch-lifecycle/US1-change-launch-status.test.ts",
+              "line": 33,
+              "column": 5
+            },
+            {
+              "title": "[R2] Change the status to a permitted new status (confirmed to successful)",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US1",
+                "S0004-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 8342,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:29.265Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2d6645088f39430b601d-86221ed054fdc5f6804d",
+              "file": "S0004-launch-lifecycle/US1-change-launch-status.test.ts",
+              "line": 33,
+              "column": 5
+            },
+            {
+              "title": "[R2] Change the status to a permitted new status (confirmed to failed)",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US1",
+                "S0004-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 8188,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:29.298Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2d6645088f39430b601d-a5f4f3f8716420aa3be5",
+              "file": "S0004-launch-lifecycle/US1-change-launch-status.test.ts",
+              "line": 33,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject a change of status that is not permitted (planned to successful)",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US1",
+                "S0004-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 10689,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:29.731Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2d6645088f39430b601d-a8a0d00877b8c2f0fdb6",
+              "file": "S0004-launch-lifecycle/US1-change-launch-status.test.ts",
+              "line": 58,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject a change of status that is not permitted (planned to failed)",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US1",
+                "S0004-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 11921,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:32.395Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2d6645088f39430b601d-d62a901c6208ee1ea5aa",
+              "file": "S0004-launch-lifecycle/US1-change-launch-status.test.ts",
+              "line": 58,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject a change of status that is not permitted (successful to failed)",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US1",
+                "S0004-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 10886,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:33.424Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2d6645088f39430b601d-0957ec970b1272fdfe82",
+              "file": "S0004-launch-lifecycle/US1-change-launch-status.test.ts",
+              "line": 58,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject a change of status that is not permitted (failed to confirmed)",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US1",
+                "S0004-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 12642,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:35.728Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2d6645088f39430b601d-1e74cb969a53e1b369f9",
+              "file": "S0004-launch-lifecycle/US1-change-launch-status.test.ts",
+              "line": 58,
+              "column": 5
+            },
+            {
+              "title": "[R4] Reject a change of status of a launch that does not exist",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US1",
+                "S0004-R4"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7499,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:35.983Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2d6645088f39430b601d-0058b26594065a1410c1",
+              "file": "S0004-launch-lifecycle/US1-change-launch-status.test.ts",
+              "line": 86,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "S0004-launch-lifecycle\\US2-suspend-launch.test.ts",
+      "file": "S0004-launch-lifecycle/US2-suspend-launch.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "[US2] Suspend a launch with a cause and a message",
+          "file": "S0004-launch-lifecycle/US2-suspend-launch.test.ts",
+          "line": 13,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[R5] Suspend a launch with a valid cause and message",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US2",
+                "S0004-R5"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 7900,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:36.699Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1303b2ab5093d1e2820d-87b3d198daf0b3ed6aa2",
+              "file": "S0004-launch-lifecycle/US2-suspend-launch.test.ts",
+              "line": 36,
+              "column": 5
+            },
+            {
+              "title": "[R6] Reject a cause that is not valid (\"storm\")",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US2",
+                "S0004-R6"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 11428,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:37.604Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1303b2ab5093d1e2820d-f2a37e744588c3344078",
+              "file": "S0004-launch-lifecycle/US2-suspend-launch.test.ts",
+              "line": 51,
+              "column": 7
+            },
+            {
+              "title": "[R6] Reject a cause that is not valid (\"\")",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US2",
+                "S0004-R6"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 11882,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:37.700Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1303b2ab5093d1e2820d-59973699df6076777844",
+              "file": "S0004-launch-lifecycle/US2-suspend-launch.test.ts",
+              "line": 51,
+              "column": 7
+            },
+            {
+              "title": "[R7] Reject a message with a length that is not valid (2 characters)",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US2",
+                "S0004-R7"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 9625,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:40.857Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1303b2ab5093d1e2820d-ae595321ff07e3e34f07",
+              "file": "S0004-launch-lifecycle/US2-suspend-launch.test.ts",
+              "line": 75,
+              "column": 7
+            },
+            {
+              "title": "[R7] Reject a message with a length that is not valid (201 characters)",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US2",
+                "S0004-R7"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10046,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:43.541Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1303b2ab5093d1e2820d-6e705d92a10d1495d200",
+              "file": "S0004-launch-lifecycle/US2-suspend-launch.test.ts",
+              "line": 75,
+              "column": 7
+            },
+            {
+              "title": "[R7] Stop a suspension without a message",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US2",
+                "S0004-R7"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 9484,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:44.365Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1303b2ab5093d1e2820d-c148b68d4c2411351e79",
+              "file": "S0004-launch-lifecycle/US2-suspend-launch.test.ts",
+              "line": 94,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "S0004-launch-lifecycle\\US3-see-launch-status.test.ts",
+      "file": "S0004-launch-lifecycle/US3-see-launch-status.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "[US3] See the status of each launch in the list",
+          "file": "S0004-launch-lifecycle/US3-see-launch-status.test.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[R8] Show the status of each launch",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US3",
+                "S0004-R8"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 8820,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:44.364Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f85c8d9919769a518e01-2e7d053a71ce6b5eb165",
+              "file": "S0004-launch-lifecycle/US3-see-launch-status.test.ts",
+              "line": 18,
+              "column": 5
+            },
+            {
+              "title": "[R9] Show the cause and the message of a suspended launch",
+              "ok": true,
+              "tags": [
+                "S0004",
+                "S0004-US3",
+                "S0004-R9"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 9389,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:44.643Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f85c8d9919769a518e01-d4f7b12d87036c48940b",
+              "file": "S0004-launch-lifecycle/US3-see-launch-status.test.ts",
+              "line": 34,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "S0005-passenger-bookings\\US1-book-passenger.test.ts",
+      "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "[US1] Book a passenger on a launch",
+          "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+          "line": 27,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[R1] Book a passenger when the launch is planned",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R1"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 9302,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:48.510Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-dc7462f8257bca79b696",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 29,
+              "column": 5
+            },
+            {
+              "title": "[R1] Book a passenger when the launch is confirmed",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R1"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 7754,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:49.178Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-356ed3b600dfbdc9b5d8",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 29,
+              "column": 5
+            },
+            {
+              "title": "[R2] Reject a booking with no token",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 7248,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:49.663Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-14d9985c866249ee41cd",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 52,
+              "column": 5
+            },
+            {
+              "title": "[R2] Reject a booking with an invalid token",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 10607,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:50.931Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-ff99c282a3a528e8ed8f",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 52,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject missing for name",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 10004,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:53.254Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-ae50f1ec0ca251837df2",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject empty for name",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8079,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:53.645Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-a1cf9ae39a54ac63312f",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject spaces for name",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 8869,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:53.942Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-ab0605e8633f77e5945c",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject number for name",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 8227,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:54.113Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-723554886218583404ef",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject missing for nationality",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 11899,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:56.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-cafc812cb385f1b9d644",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject empty for nationality",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 9146,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:56.978Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-03bedf31fdbf9c09d940",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject spaces for nationality",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 12028,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:28:57.845Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-e2074adfa3a81d991d5b",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject number for nationality",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 9935,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:01.572Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-52cd02712466d20f7efc",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject missing for identityDocument",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 12551,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:01.763Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-e3cc663319cb430440c1",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject empty for identityDocument",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 10417,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:02.364Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-36b761ede9d653c8e76a",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject spaces for identityDocument",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 8758,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:02.846Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-f7d8e7df1640839c7a4b",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject number for identityDocument",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 11948,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:03.287Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-26537222663d34a8a19f",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject missing for email",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 12308,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:06.164Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-f294e0c47a18d6e03ff2",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject empty for email",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 13166,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:08.876Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-b1ca17f8be18bce3c92c",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject spaces for email",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 12631,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:09.902Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-58bfaaf843056e8ce67b",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject number for email",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 11936,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:11.542Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-217082358e231387b44f",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject missing for phone",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 11128,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:11.636Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-a9843d613d0fabcfffb9",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject empty for phone",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 11454,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:12.816Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-92ab597176e90665fd2c",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject spaces for phone",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 12249,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:14.343Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-405a7c6f1b4d6fbfab2e",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject number for phone",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 12764,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:15.266Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-957bb8fbb5f4e3cc8a76",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject invalid-email for email",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 11557,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:18.538Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-a3bce8cbfac890c6170b",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 75,
+              "column": 5
+            },
+            {
+              "title": "[R4] Reject a booking for a launch that does not exist",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R4"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 1389,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:22.124Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-fe4f4e32d4c3f0d0531c",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 95,
+              "column": 3
+            },
+            {
+              "title": "[R5] Reject a duplicate document and its whitespace variant",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R5"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 10931,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:22.580Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-e5e7cd116675642d06b8",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 110,
+              "column": 3
+            },
+            {
+              "title": "[R5] Allow only one of two concurrent bookings with the same document",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R5"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 12045,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:22.791Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-3ea4e32fe99e5a658cf0",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 137,
+              "column": 3
+            },
+            {
+              "title": "[R6] Reject a booking when all seats are taken",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R6"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 11954,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:23.505Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-f2885cfd6b08dcc5eb2e",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 165,
+              "column": 3
+            },
+            {
+              "title": "[R6] Allow only one of two concurrent bookings for the last seat",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R6"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 13013,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:23.580Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-d5ca81e21ad4b3459459",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 187,
+              "column": 3
+            },
+            {
+              "title": "[R7] Reject a booking when the launch is successful",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R7"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 9255,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:24.296Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-5c4b34ec3c344edd51b7",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 214,
+              "column": 5
+            },
+            {
+              "title": "[R7] Reject a booking when the launch is suspended",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R7"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11912,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:26.646Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-2cf6d33f9b7489ca1e53",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 214,
+              "column": 5
+            },
+            {
+              "title": "[R7] Reject a booking when the launch is failed",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US1",
+                "S0005-R7"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 11048,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:28.062Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7090b376949c7b2ccf2e-df008ac9c362a8ef7488",
+              "file": "S0005-passenger-bookings/US1-book-passenger.test.ts",
+              "line": 214,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "S0005-passenger-bookings\\US2-see-passengers.test.ts",
+      "file": "S0005-passenger-bookings/US2-see-passengers.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "[US2] See the passengers of a launch and its available seats",
+          "file": "S0005-passenger-bookings/US2-see-passengers.test.ts",
+          "line": 22,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[R8] Show passenger details, capacity and available seats",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US2",
+                "S0005-R8"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 7706,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:30.149Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "01508596d96b6ed099f1-9cdd58d2c332a6c15263",
+              "file": "S0005-passenger-bookings/US2-see-passengers.test.ts",
+              "line": 26,
+              "column": 5
+            },
+            {
+              "title": "[R9] Send no token to login",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US2",
+                "S0005-R9"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 6719,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:33.573Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "01508596d96b6ed099f1-d1bf8ff51af84067100b",
+              "file": "S0005-passenger-bookings/US2-see-passengers.test.ts",
+              "line": 56,
+              "column": 7
+            },
+            {
+              "title": "[R9] Send an invalid token to login",
+              "ok": true,
+              "tags": [
+                "S0005",
+                "S0005-US2",
+                "S0005-R9"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 6507,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:33.604Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "01508596d96b6ed099f1-f0f5cfda20d46b261b9c",
+              "file": "S0005-passenger-bookings/US2-see-passengers.test.ts",
+              "line": 56,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "S0006-user-roles\\US1-register-as-passenger.test.ts",
+      "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "[US1] Register as a passenger",
+          "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+          "line": 141,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[R1] Register a visitor as a passenger",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R1"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1573,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:34.904Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-d80e865f09f2ef9edc42",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 142,
+              "column": 3
+            },
+            {
+              "title": "[R2] Return rockets, launches and free seats to a passenger (the rockets)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 3812,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:35.547Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-f060bcccb38b2dba7d08",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 156,
+              "column": 5
+            },
+            {
+              "title": "[R2] Return rockets, launches and free seats to a passenger (one rocket)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 3478,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:36.532Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-d61db7e4e7a98761a7d9",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 156,
+              "column": 5
+            },
+            {
+              "title": "[R2] Return rockets, launches and free seats to a passenger (the launches)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 4009,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:36.649Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-7ccfedd4a6103b419258",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 156,
+              "column": 5
+            },
+            {
+              "title": "[R2] Return rockets, launches and free seats to a passenger (the free seats of a launch)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R2"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 3149,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:37.956Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-db47890f045592604cd2",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 156,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject a change by a passenger (creates a rocket)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3080,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:38.670Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-5658ff775c714153bf04",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 174,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject a change by a passenger (schedules a launch)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 3372,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:39.199Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-645ee76eef820a8e895f",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 174,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject a change by a passenger (changes a launch status)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 3281,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:39.397Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-be62adfe42d71eacefec",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 174,
+              "column": 5
+            },
+            {
+              "title": "[R3] Reject a change by a passenger (books a passenger)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R3"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 3161,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:40.035Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-5fd52999848929876069",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 174,
+              "column": 5
+            },
+            {
+              "title": "[R4] Reject a passenger request for the passengers of a launch",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R4"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 3146,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:40.166Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-c4000f922aa5f0146699",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 188,
+              "column": 3
+            },
+            {
+              "title": "[R5] Reject a request without a valid token (rockets, no token)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R5"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 15,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:40.353Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-0d161b44dcefa9b2b366",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 203,
+              "column": 5
+            },
+            {
+              "title": "[R5] Reject a request without a valid token (rockets, a token not valid)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R5"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 14,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:40.381Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-7ec6c2f65abf442346f3",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 203,
+              "column": 5
+            },
+            {
+              "title": "[R5] Reject a request without a valid token (launches, no token)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R5"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 11,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:40.413Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-3b59e82762646f3a6f7c",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 203,
+              "column": 5
+            },
+            {
+              "title": "[R5] Reject a request without a valid token (launches, a token not valid)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R5"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 13,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:40.438Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-8f62604e46df23866784",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 203,
+              "column": 5
+            },
+            {
+              "title": "[R5] Reject a request without a valid token (bookings, no token)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R5"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 25,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:40.463Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-61886e9813b4fb23f606",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 203,
+              "column": 5
+            },
+            {
+              "title": "[R5] Reject a request without a valid token (bookings, a token not valid)",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US1",
+                "S0006-R5"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 16,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:40.501Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f52e7a844be6caa495b4-4414776c1e1b6ea05abd",
+              "file": "S0006-user-roles/US1-register-as-passenger.test.ts",
+              "line": 203,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "S0006-user-roles\\US2-show-name-and-role.test.ts",
+      "file": "S0006-user-roles/US2-show-name-and-role.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "[US2] Show the name and the role in the menu",
+          "file": "S0006-user-roles/US2-show-name-and-role.test.ts",
+          "line": 23,
+          "column": 6,
+          "specs": [
+            {
+              "title": "[R6] Show the passenger name and hide management actions",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US2",
+                "S0006-R6"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 5379,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:40.556Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c6e4033963966ed16927-ff78e8e434f9b1d92ce0",
+              "file": "S0006-user-roles/US2-show-name-and-role.test.ts",
+              "line": 27,
+              "column": 5
+            },
+            {
+              "title": "[R7] Show the operator role and the management actions",
+              "ok": true,
+              "tags": [
+                "S0006",
+                "S0006-US2",
+                "S0006-R7"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 4933,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-12T12:29:40.706Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c6e4033963966ed16927-6194ebed1e43056d5aff",
+              "file": "S0006-user-roles/US2-show-name-and-role.test.ts",
+              "line": 66,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-12T12:28:14.171Z",
+    "duration": 91983.635,
+    "expected": 98,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

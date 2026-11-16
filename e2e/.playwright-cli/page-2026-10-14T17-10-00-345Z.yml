@@ -1,0 +1,40 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - navigation "Main menu" [ref=e4]:
+      - strong [ref=e5]: testing-inteligente
+      - list [ref=e6]:
+        - listitem [ref=e7]:
+          - link "Home" [ref=e8] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e9]:
+          - link "About" [ref=e10] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e11]:
+          - link "Health" [ref=e12] [cursor=pointer]:
+            - /url: /health
+        - listitem [ref=e13]:
+          - link "Login" [ref=e14] [cursor=pointer]:
+            - /url: /login
+        - listitem [ref=e15]:
+          - link "Register" [ref=e16] [cursor=pointer]:
+            - /url: /register
+      - button "Change theme" [ref=e17] [cursor=pointer]: Theme
+    - status
+  - main [ref=e18]:
+    - generic [ref=e50]:
+      - heading "Register" [level=1] [ref=e51]
+      - generic [ref=e52]:
+        - generic [ref=e53]:
+          - text: Email
+          - textbox "Email" [ref=e54]
+          - status
+        - generic [ref=e55]:
+          - text: Name
+          - textbox "Name" [ref=e56]
+          - status
+        - generic [ref=e57]:
+          - text: Password
+          - textbox "Password" [ref=e58]
+          - status
+        - button "Register" [ref=e59] [cursor=pointer]
+        - status
