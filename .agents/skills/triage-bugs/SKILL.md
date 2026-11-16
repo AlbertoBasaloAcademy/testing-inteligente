@@ -1,6 +1,6 @@
 ---
 name: triage-bugs
-description: Analyze all failures in an E2E report and prepare a correction spec. Use it when an E2E report has failures to investigate, or when the user invokes /triage-bugs.
+description: Analyze all failures in an E2E report of a spec or a journey and prepare a correction spec. Use it when an E2E report has failures to investigate, or when the user invokes /triage-bugs.
 ---
 
 # Triage E2E failure
@@ -9,21 +9,22 @@ Find the causes of all failures in an E2E report. Prepare a correction spec for 
 
 ## Input
 
-1. Get the spec code from the user, for example `S0042`.
-2. Find `specs/<spec>-<slug>/e2e-report.md` and its `e2e-evidence/`.
-3. If the spec code or a required input is missing, ask the user one closed question.
+1. Get the code from the user, for example `S0042` or `J0001`. `S` is a spec. `J` is a journey.
+2. Find `specs/<code>-<slug>/e2e-report.md` and its `e2e-evidence/`.
+3. For a journey, there is no `spec.md`. Read the `.feature` and the specs of its steps.
+4. If the code or a required input is missing, ask the user one closed question.
 
 ## Steps
 
 1. Read the report and its evidence. Include all failures in `Regressions`.
 2. If the report has no failures, say so in one line and stop.
 3. For each failure, read the test and its Page Objects. Read the back and front code that takes part in the failed behavior.
-4. Read the test's `.feature` and `spec.md`. Read the specs that define the rules used by the test.
+4. Read the test's `.feature`. For a spec, read `spec.md` and the specs that define the rules used by the test. For a journey, treat the code of a `test.step` as a clue that does not assign the failure to a spec, and link the `.feature` in `fix.spec.md`.
 5. Compare three hypotheses for each failure: test, code, and spec. For each hypothesis, find evidence for and against it. Give one check that can confirm or discard it.
 6. Group failures that have the same cause. Record spec gaps separately from the origin.
 7. Decide the origin, confidence, and correcting agent for each cause. If the evidence is not sufficient, state what is missing.
 8. Verify every citation. Show the verdict and ask for approval. Stop until the user approves.
-9. After approval, use [the template](assets/fix.spec.template.md) to replace `specs/<spec>-<slug>/fix.spec.md`.
+9. After approval, use [the template](assets/fix.spec.template.md) to replace `specs/<code>-<slug>/fix.spec.md`.
 10. Verify the correction spec against the approved verdict and the rules below.
 
 ## Rules

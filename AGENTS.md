@@ -57,6 +57,7 @@ Based on two projects, a backend REST API in `projects/back` and a frontend web 
 - `npm run test:e2e` stops the servers of `npm start`. Then it empties the database and starts the back and the front. Each run starts with an empty database.
 - Do not use `vp test` for the e2e tests. Vitest cannot run Playwright specs.
 - Put each test in `e2e/tests/<id>-<slug>/<story-code>-<slug>.test.ts`.
+- Put each journey test in `e2e/tests/J<id>-<slug>/J<id>-<slug>.test.ts`.
 - The front URL is `http://localhost:4000`. 
 - The back URL is `http://localhost:3000`. 
 - `e2e/core/` holds the shared setup: `env.ts` (URLs), `global-setup.ts` (checks and seed) and `seed-data.ts`.

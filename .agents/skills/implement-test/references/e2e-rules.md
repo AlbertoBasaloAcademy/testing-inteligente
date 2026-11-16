@@ -1,14 +1,14 @@
 # E2E rules
 
-The e2e tests obey these rules. Each rule has a code. The skills `define-test` and `implement-test` link to these rules.
+The e2e tests obey these rules. Each rule has a code. The skills `define-test`, `implement-test` and `fix-test` link to these rules.
 
 ## E1 Files and codes
 
-- **E1.1** Each spec has a folder `specs/<id>-<slug>/`. The spec is in `specs/<id>-<slug>/spec.md`.
-- **E1.2** Each user story has one `.feature` file in the folder of the spec: `specs/<id>-<slug>/<story-code>-<story-slug>.feature`. For example, `US1-<slug>.feature`.
-- **E1.3** Write one test file for each `.feature` file. Give it the same name with `.test.ts`: `US1-<slug>.test.ts`.
+- **E1.1** Each spec has a folder `specs/<id>-<slug>/`. The spec is in `specs/<id>-<slug>/spec.md`. Each journey has a folder `specs/J<id>-<slug>/`. A journey has no `spec.md`.
+- **E1.2** Each user story has one `.feature` file in the folder of the spec: `specs/<id>-<slug>/<story-code>-<story-slug>.feature`. For example, `US1-<slug>.feature`. A journey has one `.feature` file: `specs/J<id>-<slug>/J<id>-<slug>.feature`.
+- **E1.3** Write one test file for each `.feature` file. Give it the same name with `.test.ts`: `US1-<slug>.test.ts`. Put a journey test in `e2e/tests/J<id>-<slug>/J<id>-<slug>.test.ts`.
 - **E1.4** Do not use `.spec.ts`. The word "spec" is for the specification.
-- **E1.5** Use only the codes of the spec and of the `.feature` files. Do not make new codes.
+- **E1.5** Use only the codes of the spec, of the journey and of the `.feature` files. A code may start with `S` or with `J`. Do not make new codes.
 
 ## E2 Select the elements
 
@@ -93,4 +93,29 @@ export function createLaunchData(): LaunchForm {
 const launch = createLaunchData();
 await launches.scheduleLaunch(launch);
 await expect(launches.launchOn(launch.date)).toBeVisible();
+```
+
+## E8 Journeys
+
+- **E8.1** A journey has a folder `specs/J<id>-<slug>/` with one `.feature` file.
+- **E8.2** Write one test file for the journey: `e2e/tests/J<id>-<slug>/J<id>-<slug>.test.ts`.
+- **E8.3** Write one `test.describe` with the tags `@journey` and `@J<id>`. Write one `test` for each scenario. Give the test the tag `@J<id>-<n>`, for example `@J0001-1`. `detect-bugs` uses that tag as the ID of the test.
+- **E8.4** Write one `test.step` for each step. Start the title with the code of the criterion: `[S0002-R1] Add a rocket`.
+- **E8.5** Do every action through the UI. Do not use the API or a network response to prepare data or to check data.
+- **E8.6** Use the Page Objects (E6). If a page has no Page Object, add one.
+- **E8.7** Check only the observable result at the end of each step (E3). Do not check the rules of the spec again.
+- **E8.8** Use unique data (E7). Use the seed only for the account of the actor.
+- **E8.9** Start with an empty context: `test.use({ storageState: { cookies: [], origins: [] } })`. Sign in through the UI as a step of the journey.
+
+```ts
+test.use({ storageState: { cookies: [], origins: [] } });
+test.describe('[J0001] Add a rocket', { tag: ['@journey', '@J0001'] }, () => {
+  test('Add a rocket', { tag: '@J0001-1' }, async ({ page }) => {
+    await test.step('[S0006-R7] Sign in', async () => { await home.signIn(operator); });
+    await test.step('[S0002-R1] Add a rocket', async () => {
+      await rockets.addRocket(rocket);
+      await expect(rockets.rocketNamed(rocket.name)).toBeVisible();
+    });
+  });
+});
 ```

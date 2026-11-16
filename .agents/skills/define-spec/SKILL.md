@@ -16,7 +16,7 @@ Write one spec for one feature. Use the template [spec.template.md](assets/spec.
 
 ## Steps
 
-1. Set the front matter: `id` (next free `S0000` number), `name` and `slug`.
+1. Set the front matter: `id` (next free `S0000` number; count only the folders `S*`), `name` and `slug`.
 2. **Problem**: write the problem in one or two short sentences.
 3. **User stories**: write 1 to 3 stories. Give each story a number: `US1`, `US2`, `US3`.
 4. **Business rules**: write fewer than 8 rules. Use RuleSpeak (`A <term> must ...`).

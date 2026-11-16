@@ -1,27 +1,29 @@
 ---
 name: fix-test
-description: Fixes the Playwright e2e tests in e2e/tests/ against the e2e rules and the EARS criteria of the specs, and adds a test for each scenario without a test. Does not stop for approval. Use it after you write or change e2e tests, or when the user invokes /fix-test.
+description: Fixes the Playwright e2e tests in e2e/tests/ against the e2e rules and the criteria of the specs or journeys, and adds a test for each scenario without a test. Does not stop for approval. Use it after you write or change e2e tests, or when the user invokes /fix-test.
 ---
 
 # Fix the e2e tests
 
-Make each e2e test obey the e2e rules and check the response of its EARS criterion. Keep what each test checks.
+Make each e2e test obey the e2e rules and check the response of its criterion. Keep what each test checks.
 
 ## Input
 
-1. Read the rules E1 to E7 in [e2e-rules.md](../implement-test/references/e2e-rules.md).
+1. Read the rules E1 to E8 in [e2e-rules.md](../implement-test/references/e2e-rules.md).
 2. Read the rule of independent tests in `AGENTS.md`, section "E2E tests".
 3. Read each `*.test.ts` file in `e2e/tests/`. Playwright runs only these files.
 4. Read the Page Objects in `e2e/pages/` and the data in `e2e/test-data/` that the tests import.
-5. For each test file, read the spec and the `.feature` files in `specs/<id>-<slug>/`.
-6. If the user names some specs or test files, fix only those.
+5. For a spec, read the spec and the `.feature` files in `specs/<id>-<slug>/`.
+6. For a journey, read the `.feature` in `specs/J<id>-<slug>/`. Read the criterion of each step in its spec. A journey has no `spec.md`.
+7. If the user names some specs, journeys or test files, fix only those.
 
 ## Steps
 
-1. Compare each test with each rule E1 to E7 and with the rule of independent tests. Fix each problem.
-2. Compare the expected result of each test with the response of its EARS criterion in the spec. Make the expected result agree with the criterion.
-3. Find each scenario that has no test. Add a test for it.
-4. Find each test that has no scenario. Write it in the table only.
+1. Compare each test with the rules of its mode and fix each problem.
+   - For a journey, compare each `test.step` with the criterion of its step. Apply E8. Do not add assertions of the rules of the spec.
+   - For a spec, compare the test with each rule E1 to E7 and with the rule of independent tests. Make the expected result agree with the response of its EARS criterion.
+2. Find each scenario that has no test. Add a test for it.
+3. Find each test that has no scenario. Write it in the table only.
 
 ## Rules
 
