@@ -3,6 +3,7 @@ import type { HttpClient } from "../../shared/http.type.ts";
 import type { PageContext } from "../../shared/page.type.ts";
 import { canManage, readUser } from "../auth/auth.store.ts";
 import { createRocketsClient, createRocketsStore, leaveToLogin } from "../rockets/rockets.api.ts";
+import type { Rocket } from "../rockets/rockets.api.ts";
 import { createLaunchesClient } from "./launches.client.ts";
 import { mountLaunchForm } from "./launches.component.ts";
 import { createStatusControls } from "./launches.status.component.ts";
@@ -53,7 +54,10 @@ function createElement(tag: string, attributes: Record<string, string>) {
 }
 export async function mount(context: PageContext) {
   const store = createLaunchesStore(createLaunchesClient(context.services.http));
-  const fleet = await createRocketsStore(createRocketsClient(context.services.http)).list();
+  const shared = sessionStorage.getItem("fleet");
+  const fleet = shared
+    ? { status: "loaded" as const, rockets: JSON.parse(shared) as Rocket[] }
+    : await createRocketsStore(createRocketsClient(context.services.http)).list();
   if (fleet.status === "unauthorized") return leaveToLogin(context);
   const heading = document.createElement("h1");
   heading.textContent = "Launches";
