@@ -11,9 +11,17 @@ export function isoDate(days: number): string {
   return new Date(Date.now() + days * DAY).toISOString().slice(0, 10);
 }
 
-// Date.now() plus a random part: parallel workers can start in the same millisecond.
+// Each worker uses only the days with its own remainder of MAX_WORKERS.
+// So two parallel workers never get the same day, even in the same millisecond.
+// The random start keeps the days of two runs apart when the database is not emptied.
+const MAX_WORKERS = 64;
+const SLOTS = 39_000; // SLOTS * MAX_WORKERS days: about 6800 years.
+const workerSlot = Number(process.env.TEST_PARALLEL_INDEX ?? 0) % MAX_WORKERS;
+let nextSlot = Math.floor(Math.random() * SLOTS);
+
 export function uniqueFutureDate(): string {
-  return isoDate(1 + ((Date.now() + Math.floor(Math.random() * 1000)) % 2_500_000));
+  nextSlot = (nextSlot + 1) % SLOTS;
+  return isoDate(1 + nextSlot * MAX_WORKERS + workerSlot);
 }
 
 export type StatusChange = { status: string; suspensionCause?: string; suspensionMessage?: string };
