@@ -12,6 +12,7 @@ export interface Launch {
   createdAt: string;
 }
 export type LaunchInput = Pick<Launch, "rocketId" | "date" | "pricePerPassenger">;
+export type PublicLaunch = Pick<Launch, "rocketName" | "date" | "pricePerPassenger" | "status">;
 export type StatusChange = Pick<Launch, "status" | "suspensionCause" | "suspensionMessage">;
 export interface LaunchRocket {
   id: string;

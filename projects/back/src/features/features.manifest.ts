@@ -17,7 +17,7 @@ export function registerFeatures(services: ApplicationServices) {
     ...auth.registrations,
     usersRegistration,
     registerRockets(services),
-    registerLaunches(services),
+    ...registerLaunches(services),
     registerBookings(services),
   ];
   return { registrations, resolve: auth.resolve };

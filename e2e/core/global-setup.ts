@@ -1,7 +1,7 @@
 // Prepares the systems before the tests:
 // 1. back-api and front-web respond.
 // 2. front-web uses the same back-api as the tests.
-// 3. The seed data exists (users, then rockets). The operator creates the rockets.
+// 3. The seed data exists (users, then rockets, then one launch). The operator creates them.
 // 4. A saved browser session exists for the operator and for the passenger.
 // webServer empties the database (see playwright.config.ts); this file only warns if it did not.
 // The tests never access the database. They use only the back-api endpoints.
@@ -11,7 +11,15 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { LoginPage } from "../pages/login.page";
 import { backUrl, frontUrl } from "./env";
-import { existingUser, operatorAccount, seedRockets, seedUsers } from "./seed-data";
+import { isoDate } from "./launches";
+import {
+  existingUser,
+  operatorAccount,
+  seedLaunch,
+  seedRocket as seedRocketData,
+  seedRockets,
+  seedUsers,
+} from "./seed-data";
 
 const START_HINT = 'Run "npm start" in the root folder, or let Playwright start the servers.';
 const authDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../.auth");
@@ -92,6 +100,28 @@ async function seedRocket(rocket: (typeof seedRockets)[number], token: string): 
   throw new Error(`Cannot seed rocket ${rocket.name}: ${response.status} ${await response.text()}`);
 }
 
+async function seedUpcomingLaunch(token: string): Promise<void> {
+  const listed = await request(`${backUrl}/api/rockets`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!listed.ok) throw new Error(`Cannot list rockets: ${listed.status}`);
+  const rockets = (await listed.json()) as { id: string; name: string }[];
+  const rocket = rockets.find((item) => item.name === seedRocketData.name);
+  if (!rocket) throw new Error("Seed rocket is missing");
+  const response = await request(`${backUrl}/api/launches`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    body: JSON.stringify({
+      rocketId: rocket.id,
+      date: isoDate(seedLaunch.daysAhead),
+      pricePerPassenger: seedLaunch.pricePerPassenger,
+    }),
+  });
+  // 409: the launch exists from an earlier run. That is the state we need.
+  if (response.ok || response.status === 409) return;
+  throw new Error(`Cannot seed launch: ${response.status} ${await response.text()}`);
+}
+
 function roleFile(account: { email: string; password: string }, fileName: string): RoleSession {
   return { email: account.email, password: account.password, fileName };
 }
@@ -124,5 +154,6 @@ export default async function globalSetup(): Promise<void> {
   for (const user of seedUsers) await seedUser(user);
   const token = await logInOperator();
   for (const rocket of seedRockets) await seedRocket(rocket, token);
+  await seedUpcomingLaunch(token);
   await saveSessions();
 }

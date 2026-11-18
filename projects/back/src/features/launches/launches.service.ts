@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { ExpectedError } from "../../shared/error.type.ts";
-import type { Launch, LaunchInput, LaunchesRepository } from "./launches.type.ts";
+import type { Launch, LaunchInput, LaunchesRepository, PublicLaunch } from "./launches.type.ts";
 import { checkTransition, readStatusChange } from "./launches.status.service.ts";
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
@@ -38,6 +38,29 @@ function readLaunchInput(value: unknown, today: string): LaunchInput {
 function currentDate() {
   return new Date().toISOString().slice(0, 10);
 }
+function isUpcoming(launch: Launch, today: string) {
+  const isOpen = launch.status === "planned" || launch.status === "confirmed";
+  return launch.date > today && isOpen;
+}
+function compareUpcoming(left: Launch, right: Launch) {
+  const byDate = left.date.localeCompare(right.date);
+  if (byDate !== 0) return byDate;
+  return left.rocketName.localeCompare(right.rocketName);
+}
+function toPublicLaunch(launch: Launch): PublicLaunch {
+  return {
+    rocketName: launch.rocketName,
+    date: launch.date,
+    pricePerPassenger: launch.pricePerPassenger,
+    status: launch.status,
+  };
+}
+function listUpcomingFrom(launches: readonly Launch[], today: string) {
+  return launches
+    .filter((launch) => isUpcoming(launch, today))
+    .sort(compareUpcoming)
+    .map(toPublicLaunch);
+}
 export function createLaunchesService(repository: LaunchesRepository, today = currentDate) {
   return {
     schedule(value: unknown): Launch {
@@ -61,6 +84,9 @@ export function createLaunchesService(repository: LaunchesRepository, today = cu
     },
     list() {
       return repository.list();
+    },
+    listUpcoming() {
+      return listUpcomingFrom(repository.list(), today());
     },
     changeStatus(id: string, value: unknown): Launch {
       const change = readStatusChange(value);

@@ -3,8 +3,20 @@ import { currentUser, runAsOperator } from "../auth/auth.api.ts";
 import { createLaunchesRepository } from "./launches.repository.ts";
 import { createLaunchesService } from "./launches.service.ts";
 
-export function registerLaunches(services: ApplicationServices): RouteRegistration {
-  const launches = createLaunchesService(createLaunchesRepository(services.database));
+type LaunchesService = ReturnType<typeof createLaunchesService>;
+
+function registerUpcoming(launches: LaunchesService): RouteRegistration {
+  return {
+    basePath: "/api/launches/upcoming",
+    isPublic: true,
+    register(router) {
+      router.get("/", (_request, response) => {
+        response.json(launches.listUpcoming());
+      });
+    },
+  };
+}
+function registerManaged(launches: LaunchesService): RouteRegistration {
   return {
     basePath: "/api/launches",
     register(router) {
@@ -25,4 +37,8 @@ export function registerLaunches(services: ApplicationServices): RouteRegistrati
       });
     },
   };
+}
+export function registerLaunches(services: ApplicationServices): readonly RouteRegistration[] {
+  const launches = createLaunchesService(createLaunchesRepository(services.database));
+  return [registerUpcoming(launches), registerManaged(launches)];
 }
