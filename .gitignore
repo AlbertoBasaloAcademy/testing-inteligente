@@ -21,6 +21,7 @@ logs/
 /e2e/.playwright-cli/
 
 # Secrets and credentials
+/e2e/.auth/
 .env
 .env.*
 !.env.example
